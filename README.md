@@ -11,6 +11,10 @@ This project has the purpose to give the users a simple way to login to their fa
 - Autofill Logins by scanning qr-code
 - Encrypted client storage of login credentials
 
+**Workflow:**
+
+![Alt text](/Fastlogin.png?raw=true "Fastlogin")
+
 ## 2. Technologies
 - jQuery
 - HTML
