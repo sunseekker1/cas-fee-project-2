@@ -1,0 +1,25 @@
+{
+  "name": "boilerplate-rest-api",
+  "description": "Boilderplate for nodejs REST API",
+  "repository": "boilerplate-rest-api",
+  "license": "UNLICENSED",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "init-mongodb": "mkdir mongodb; mongod --dbpath mongodb",
+    "export-mongodb-collections": "mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection accesses --out ./export/accesses.json; mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection admins --out ./export/admins.json; mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection clients --out ./export/clients.json; mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection sites --out ./export/sites.json",
+    "import-mongodb-collections": "mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection accesses --drop --file ./export/accesses.json; mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection admins --drop --file ./export/admins.json; mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection clients --drop --file ./export/clients.json; mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection sites --drop --file ./export/sites.json",
+    "export-mongodb": "mongodump --host localhost --port 27017 -d cas-fee-project-2-rest-api -o ./export/",
+    "import-mongodb": "mongorestore --host localhost --port 27017 -d cas-fee-project-2-rest-api ./export/",
+    "gulp": "gulp"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "express": "~4.1.1",
+    "gulp": "^3.9.1",
+    "mongoose": "^4.6.2",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0"
+  }
+}

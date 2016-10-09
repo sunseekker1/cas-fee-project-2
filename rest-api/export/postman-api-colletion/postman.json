@@ -1,0 +1,664 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CAS",
+		"_postman_id": "8e813e8d-5f04-418c-b7c7-14129669182b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/access",
+			"request": {
+				"url": "http://localhost:3000/api/access",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "siteId",
+							"value": "57f9f2a6b7c59c03760ca800",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "socketId",
+							"value": "f23f23f",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "used",
+							"value": "false",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/access",
+			"request": {
+				"url": "http://localhost:3000/api/access",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Feldschlösschen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "type",
+							"value": "Naturtrüb",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "quantity",
+							"value": "12",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/access/:accessId",
+			"request": {
+				"url": "http://localhost:3000/api/access/xxx",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Feldschlösschen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "type",
+							"value": "Naturtrüb",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "quantity",
+							"value": "12",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/access/:accessId",
+			"request": {
+				"url": "http://localhost:3000/api/access/xxx",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "siteId",
+							"value": "f2f323f23f",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "socketId",
+							"value": "23f23f23f3",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "used",
+							"value": "false",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/admins",
+			"request": {
+				"url": "http://localhost:3000/api/admins",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic c2VwcDpzZXBw",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin1",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "admin1",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "email",
+							"value": "admin1@mail.ch",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/admins",
+			"request": {
+				"url": "http://localhost:3000/api/admins",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic aGFuczpoYW5z",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Feldschlösschen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "type",
+							"value": "Naturtrüb",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "quantity",
+							"value": "12",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/admins/:adminId",
+			"request": {
+				"url": "http://localhost:3000/api/admins/xxx",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic c2VwcDpzZXBw",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Feldschlösschen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "type",
+							"value": "Naturtrüb",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "quantity",
+							"value": "12",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/admins/:adminId",
+			"request": {
+				"url": "http://localhost:3000/api/admins/xxx",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "hans",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "hans",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "email",
+							"value": "hans@mail.ch",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/admins/:adminId",
+			"request": {
+				"url": "http://localhost:3000/api/admins/xxx",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/clients",
+			"request": {
+				"url": "http://localhost:3000/api/clients",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "sepp",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "sepp",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "email",
+							"value": "sepp@mail.com",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/clients",
+			"request": {
+				"url": "http://localhost:3000/api/clients",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Feldschlösschen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "type",
+							"value": "Naturtrüb",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "quantity",
+							"value": "12",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/clients/:clientId",
+			"request": {
+				"url": "http://localhost:3000/api/clients/xxx",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Feldschlösschen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "type",
+							"value": "Naturtrüb",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "quantity",
+							"value": "12",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/clients/:clientId",
+			"request": {
+				"url": "http://localhost:3000/api/clients/xxx",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Feldschlösschen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "Naturtrüb",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "email",
+							"value": "12",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/clients/:clientId",
+			"request": {
+				"url": "http://localhost:3000/api/clients/xxx",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/sites",
+			"request": {
+				"url": "http://localhost:3000/api/sites",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "clientId",
+							"value": "57f9f25ab7c59c03760ca7fe",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "title",
+							"value": "Google",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "secret",
+							"value": "12345",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/sites",
+			"request": {
+				"url": "http://localhost:3000/api/sites",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Feldschlösschen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "type",
+							"value": "Naturtrüb",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "quantity",
+							"value": "12",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/sites/:siteId",
+			"request": {
+				"url": "http://localhost:3000/api/sites/xxx",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Feldschlösschen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "type",
+							"value": "Naturtrüb",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "quantity",
+							"value": "12",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/sites/:siteId",
+			"request": {
+				"url": "http://localhost:3000/api/sites/xxx",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "clientId",
+							"value": "Feldschlösschen",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "title",
+							"value": "Naturtrüb",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "secred",
+							"value": "12",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/sites/:siteId",
+			"request": {
+				"url": "http://localhost:3000/api/sites/xxx",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
