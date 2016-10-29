@@ -6,23 +6,24 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HeroSearchComponent } from './hero-search.component';
+import { HeroSearchComponent } from './hero/hero-search.component';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
 import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard.component';
-import { HeroesComponent }      from './heroes.component';
-import { HeroDetailComponent }  from './hero-detail.component';
-import { SitesComponent }  from './sites.component';
-import { ClientsComponent }  from './clients.component';
-import { ClientComponent }  from './client.component';
-import { AdminComponent }  from './admin.component';
-import { AccessesComponent }  from './accesses.component';
+import { DashboardComponent }   from './dashboard/dashboard.component';
+import { HeroesComponent }      from './hero/heroes.component';
+import { HeroDetailComponent }  from './hero/hero-detail.component';
+import { SitesComponent }  from './sites/sites.component';
+import { ClientsComponent }  from './client/clients.component';
+import { ClientComponent }  from './client/client.component';
+import { AdminComponent }  from './admin/admin.component';
+import { AccessesComponent }  from './access/accesses.component';
 
-import { HeroService }          from './hero.service';
+import { HeroService }          from './hero/hero.service';
+  import { SitesService }          from './sites/sites.service';
 
 @NgModule({
   imports: [
@@ -44,7 +45,7 @@ import { HeroService }          from './hero.service';
     AdminComponent,
     AccessesComponent
   ],
-  providers: [ HeroService ],
+  providers: [ HeroService, SitesService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

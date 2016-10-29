@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon server.js mongod",
     "init-mongodb": "mkdir mongodb; mongod --dbpath mongodb",
     "export-mongodb-collections": "mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection accesses --out ./export/accesses.json; mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection admins --out ./export/admins.json; mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection clients --out ./export/clients.json; mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection sites --out ./export/sites.json",
     "import-mongodb-collections": "mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection accesses --drop --file ./export/accesses.json; mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection admins --drop --file ./export/admins.json; mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection clients --drop --file ./export/clients.json; mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection sites --drop --file ./export/sites.json",

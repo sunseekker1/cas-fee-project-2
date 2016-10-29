@@ -38,4 +38,4 @@ var router = routes.setup(routerHandlers);
 app.use('/api', router);
 
 // Start the server
-app.listen(3000);
+app.listen(8080);

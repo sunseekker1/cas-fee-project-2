@@ -3,7 +3,7 @@ import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 import { HeroSearchService } from './hero-search.service';
-import { Hero } from './hero';
+import { Hero }               from './hero';
 @Component({
   moduleId: module.id,
   selector: 'hero-search',
@@ -28,7 +28,7 @@ export class HeroSearchComponent implements OnInit {
       .switchMap(term => term   // switch to new observable each time
         // return the http search observable
         ? this.heroSearchService.search(term)
-        // or the observable of empty heroes if no search term
+        // or the observable of empty sites if no search term
         : Observable.of<Hero[]>([]))
       .catch(error => {
         // TODO: real error handling
