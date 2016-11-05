@@ -1,5 +1,5 @@
 export class Site {
-  id: string;
+  _id: string;
   title: string;
   clientId: string;
 }

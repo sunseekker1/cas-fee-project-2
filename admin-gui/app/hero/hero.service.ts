@@ -9,7 +9,8 @@ import { Hero } from './hero';
 export class HeroService {
   private heroesUrl = 'app/heroes';  // URL to web api
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
   getHeroes(): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)

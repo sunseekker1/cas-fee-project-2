@@ -30,7 +30,7 @@ export class SitesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedSite.id]);
+    this.router.navigate(['/detail', this.selectedSite._id]);
   }
 
   add(name: string): void {
@@ -45,7 +45,7 @@ export class SitesComponent implements OnInit {
 
   delete(site: Site): void {
     this.sitesService
-      .delete(site.id)
+      .delete(site._id)
       .then(() => {
         this.sites = this.sites.filter(h => h !== site);
         if (this.selectedSite === site) { this.selectedSite = null; }

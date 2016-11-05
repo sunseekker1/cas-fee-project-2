@@ -16,7 +16,7 @@ function setup(handlers) {
 
     // Clients
     router.route('/clients')
-        .get(handlers.authController.isAuthenticated, handlers.clientController.getClients)
+        .get(handlers.clientController.getClients)
         .post(handlers.authController.isAuthenticated, handlers.clientController.postClient);
 
     router.route('/clients/:client_id')
@@ -26,8 +26,8 @@ function setup(handlers) {
 
     // Sites
     router.route('/sites')
-        .get(handlers.authController.isAuthenticated, handlers.siteController.getSites)
-        .post(handlers.authController.isAuthenticated, handlers.siteController.postSite);
+        .get(handlers.siteController.getSites)
+        .post(handlers.siteController.postSite);
 
     router.route('/sites/:site_id')
         .get(handlers.authController.isAuthenticated, handlers.siteController.getSite)

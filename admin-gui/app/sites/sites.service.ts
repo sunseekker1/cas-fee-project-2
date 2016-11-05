@@ -7,7 +7,7 @@ import { Site } from './site';
 
 @Injectable()
 export class SitesService {
-  private sitesUrl = 'app/sites';  // URL to web api
+  private sitesUrl = 'http://localhost:8080/api/clients';  // URL to web api
 
   constructor(private http: Http) { }
 
@@ -27,13 +27,13 @@ export class SitesService {
 
   getHero(id: string): Promise<Site> {
     return this.getSites()
-      .then(sites => sites.find(site => site.id == id));
+      .then(sites => sites.find(site => site._id == id));
   }
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
   update(site: Site): Promise<Site> {
-    const url = `${this.sitesUrl}/${site.id}`;
+    const url = `${this.sitesUrl}/${site._id}`;
     return this.http
       .put(url, JSON.stringify(site), {headers: this.headers})
       .toPromise()
