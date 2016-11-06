@@ -18,12 +18,13 @@ exports.postSite = function(req, res) {
 };
 
 // Create endpoint /api/sites for GET
-exports.getSites = function(req, res) {
-    Site.find({ clientId: req.client._id }, function(err, sites) {
+exports.getSites= function(req, res) {
+    Site.find(function(err, sites) {
         if (err)
             res.send(err);
 
-        res.json(sites);
+        var result = {"data": sites};
+        res.json(result);
     });
 };
 

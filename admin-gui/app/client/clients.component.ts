@@ -1,54 +1,71 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero/hero';
-import { HeroService } from '../hero/hero.service';
+import { Client } from './client';
+import { ClientsService } from './clients.service';
 import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-heroes',
+  selector: 'my-clients',
   templateUrl: 'clients.component.html',
   styleUrls: [ 'clients.component.css' ]
 })
 export class ClientsComponent implements OnInit {
-  heroes: Hero[];
-  selectedHero: Hero;
+  clients: Client[];
+  selectedClient: Client;
 
   constructor(
     private router: Router,
-    private heroService: HeroService) { }
+    private clientService: ClientsService) { }
 
-  getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+  getClientes(): void {
+    this.clientService.getClients().then(clients => this.mapResult(clients));
+  }
+
+  mapResult(result): void{
+    let mapped = [];
+
+    for (let client of result) {
+      console.log(client);
+
+      mapped.push({
+        id: client._id,
+        shortId: client._id.substring(21, 25),
+        username: client.username,
+        password: client.password,
+        email: client.email
+      });
+    }
+    this.clients = mapped;
   }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getClientes();
   }
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
+  onSelect(hero: Client): void {
+    this.selectedClient = hero;
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+    this.router.navigate(['/detail', this.selectedClient.id]);
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroService.create(name)
+    this.clientService.create(name)
       .then(hero => {
-        this.heroes.push(hero);
-        this.selectedHero = null;
+        this.clients.push(hero);
+        this.selectedClient = null;
       });
   }
 
-  delete(hero: Hero): void {
-    this.heroService
+  delete(hero: Client): void {
+    this.clientService
       .delete(hero.id)
       .then(() => {
-        this.heroes = this.heroes.filter(h => h !== hero);
-        if (this.selectedHero === hero) { this.selectedHero = null; }
+        this.clients = this.clients.filter(h => h !== hero);
+        if (this.selectedClient === hero) { this.selectedClient = null; }
       });
   }
 

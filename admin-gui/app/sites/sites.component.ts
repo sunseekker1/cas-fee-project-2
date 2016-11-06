@@ -18,7 +18,25 @@ export class SitesComponent implements OnInit {
     private sitesService: SitesService) { }
 
   getSites(): void {
-    this.sitesService.getSites().then(sites => this.sites = sites);
+    this.sitesService.getSites().then(
+      sites => this.mapResult(sites)
+    );
+  }
+
+  mapResult(result): void{
+    let mappedSites = [];
+
+    for (let site of result) {
+      console.log(site);
+
+      mappedSites.push({
+        id: site._id,
+        shortId: site._id.substring(21, 25),
+        clientId: site.clientId,
+        title: site.title
+      });
+    }
+    this.sites = mappedSites;
   }
 
   ngOnInit(): void {
@@ -30,7 +48,7 @@ export class SitesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedSite._id]);
+    this.router.navigate(['/detail', this.selectedSite.id]);
   }
 
   add(name: string): void {
@@ -45,7 +63,7 @@ export class SitesComponent implements OnInit {
 
   delete(site: Site): void {
     this.sitesService
-      .delete(site._id)
+      .delete(site.id)
       .then(() => {
         this.sites = this.sites.filter(h => h !== site);
         if (this.selectedSite === site) { this.selectedSite = null; }

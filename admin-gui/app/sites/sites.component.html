@@ -1,6 +1,6 @@
 <h2>Sites</h2>
 <div>
-  <label>Hero name:</label> <input #siteTitle />
+  <label>Site name:</label> <input #siteTitle />
   <button (click)="add(siteTitle.value); siteTitle.value=''">
     Add
   </button>
@@ -10,7 +10,7 @@
   <li *ngFor="let site of sites"
       [class.selected]="site === selectedSite"
       (click)="onSelect(site)">
-    <span class="badge">{{site._id}}</span> {{site.title}}
+    <span class="badge">{{site.shortId}}</span> {{site.title}}
     <button class="delete" (click)="delete(site); $event.stopPropagation()">x</button>
   </li>
 </ul>

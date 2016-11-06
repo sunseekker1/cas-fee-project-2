@@ -26,7 +26,8 @@ exports.getAccesses = function(req, res) {
         if (err)
             res.send(err);
 
-        res.json(accesses);
+        var result = {"data": accesses};
+        res.json(result);
     });
 };
 
