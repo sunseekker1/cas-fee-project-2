@@ -23,8 +23,8 @@ export class SitesComponent implements OnInit {
     );
   }
 
-  mapResult(result): void{
-    let mappedSites = [];
+  mapResult(result: any): void{
+    let mappedSites: any = [];
 
     for (let site of result) {
       console.log(site);

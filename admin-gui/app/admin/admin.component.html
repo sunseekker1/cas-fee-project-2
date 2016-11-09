@@ -1,24 +1,23 @@
 <h2>Admin</h2>
 <div>
-  <label>Hero name:</label> <input #heroName />
-  <button (click)="add(heroName.value); heroName.value=''">
+  <label>Admin name:</label> <input #adminName />
+  <button (click)="add(adminName.value); adminName.value=''">
     Add
   </button>
 </div>
 
 <ul class="heroes">
-  <li *ngFor="let hero of heroes"
-      [class.selected]="hero === selectedHero"
-      (click)="onSelect(hero)">
-    <span class="badge">{{hero.id}}</span> {{hero.name}}
-    <button class="delete"
-                                                                (click)="delete(hero); $event.stopPropagation()">x</button>
+  <li *ngFor="let admin of admins"
+      [class.selected]="admin === selectedAdmin"
+      (click)="onSelect(admin)">
+    <span class="badge">{{admin.shortId}}</span> {{admin.username}}
+    <button class="delete" (click)="delete(admin); $event.stopPropagation()">x</button>
 
   </li>
 </ul>
-<div *ngIf="selectedHero">
+<div *ngIf="selectedAdmin">
   <h2>
-    {{selectedHero.name | uppercase}} is my hero
+    {{selectedAdmin.name | uppercase}} is my admin
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>

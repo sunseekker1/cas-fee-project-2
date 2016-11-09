@@ -21,8 +21,8 @@ export class ClientsComponent implements OnInit {
     this.clientService.getClients().then(clients => this.mapResult(clients));
   }
 
-  mapResult(result): void{
-    let mapped = [];
+  mapResult(result: any): void{
+    let mapped: any = [];
 
     for (let client of result) {
       console.log(client);

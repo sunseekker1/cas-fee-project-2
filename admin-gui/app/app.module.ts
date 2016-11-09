@@ -24,7 +24,9 @@ import { AccessesComponent }    from './access/accesses.component';
 
 import { HeroService }          from './hero/hero.service';
 import { SitesService }         from './sites/sites.service';
-import { ClientsService }         from './client/clients.service';
+import { ClientsService }       from './client/clients.service';
+import { AdminService }         from './admin/admin.service';
+import { AccessesService }      from './access/accesses.service';
 
 @NgModule({
   imports: [
@@ -46,7 +48,7 @@ import { ClientsService }         from './client/clients.service';
     AdminComponent,
     AccessesComponent
   ],
-  providers: [ HeroService, SitesService, ClientsService ],
+  providers: [ HeroService, SitesService, ClientsService, AdminService, AccessesService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

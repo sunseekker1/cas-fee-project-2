@@ -1,52 +1,52 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
-import { Site } from './site';
+import { Access } from './access';
 import 'rxjs/add/operator/toPromise';
 
 
 
 @Injectable()
-export class SitesService {
-  private sitesUrl = 'http://localhost:8080/api/sites';  // URL to web api
+export class AccessesService {
+  private accessesUrl = 'http://localhost:8080/api/access';  // URL to web api
 
   constructor(private http: Http) { }
 
-  getSites(): Promise<Site[]> {
-    return this.http.get(this.sitesUrl, {headers: this.headers})
+  getAccesses(): Promise<Access[]> {
+    return this.http.get(this.accessesUrl, {headers: this.headers})
       .toPromise()
       .then(
-        response => response.json().data as Site[]
+        response => response.json().data as Access[]
       )
       .catch(this.handleError);
   }
 
-  getSite(id: string): Promise<Site> {
-    return this.getSites()
-      .then(sites => sites.find(site => site.id == id));
+  getAccess(id: string): Promise<Access> {
+    return this.getAccesses()
+      .then(accesses => accesses.find(access => access.id == id));
   }
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  update(site: Site): Promise<Site> {
-    const url = `${this.sitesUrl}/${site.id}`;
+  update(access: Access): Promise<Access> {
+    const url = `${this.accessesUrl}/${access.id}`;
     return this.http
-      .put(url, JSON.stringify(site), {headers: this.headers})
+      .put(url, JSON.stringify(access), {headers: this.headers})
       .toPromise()
-      .then(() => site)
+      .then(() => access)
       .catch(this.handleError);
   }
 
 
-  create(name: string): Promise<Site> {
+  create(name: string): Promise<Access> {
     return this.http
-      .post(this.sitesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.accessesUrl, JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);
   }
 
   delete(id: string): Promise<void> {
-    const url = `${this.sitesUrl}/${id}`;
+    const url = `${this.accessesUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)

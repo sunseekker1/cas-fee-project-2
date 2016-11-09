@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero/hero';
-import { HeroService } from '../hero/hero.service';
+import { Admin } from './admin';
+import { AdminService } from './admin.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,45 +10,61 @@ import { Router } from '@angular/router';
   styleUrls: [ 'admin.component.css' ]
 })
 export class AdminComponent implements OnInit {
-  heroes: Hero[];
-  selectedHero: Hero;
+  admins: Admin[];
+  selectedAdmin: Admin;
 
   constructor(
     private router: Router,
-    private heroService: HeroService) { }
+    private adminService: AdminService) { }
 
-  getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+  getAdmins(): void {
+    this.adminService.getAdmins().then(admins => this.mapResult(admins));
+  }
+
+  mapResult(result: any): void{
+    let mapped: any = [];
+
+    for (let admin of result) {
+      console.log(admin);
+
+      mapped.push({
+        id: admin._id,
+        shortId: admin._id.substring(21, 25),
+        username: admin.username,
+        email: admin.email
+      });
+    }
+    this.admins = mapped;
   }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getAdmins();
   }
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
+  onSelect(admin: Admin): void {
+    this.selectedAdmin = admin;
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+    this.router.navigate(['/detail', this.selectedAdmin.id]);
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroService.create(name)
-      .then(hero => {
-        this.heroes.push(hero);
-        this.selectedHero = null;
+    this.adminService.create(name)
+      .then(admin => {
+        this.admins.push(admin);
+        this.selectedAdmin = null;
       });
   }
 
-  delete(hero: Hero): void {
-    this.heroService
-      .delete(hero.id)
+  delete(admin: Admin): void {
+    this.adminService
+      .delete(admin.id)
       .then(() => {
-        this.heroes = this.heroes.filter(h => h !== hero);
-        if (this.selectedHero === hero) { this.selectedHero = null; }
+        this.admins = this.admins.filter(h => h !== admin);
+        if (this.selectedAdmin === admin) { this.selectedAdmin = null; }
       });
   }
 

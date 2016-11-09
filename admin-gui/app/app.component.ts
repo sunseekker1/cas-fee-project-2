@@ -10,16 +10,16 @@ import { Component } from '@angular/core';
     <nav>
       <h3>Client Navigation</h3>
       <a routerLink="/sites" routerLinkActive="active">Sites</a>
-      <a routerLink="/accesses" routerLinkActive="active">Access</a>
-      <a routerLink="/client" routerLinkActive="active">Client</a>
+      <a routerLink="/access" routerLinkActive="active">Access</a>
+      <a routerLink="/clients" routerLinkActive="active">Client</a>
     </nav>
     
     <nav>
       <h3>Admin Navigation</h3>
       <a routerLink="/sites" routerLinkActive="active">Sites</a>
-      <a routerLink="/accesses" routerLinkActive="active">Access</a>
+      <a routerLink="/access" routerLinkActive="active">Access</a>
       <a routerLink="/clients" routerLinkActive="active">Clients</a>
-      <a routerLink="/admin" routerLinkActive="active">Admin</a>
+      <a routerLink="/admins" routerLinkActive="active">Admin</a>
     </nav>
     <router-outlet></router-outlet>
     <nav>

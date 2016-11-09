@@ -15,10 +15,10 @@ const routes: Routes = [
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'heroes',     component: HeroesComponent },
   { path: 'sites',     component: SitesComponent },
-  { path: 'accesses',     component: AccessesComponent },
+  { path: 'access',     component: AccessesComponent },
   { path: 'clients',     component: ClientsComponent },
   { path: 'client',     component: ClientComponent },
-  { path: 'admin',     component: AdminComponent }
+  { path: 'admins',     component: AdminComponent }
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
