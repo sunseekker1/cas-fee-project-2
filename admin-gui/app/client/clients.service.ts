@@ -21,8 +21,20 @@ export class ClientsService {
   }
 
   getClient(id: string): Promise<Client> {
+
     return this.getClients()
-      .then(clients => clients.find(client => client.id == id));
+      .then(
+        (clients) => {  //TODO wie kann an dieser Stelle ein Mapping der Daten vom Service auf das Objekt im Component gemacht werden? Service _id / Component id
+          console.log(clients);
+          console.log(id);
+          console.log(clients.find(
+            client => client._id === id
+          ));
+          clients.find(
+            client => client._id === id
+          ) //TODO das gefundene ClientObjekt wird nicht an den Controller zurückgegeben
+        }
+      );
   }
 
   private headers = new Headers({'Content-Type': 'application/json'});
@@ -37,9 +49,9 @@ export class ClientsService {
   }
 
 
-  create(name: string): Promise<Client> {
+  create(username: string): Promise<Client> {
     return this.http
-      .post(this.clientsUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.clientsUrl, JSON.stringify({username: username}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);

@@ -10,7 +10,7 @@
   <li *ngFor="let access of accesses"
       [class.selected]="access === selectedAccess"
       (click)="onSelect(access)">
-    <span class="badge">{{access.shortId}}</span> {{access.used}}
+    <span class="badge">{{access.shortId}}</span> Used: {{access.used}}
     <button class="delete" (click)="delete(access); $event.stopPropagation()">x</button>
 
   </li>

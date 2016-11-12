@@ -22,13 +22,13 @@ export class AdminService {
 
   getAdmin(id: string): Promise<Admin> {
     return this.getAdmins()
-      .then(sites => sites.find(admin => admin.id == id));
+      .then(sites => sites.find(admin => admin._id == id));
   }
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
   update(admin: Admin): Promise<Admin> {
-    const url = `${this.adminUrl}/${admin.id}`;
+    const url = `${this.adminUrl}/${admin._id}`;
     return this.http
       .put(url, JSON.stringify(admin), {headers: this.headers})
       .toPromise()

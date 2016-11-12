@@ -28,7 +28,7 @@ export class AdminComponent implements OnInit {
       console.log(admin);
 
       mapped.push({
-        id: admin._id,
+        _id: admin._id,
         shortId: admin._id.substring(21, 25),
         username: admin.username,
         email: admin.email
@@ -46,7 +46,7 @@ export class AdminComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedAdmin.id]);
+    this.router.navigate(['/detail', this.selectedAdmin._id]);
   }
 
   add(name: string): void {
@@ -61,7 +61,7 @@ export class AdminComponent implements OnInit {
 
   delete(admin: Admin): void {
     this.adminService
-      .delete(admin.id)
+      .delete(admin._id)
       .then(() => {
         this.admins = this.admins.filter(h => h !== admin);
         if (this.selectedAdmin === admin) { this.selectedAdmin = null; }

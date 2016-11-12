@@ -1,0 +1,7 @@
+ISSUES
+======
+(im Code mit TODO markiert)
+
+- GET /api/heroes liefert keine Ergebnisse
+- Debugging der Rest-API in IntelliJ?
+- Debugging der Rest-API bei Aufruf aus einer anderen Applikation?

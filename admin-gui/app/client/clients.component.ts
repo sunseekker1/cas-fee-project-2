@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-clients',
   templateUrl: 'clients.component.html',
   styleUrls: [ 'clients.component.css' ]
 })
@@ -25,7 +24,6 @@ export class ClientsComponent implements OnInit {
     let mapped: any = [];
 
     for (let client of result) {
-      console.log(client);
 
       mapped.push({
         id: client._id,
@@ -47,7 +45,7 @@ export class ClientsComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedClient.id]);
+    this.router.navigate(['/clientDetail', this.selectedClient.id]);
   }
 
   add(name: string): void {
