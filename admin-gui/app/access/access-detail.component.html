@@ -1,0 +1,12 @@
+<div *ngIf="access">
+  <h2>{{access.siteId}} details!</h2>
+  <div>
+    <label>id: </label>{{access._id}}</div>
+  <div>
+    <label>siteId: </label>
+    <input [(ngModel)]="access.siteId" placeholder="siteId" />
+  </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+
+</div>

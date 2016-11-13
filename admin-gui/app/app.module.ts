@@ -16,18 +16,20 @@ import {AppComponent}         from './app.component';
 import {DashboardComponent}   from './dashboard/dashboard.component';
 import {HeroesComponent}      from './hero/heroes.component';
 import {HeroDetailComponent}  from './hero/hero-detail.component';
-import {SitesComponent}       from './sites/sites.component';
+import {SitesComponent}       from './site/sites.component';
+import {SiteDetailComponent}      from './site/site-detail.component';
 import {ClientsComponent}     from './client/clients.component';
 import {ClientDetailComponent}      from './client/client-detail.component';
-import {AdminComponent}       from './admin/admin.component';
+import {AdminsComponent}       from './admin/admins.component';
 import {AdminDetailComponent}       from './admin/admin-detail.component';
 import {AccessesComponent}    from './access/accesses.component';
+import {AccessDetailComponent}    from './access/access-detail.component';
 
 import {HeroService}          from './hero/hero.service';
-import {SitesService}         from './sites/sites.service';
-import {ClientsService}       from './client/clients.service';
+import {SiteService}         from './site/site.service';
+import {ClientService}       from './client/client.service';
 import {AdminService}         from './admin/admin.service';
-import {AccessesService}      from './access/accesses.service';
+import {AccessService}      from './access/access.service';
 
 @NgModule({
   imports: [
@@ -44,13 +46,15 @@ import {AccessesService}      from './access/accesses.service';
     HeroesComponent,
     HeroSearchComponent,
     SitesComponent,
+    SiteDetailComponent,
     ClientDetailComponent,
     ClientsComponent,
-    AdminComponent,
+    AdminsComponent,
     AdminDetailComponent,
-    AccessesComponent
+    AccessesComponent,
+    AccessDetailComponent
   ],
-  providers: [HeroService, SitesService, ClientsService, AdminService, AccessesService],
+  providers: [HeroService, SiteService, ClientService, AdminService, AccessService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

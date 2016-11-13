@@ -6,8 +6,8 @@ import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
-export class AccessesService {
-  private accessesUrl = 'http://localhost:8080/api/access';  // URL to web api
+export class AccessService {
+  private accessesUrl = 'http://localhost:8080/api/accesses';  // URL to web api
 
   constructor(private http: Http) { }
 
@@ -22,13 +22,13 @@ export class AccessesService {
 
   getAccess(id: string): Promise<Access> {
     return this.getAccesses()
-      .then(accesses => accesses.find(access => access.id == id));
+      .then(accesses => accesses.find(access => access._id == id));
   }
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
   update(access: Access): Promise<Access> {
-    const url = `${this.accessesUrl}/${access.id}`;
+    const url = `${this.accessesUrl}/${access._id}`;
     return this.http
       .put(url, JSON.stringify(access), {headers: this.headers})
       .toPromise()

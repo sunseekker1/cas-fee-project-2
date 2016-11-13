@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Access } from './access';
-import { AccessesService } from './accesses.service';
+import { AccessService } from './access.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class AccessesComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private accessesService: AccessesService) { }
+    private accessesService: AccessService) { }
 
   getAccesses(): void {
     this.accessesService.getAccesses().then(accesses => this.mapResult(accesses));
@@ -25,7 +25,6 @@ export class AccessesComponent implements OnInit {
     let mapped: any = [];
 
     for (let access of result) {
-      console.log(access);
 
       mapped.push({
         id: access._id,
@@ -45,7 +44,7 @@ export class AccessesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedAccess.id]);
+    this.router.navigate(['/accesses', this.selectedAccess.id]);
   }
 
   add(name: string): void {

@@ -33,7 +33,7 @@ exports.getAccesses = function(req, res) {
 
 // Create endpoint /api/accesses/:access_id for GET
 exports.getAccess = function(req, res) {
-    Access.find({ clientId: req.client._id, _id: req.params.access_id }, function(err, access) {
+    Access.find({ _id: req.params.id }, function(err, access) {
         if (err)
             res.send(err);
 
@@ -43,7 +43,7 @@ exports.getAccess = function(req, res) {
 
 // Create endpoint /api/accesses/:access_id for PUT
 exports.putAccess = function(req, res) {
-    Access.update({ clientId: req.client._id, _id: req.params.access_id }, { used: req.body.used }, function(err, num, raw) {
+    Access.update({ _id: req.params.id }, { used: req.body.used }, function(err, num, raw) {
         if (err)
             res.send(err);
 

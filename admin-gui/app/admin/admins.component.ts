@@ -6,10 +6,10 @@ import { Router } from '@angular/router';
 @Component({
   moduleId: module.id,
   selector: 'my-heroes',
-  templateUrl: 'admin.component.html',
-  styleUrls: [ 'admin.component.css' ]
+  templateUrl: 'admins.component.html',
+  styleUrls: [ 'admins.component.css' ]
 })
-export class AdminComponent implements OnInit {
+export class AdminsComponent implements OnInit {
   admins: Admin[];
   selectedAdmin: Admin;
 
@@ -25,7 +25,6 @@ export class AdminComponent implements OnInit {
     let mapped: any = [];
 
     for (let admin of result) {
-      console.log(admin);
 
       mapped.push({
         _id: admin._id,
@@ -46,7 +45,7 @@ export class AdminComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedAdmin._id]);
+    this.router.navigate(['/admins', this.selectedAdmin._id]);
   }
 
   add(name: string): void {

@@ -1,8 +1,8 @@
 export class Client {
-  id: String;
-  _id: String;
-  shortId: String;
-  username: String;
-  password: String;
-  email: String;
+  id: string;
+  _id: string;
+  shortId: string;
+  username: string;
+  password: string;
+  email: string;
 }

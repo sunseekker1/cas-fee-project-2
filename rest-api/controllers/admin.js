@@ -29,7 +29,7 @@ exports.getAdmins = function(req, res) {
 
 // Create endpoint /api/admins/:admin_id for GET
 exports.getAdmin = function(req, res) {
-    Admin.find({ adminId: req.admin._id, _id: req.params.admin_id }, function(err, admin) {
+    Admin.find({ _id: req.params.id }, function(err, admin) {
         if (err)
             res.send(err);
 
@@ -40,7 +40,7 @@ exports.getAdmin = function(req, res) {
 
 // Create endpoint /api/admins/:admin_id for PUT
 exports.putAdmin = function(req, res) {
-    Admin.update({ adminId: req.admin._id, _id: req.params.admin_id }, { password: req.body.password, username: req.body.username, email: req.body.email }, function(err, num, raw) {
+    Admin.update({ _id: req.params.id }, { password: req.body.password, username: req.body.username, email: req.body.email }, function(err, num, raw) {
         if (err)
             res.send(err);
 
@@ -50,7 +50,7 @@ exports.putAdmin = function(req, res) {
 
 // Create endpoint /api/admins/:admin_id for DELETE
 exports.deleteAdmin = function(req, res) {
-    Admin.remove({ adminId: req.admin._id, _id: req.params.admin_id }, function(err) {
+    Admin.remove({ _id: req.params.id }, function(err) {
         if (err)
             res.send(err);
 

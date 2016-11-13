@@ -8,6 +8,18 @@ h2 {
   margin-top: 0;
   padding-top: 0;
 }
+
+.clearfix:after {
+  content:'';
+  display:block;
+  clear: both;
+}
+
+nav {
+  float: left;
+  width: 350px;
+}
+
 nav a {
   padding: 5px 10px;
   text-decoration: none;

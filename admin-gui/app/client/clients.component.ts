@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from './client';
-import { ClientsService } from './clients.service';
+import { ClientService } from './client.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class ClientsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private clientService: ClientsService) { }
+    private clientService: ClientService) { }
 
   getClientes(): void {
     this.clientService.getClients().then(clients => this.mapResult(clients));
@@ -45,7 +45,7 @@ export class ClientsComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/clientDetail', this.selectedClient.id]);
+    this.router.navigate(['/clients', this.selectedClient.id]);
   }
 
   add(name: string): void {

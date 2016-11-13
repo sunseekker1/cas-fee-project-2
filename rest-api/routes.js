@@ -9,7 +9,7 @@ function setup(handlers) {
         .get(handlers.adminController.getAdmins)
         .post(handlers.adminController.postAdmin);
 
-    router.route('/admins/:admin_id')
+    router.route('/admins/:id')
         .get(handlers.adminController.getAdmin)
         //.put(handlers.authController.isAuthenticated, handlers.adminController.putAdmin)
         .put(handlers.adminController.putAdmin)
@@ -20,7 +20,7 @@ function setup(handlers) {
         .get(handlers.clientController.getClients)
         .post(handlers.clientController.postClient);
 
-    router.route('/clients/:client_id')
+    router.route('/clients/:id')
         .get(handlers.clientController.getClient)
         .put(handlers.clientController.putClient)
         .delete(handlers.clientController.deleteClient);
@@ -30,17 +30,17 @@ function setup(handlers) {
         .get(handlers.siteController.getSites)
         .post(handlers.siteController.postSite);
 
-    router.route('/sites/:site_id')
+    router.route('/sites/:id')
         .get(handlers.siteController.getSite)
         .put(handlers.siteController.putSite)
         .delete(handlers.siteController.deleteSite);
 
     // Access
-    router.route('/access')
+    router.route('/accesses')
         .get(handlers.accessController.getAccesses)
         .post(handlers.accessController.postAccess);
 
-    router.route('/access/:access_id')
+    router.route('/accesses/:id')
         .get(handlers.accessController.getAccess)
         .put(handlers.accessController.putAccess);
 
@@ -49,7 +49,7 @@ function setup(handlers) {
         .get(handlers.heroController.getHeroes)
         .post(handlers.heroController.postHero);
 
-    router.route('/heroes/:hero_id')
+    router.route('/heroes/:id')
         .get(handlers.heroController.getHero)
         .put(handlers.heroController.putHero)
         .delete(handlers.heroController.deleteHero);

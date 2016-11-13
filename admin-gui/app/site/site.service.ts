@@ -1,12 +1,12 @@
 import { Injectable }    from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 import { Site } from './site';
 import 'rxjs/add/operator/toPromise';
 
 
 
 @Injectable()
-export class SitesService {
+export class SiteService {
   private sitesUrl = 'http://localhost:8080/api/sites';  // URL to web api
 
   constructor(private http: Http) { }
@@ -22,13 +22,13 @@ export class SitesService {
 
   getSite(id: string): Promise<Site> {
     return this.getSites()
-      .then(sites => sites.find(site => site.id == id));
+      .then(sites => sites.find(site => site._id == id));
   }
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
   update(site: Site): Promise<Site> {
-    const url = `${this.sitesUrl}/${site.id}`;
+    const url = `${this.sitesUrl}/${site._id}`;
     return this.http
       .put(url, JSON.stringify(site), {headers: this.headers})
       .toPromise()

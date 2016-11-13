@@ -1,0 +1,29 @@
+<h1>{{title}}</h1>
+
+<div class="clearfix">
+  <nav>
+    <h3>Client Navigation</h3>
+    <a routerLink="/sites" routerLinkActive="active">Sites</a>
+    <a routerLink="/accesses" routerLinkActive="active">Accesses</a>
+    <a routerLink="/clients" routerLinkActive="active">Clients</a>
+  </nav>
+
+  <nav>
+    <h3>Admin Navigation</h3>
+    <a routerLink="/sites" routerLinkActive="active">Sites</a>
+    <a routerLink="/accesses" routerLinkActive="active">Accesses</a>
+    <a routerLink="/clients" routerLinkActive="active">Clients</a>
+    <a routerLink="/admins" routerLinkActive="active">Admins</a>
+  </nav>
+
+  <nav>
+    <h3>Heroes Navigation</h3>
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+  </nav>
+</div>
+
+
+<div class="main-container">
+  <router-outlet></router-outlet>
+</div>

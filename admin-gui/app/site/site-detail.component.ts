@@ -1,19 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
-import { ClientService } from './client.service';
-import { Client } from './client';
+import { SiteService } from './site.service';
+import { Site } from './site';
 @Component({
   moduleId: module.id,
-  selector: 'my-client-detail',
-  templateUrl: 'client-detail.component.html',
+  selector: 'my-site-detail',
+  templateUrl: 'site-detail.component.html',
 })
 
-export class ClientDetailComponent implements OnInit {
-  @Input() client: Client;
+export class SiteDetailComponent implements OnInit {
+  @Input() site: Site;
 
   constructor(
-    private clientService: ClientService,
+    private siteService: SiteService,
     private route: ActivatedRoute,
     private location: Location
   ) {}
@@ -21,13 +21,12 @@ export class ClientDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       let id = params['id'];
-      this.clientService.getClient(id) //TODO der Servcie gibt kein ClientObjekt zurück
+      this.siteService.getSite(id) //TODO der Servcie gibt kein ClientObjekt zurück
         .then(
           //client => this.client = client
 
-          (client) => {
-            console.log('client conroller: ' , client);
-            this.client = client;
+          (site) => {
+            this.site = site;
           }
 
         );
@@ -39,7 +38,7 @@ export class ClientDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.clientService.update(this.client)
+    this.siteService.update(this.site)
       .then(() => this.goBack());
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Site } from './site';
-import { SitesService } from './sites.service';
+import { SiteService } from './site.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,10 +15,10 @@ export class SitesComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private sitesService: SitesService) { }
+    private siteService: SiteService) { }
 
   getSites(): void {
-    this.sitesService.getSites().then(
+    this.siteService.getSites().then(
       sites => this.mapResult(sites)
     );
   }
@@ -27,7 +27,6 @@ export class SitesComponent implements OnInit {
     let mappedSites: any = [];
 
     for (let site of result) {
-      console.log(site);
 
       mappedSites.push({
         id: site._id,
@@ -48,13 +47,13 @@ export class SitesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedSite.id]);
+    this.router.navigate(['/sites', this.selectedSite.id]);
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.sitesService.create(name)
+    this.siteService.create(name)
       .then(site => {
         this.sites.push(site);
         this.selectedSite = null;
@@ -62,7 +61,7 @@ export class SitesComponent implements OnInit {
   }
 
   delete(site: Site): void {
-    this.sitesService
+    this.siteService
       .delete(site.id)
       .then(() => {
         this.sites = this.sites.filter(h => h !== site);

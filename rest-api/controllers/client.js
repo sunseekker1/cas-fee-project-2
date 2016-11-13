@@ -29,7 +29,7 @@ exports.getClients = function(req, res) {
 
 // Create endpoint /api/clients/:client_id for GET
 exports.getClient = function(req, res) {
-    Client.find({ clientId: req.client._id, _id: req.params.client_id }, function(err, client) {
+    Client.find({_id: req.params.id }, function(err, client) {
         if (err)
             res.send(err);
 
@@ -40,7 +40,7 @@ exports.getClient = function(req, res) {
 
 // Create endpoint /api/clients/:client_id for PUT
 exports.putClient = function(req, res) {
-    Client.update({ clientId: req.client._id, _id: req.params.client_id }, { username: req.body.username, password: req.body.password, email: req.body.email   }, function(err, num, raw) {
+    Client.update({ _id: req.params.id }, { username: req.body.username, password: req.body.password, email: req.body.email   }, function(err, num, raw) {
         if (err)
             res.send(err);
 
@@ -50,7 +50,7 @@ exports.putClient = function(req, res) {
 
 // Create endpoint /api/clients/:client_id for DELETE
 exports.deleteClient = function(req, res) {
-    Client.remove({ clientId: req.client._id, _id: req.params.client_id }, function(err) {
+    Client.remove({ _id: req.params.id }, function(err) {
         if (err)
             res.send(err);
 

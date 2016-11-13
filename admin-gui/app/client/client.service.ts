@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
-export class ClientsService {
+export class ClientService {
   private clientsUrl = 'http://localhost:8080/api/clients';  // URL to web api
 
   constructor(private http: Http) { }
@@ -21,8 +21,13 @@ export class ClientsService {
   }
 
   getClient(id: string): Promise<Client> {
-
     return this.getClients()
+      .then(clients => clients.find(client => client._id == id));
+  }
+
+  /*getClient(id: string): Promise<Client> {
+
+    return this.Client()
       .then(
         (clients) => {  //TODO wie kann an dieser Stelle ein Mapping der Daten vom Service auf das Objekt im Component gemacht werden? Service _id / Component id
           console.log(clients);
@@ -35,12 +40,12 @@ export class ClientsService {
           ) //TODO das gefundene ClientObjekt wird nicht an den Controller zurückgegeben
         }
       );
-  }
+  }*/
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
   update(client: Client): Promise<Client> {
-    const url = `${this.clientsUrl}/${client.id}`;
+    const url = `${this.clientsUrl}/${client._id}`;
     return this.http
       .put(url, JSON.stringify(client), {headers: this.headers})
       .toPromise()

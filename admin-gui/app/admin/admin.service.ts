@@ -22,7 +22,7 @@ export class AdminService {
 
   getAdmin(id: string): Promise<Admin> {
     return this.getAdmins()
-      .then(sites => sites.find(admin => admin._id == id));
+      .then(admins => admins.find(admin => admin._id == id));
   }
 
   private headers = new Headers({'Content-Type': 'application/json'});

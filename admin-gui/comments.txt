@@ -16,3 +16,4 @@ TODO'S
 - JS Files in ein separates js Verzeichnis kompilieren
 - Inlinesourcemaps im Dev Modus statt separate map Files erstellen
 - Mit BasicAuth auf dem REST-Service anmelden
+- REST Service Provider in config Datei auslagern

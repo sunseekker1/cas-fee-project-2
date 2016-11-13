@@ -28,7 +28,7 @@ exports.getHeroes= function(req, res) {
 
 // Create endpoint /api/heroes/:hero_id for GET
 exports.getHero = function(req, res) {
-    Hero.find({id: req.params.hero_id }, function(err, hero) {
+    Hero.find({id: req.params.id }, function(err, hero) {
         if (err)
             res.send(err);
 
@@ -39,7 +39,7 @@ exports.getHero = function(req, res) {
 
 // Create endpoint /api/heroes/:hero_id for PUT
 exports.putHero = function(req, res) {
-    Hero.update({ id: req.params.hero_id }, { title: req.body.name }, function(err, num) {
+    Hero.update({ id: req.params.id }, { title: req.body.name }, function(err, num) {
         if (err)
             res.send(err);
 
@@ -49,7 +49,7 @@ exports.putHero = function(req, res) {
 
 // Create endpoint /api/heroes/:hero_id for DELETE
 exports.deleteHero = function(req, res) {
-    Hero.remove({ id: req.params.hero_id }, function(err) {
+    Hero.remove({ id: req.params.id }, function(err) {
         if (err)
             res.send(err);
 
