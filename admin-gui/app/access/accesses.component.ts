@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Access } from './access';
 import { AccessService } from './access.service';
+import { SiteService } from '../site/site.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,21 +16,42 @@ export class AccessesComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private accessesService: AccessService) { }
+    private accessService: AccessService,
+    private siteService: SiteService) { }
 
   getAccesses(): void {
-    this.accessesService.getAccesses().then(accesses => this.mapResult(accesses));
+
+    this.siteService.getSites().then(
+      (sites) => {
+        this.accessService.getAccesses()
+        .then((accesses) => {
+          this.mapResult(accesses, sites)
+        })
+      }
+    );
   }
 
-  mapResult(result: any): void{
+  mapResult(result: any, sites: any): void{
     let mapped: any = [];
+    let siteTitle = '';
 
     for (let access of result) {
 
+      for (var i=0; i < sites.length; i++) {
+
+        if (sites[i]._id === access.siteId) {
+          siteTitle = sites[i].title;
+          break;
+        }
+      }
+
       mapped.push({
-        id: access._id,
+        _id: access._id,
         shortId: access._id.substring(21, 25),
-        used: access.used
+        used: access.used,
+        siteId: access.siteId,
+        siteTitle: siteTitle,
+        creationDate: access.creationDate
       });
     }
     this.accesses = mapped;
@@ -44,7 +66,7 @@ export class AccessesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/accesses', this.selectedAccess.id]);
+    this.router.navigate(['/accesses', this.selectedAccess._id]);
   }
 }
 

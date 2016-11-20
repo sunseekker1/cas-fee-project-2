@@ -19,7 +19,18 @@
 </ul>
 <div *ngIf="selectedAdmin">
   <h2>
-    {{selectedAdmin.username | uppercase}} is my admin
+    {{selectedAdmin.username | uppercase}}
   </h2>
-  <button (click)="gotoDetail()">View Details</button>
+  <div>
+    <label>id: </label>{{selectedAdmin._id}}
+  </div>
+  <div>
+    <label>username: </label>
+    {{selectedAdmin.username}}
+  </div>
+  <div>
+    <label>email: </label>
+    {{selectedAdmin.email}}
+  </div>
+  <button (click)="gotoDetail()">Edit Details</button>
 </div>

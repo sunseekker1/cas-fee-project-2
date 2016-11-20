@@ -10,16 +10,17 @@ h2 {
 }
 
 .clearfix:after {
-  content:'';
-  display:block;
+  content: " "; /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
   clear: both;
 }
 
 
-
 nav {
   float: left;
-  width: 350px;
+  width: 500px;
 }
 
 nav a {

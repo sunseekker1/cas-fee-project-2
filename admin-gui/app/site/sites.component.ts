@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: [ 'sites.component.css' ]
 })
 export class SitesComponent implements OnInit {
-  sites: Site[];
+  public sites: Site[];
   selectedSite: Site;
 
   constructor(
@@ -30,7 +30,6 @@ export class SitesComponent implements OnInit {
 
       mappedSites.push({
         _id: site._id,
-        id: site._id,
         shortId: site._id.substring(21, 25),
         clientId: site.clientId,
         title: site.title
@@ -48,7 +47,7 @@ export class SitesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/sites', this.selectedSite.id]);
+    this.router.navigate(['/sites', this.selectedSite._id]);
   }
 
   add(site: Site): void {
@@ -66,7 +65,7 @@ export class SitesComponent implements OnInit {
 
   delete(site: Site): void {
     this.siteService
-      .delete(site.id)
+      .delete(site._id)
       .then(() => {
         this.sites = this.sites.filter(h => h !== site);
         if (this.selectedSite === site) { this.selectedSite = null; }

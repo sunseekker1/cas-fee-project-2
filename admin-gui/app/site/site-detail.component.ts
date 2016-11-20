@@ -21,7 +21,7 @@ export class SiteDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
       let id = params['id'];
-      this.siteService.getSite(id) //TODO der Servcie gibt kein ClientObjekt zurück
+      this.siteService.getSite(id)
         .then(
           //client => this.client = client
 

@@ -28,7 +28,6 @@ export class AdminsComponent implements OnInit {
 
       mapped.push({
         _id: admin._id,
-        id: admin._id,
         shortId: admin._id.substring(21, 25),
         username: admin.username,
         email: admin.email

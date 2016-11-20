@@ -19,7 +19,18 @@
 </ul>
 <div *ngIf="selectedClient">
   <h2>
-    {{selectedClient.username | uppercase}} is my client
+    {{selectedClient.username | uppercase}}
   </h2>
-  <button (click)="gotoDetail()">View Details</button>
+  <div>
+    <label>id: </label>{{selectedClient._id}}
+  </div>
+  <div>
+    <label>username: </label>
+    {{selectedClient.username}}
+  </div>
+  <div>
+    <label>email: </label>
+    {{selectedClient.email}}
+  </div>
+  <button (click)="gotoDetail()">Edit Details</button>
 </div>

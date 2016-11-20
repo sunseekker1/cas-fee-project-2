@@ -17,7 +17,18 @@
 </ul>
 <div *ngIf="selectedSite">
   <h2>
-    {{selectedSite.title | uppercase}} is my Site
+    {{selectedSite.title | uppercase}}
   </h2>
-  <button (click)="gotoDetail()">View Details</button>
+  <div>
+    <label>id: </label>{{selectedSite._id}}
+  </div>
+  <div>
+    <label>title: </label>
+    {{selectedSite.title}}
+  </div>
+  <div>
+    <label>clientId: </label>
+    {{selectedSite.clientId}}
+  </div>
+  <button (click)="gotoDetail()">Edit Details</button>
 </div>

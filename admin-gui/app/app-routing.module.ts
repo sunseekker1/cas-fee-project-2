@@ -1,8 +1,6 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent }   from './dashboard/dashboard.component';
-import { HeroesComponent }      from './hero/heroes.component';
-import { HeroDetailComponent }  from './hero/hero-detail.component';
 import { SitesComponent }       from './site/sites.component';
 import { SiteDetailComponent }       from './site/site-detail.component';
 import { AccessesComponent }    from './access/accesses.component';
@@ -15,8 +13,6 @@ import { AdminDetailComponent } from './admin/admin-detail.component';
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
-  { path: 'heroes',     component: HeroesComponent },
-  { path: 'heroes/:id', component: HeroDetailComponent },
   { path: 'sites',     component: SitesComponent },
   { path: 'sites/:id',     component: SiteDetailComponent },
   { path: 'accesses',     component: AccessesComponent },

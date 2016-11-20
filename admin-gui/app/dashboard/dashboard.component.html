@@ -1,75 +1,129 @@
 <h2>Dashboard</h2>
 
 
-<div class="dashboard-box">
-  <h3>Accesses</h3>
-  <ul class="heroes">
-    <li *ngFor="let access of accesses"
-        [class.selected]="access === selectedAccess"
-        (click)="onSelectAccess(access)">
-      <span class="badge">{{access._id | shortId}}</span> Used: {{access.used}}
+<div class="clearfix">
+  <div class="dashboard-box">
+    <h3>Admins</h3>
+    <ul class="heroes">
+      <li *ngFor="let admin of admins"
+          [class.selected]="admin === selectedAdmin"
+          (click)="onSelectAdmin(admin)">
+        <span class="badge">{{admin._id | shortId}}</span> Username: {{admin.username}}
 
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="dashboard-box">
+    <h3>Clients</h3>
+    <ul class="heroes">
+      <li *ngFor="let client of clients"
+          [class.selected]="client === selectedClient"
+          (click)="onSelectClient(client)">
+        <span class="badge">{{client._id | shortId}}</span> Username: {{client.username}}
+
+      </li>
+    </ul>
+  </div>
+  <div class="dashboard-box">
+    <h3>Sites</h3>
+    <ul class="heroes">
+      <li *ngFor="let site of sites"
+          [class.selected]="site === selectedSite"
+          (click)="onSelectSite(site)">
+        <span class="badge">{{site._id | shortId}}</span> Title: {{site.title}}
+
+      </li>
+    </ul>
+  </div>
 </div>
-<div class="dashboard-box">
-  <h3>Clients</h3>
-  <ul class="heroes">
-    <li *ngFor="let client of clients"
-        [class.selected]="client === selectedClient"
-        (click)="onSelectClient(client)">
-      <span class="badge">{{client._id | shortId}}</span> Username: {{client.username}}
+<div class="clearfix">
+  <div class="dashboard-box">
+    <h3>Accesses</h3>
+    <ul class="heroes wide">
+      <li *ngFor="let access of accesses"
+          [class.selected]="access === selectedAccess"
+          (click)="onSelectAccess(access)">
+        <span class="badge">{{access.shortId}}</span> {{access.siteTitle}} - {{access.creationDate | date:'d.M.y hh :mm:ss' }}
 
-    </li>
-  </ul>
-</div>
-<div class="dashboard-box">
-  <h3>Sites</h3>
-  <ul class="heroes">
-    <li *ngFor="let site of sites"
-        [class.selected]="site === selectedSite"
-        (click)="onSelectSite(site)">
-      <span class="badge">{{site._id | shortId}}</span> Title: {{site.title}}
+      </li>
+    </ul>
+  </div>
 
-    </li>
-  </ul>
-</div>
-<div class="dashboard-box">
-  <h3>Admins</h3>
-  <ul class="heroes">
-    <li *ngFor="let admin of admins"
-        [class.selected]="admin === selectedAdmin"
-        (click)="onSelectAdmin(admin)">
-      <span class="badge">{{admin._id | shortId}}</span> Username: {{admin.username}}
-
-    </li>
-  </ul>
 </div>
 
-<div *ngIf="selectedAccess" class="clearfix">
+
+<div *ngIf="selectedAccess">
   <h2>
-    {{selectedAccess._id}} is my Access
+    {{selectedAccess.siteTitle}}
   </h2>
-  <button (click)="gotoAccessDetail()">View Details</button>
+  <div>
+    <label>id: </label>{{selectedAccess._id}}
+  </div>
+  <div>
+    <label>siteId: </label>
+    {{selectedAccess.siteId}}
+  </div>
+  <div>
+    <label>used: </label>
+    {{selectedAccess.used}}
+  </div>
+  <div>
+    <label>Date: </label>
+    {{ selectedAccess.creationDate | date:'d.M.y HH:mm:ss' }}
+  </div>
+  <button (click)="gotoAccessDetail()">Edit Details</button>
 </div>
 
-<div *ngIf="selectedAdmin" class="clearfix">
+<div *ngIf="selectedAdmin">
   <h2>
     {{selectedAdmin.username}} is my Admin
   </h2>
-  <button (click)="gotoAdminDetail()">View Details</button>
+  <div>
+    <label>id: </label>{{selectedAdmin._id}}
+  </div>
+  <div>
+    <label>username: </label>
+    {{selectedAdmin.username}}
+  </div>
+  <div>
+    <label>email: </label>
+    {{selectedAdmin.email}}
+  </div>
+  <button (click)="gotoAdminDetail()">Edit Details</button>
 </div>
 
-<div *ngIf="selectedClient" class="clearfix">
+<div *ngIf="selectedClient">
   <h2>
     {{selectedClient.username}} is my Client
   </h2>
-  <button (click)="gotoClientDetail()">View Details</button>
+  <div>
+    <label>id: </label>{{selectedClient._id}}
+  </div>
+  <div>
+    <label>username: </label>
+    {{selectedClient.username}}
+  </div>
+  <div>
+    <label>email: </label>
+    {{selectedClient.email}}
+  </div>
+  <button (click)="gotoClientDetail()">Edit Details</button>
 </div>
 
-<div *ngIf="selectedSite" class="clearfix">
+<div *ngIf="selectedSite">
   <h2>
-    {{selectedSite.title}} is my Site
+    {{selectedSite.title}}
   </h2>
-  <button (click)="gotoSiteDetail()">View Details</button>
+  <div>
+    <label>id: </label>{{selectedSite._id}}
+  </div>
+  <div>
+    <label>title: </label>
+    {{selectedSite.title}}
+  </div>
+  <div>
+    <label>clientId: </label>
+    {{selectedSite.clientId}}
+  </div>
+  <button (click)="gotoSiteDetail()">Edit Details</button>
 </div>

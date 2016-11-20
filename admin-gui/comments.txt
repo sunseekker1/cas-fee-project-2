@@ -2,8 +2,6 @@ ISSUES
 ======
 (im Code mit TODO markiert)
 
-- GET http://localhost:8080/api/heroes liefert keine Ergebnisse
-- getClient() für die Anzeige der Detailview bekommt keinen Client vom ServcieCall obwohl der Server getClients() eine Liste mit Clients zurückg ibt
 - Mapping der Daten vom Service auf das Objekt im Component? Service _id / Component id
 - Beim Debuggen in Chrome stoppt der Debuger immer auf Zeile 570 im zone.js File
 
@@ -17,3 +15,5 @@ TODO'S
 - Inlinesourcemaps im Dev Modus statt separate map Files erstellen
 - Mit BasicAuth auf dem REST-Service anmelden
 - REST Service Provider in config Datei auslagern
+- Login für Admin/Clientbereich realisieren
+- Design

@@ -2,8 +2,6 @@ ISSUES
 ======
 (im Code mit TODO markiert)
 
-- GET /api/heroes liefert keine Ergebnisse
 - Debugging der Rest-API in IntelliJ?
 - Debugging der Rest-API bei Aufruf aus einer anderen Applikation?
-- Im Request Body sind nur beim ContentType "application/x-www-form-urlencoded" Daten vorhanden. Das AngularGUI sendet die Daten aber im JSON Format
 - Um die Operationen zu vereinfachen werden bei den PUT/POST/DELETE Operationen lediglich die ID des Objekts abgefragt. In Prod muss die ClientId mit in die Bedingung einbezogen werden

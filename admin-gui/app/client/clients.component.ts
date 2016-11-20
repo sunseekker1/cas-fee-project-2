@@ -46,7 +46,7 @@ export class ClientsComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/clients', this.selectedClient.id]);
+    this.router.navigate(['/clients', this.selectedClient._id]);
   }
 
   add(client: Client): void {
@@ -64,7 +64,7 @@ export class ClientsComponent implements OnInit {
 
   delete(client: Client): void {
     this.clientService
-      .delete(client.id)
+      .delete(client._id)
       .then(() => {
         this.clients = this.clients.filter(h => h !== client);
         if (this.selectedClient === client) { this.selectedClient = null; }

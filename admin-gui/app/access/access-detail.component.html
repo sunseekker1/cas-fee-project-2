@@ -1,5 +1,5 @@
 <div *ngIf="access">
-  <h2>{{access._id}} details!</h2>
+  <h2>{{access.siteTitle}} details!</h2>
   <div>
     <label>id: </label>{{access._id}}
   </div>
@@ -10,6 +10,10 @@
   <div>
     <label>used: </label>
     {{access.used}}
+  </div>
+  <div>
+    <label>Date: </label>
+    {{access.creationDate | date:'d.M.y HH:mm:ss' }}
   </div>
   <button (click)="goBack()">Back</button>
 

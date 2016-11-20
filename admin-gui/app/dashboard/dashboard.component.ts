@@ -33,7 +33,41 @@ export class DashboardComponent implements OnInit {
     private siteService: SiteService) { }
 
   getAccesses(): void {
-    this.accessService.getAccesses().then((accesses) => this.accesses = accesses);
+
+    this.siteService.getSites().then(
+      (sites) => {
+        this.accessService.getAccesses()
+          .then((accesses) => {
+            this.mapResult(accesses, sites)
+          })
+      }
+    );
+  }
+
+  mapResult(result: any, sites: any): void{
+    let mapped: any = [];
+    let siteTitle = '';
+
+    for (let access of result) {
+
+      for (var i=0; i < sites.length; i++) {
+
+        if (sites[i]._id === access.siteId) {
+          siteTitle = sites[i].title;
+          break;
+        }
+      }
+
+      mapped.push({
+        _id: access._id,
+        shortId: access._id.substring(21, 25),
+        used: access.used,
+        siteId: access.siteId,
+        siteTitle: siteTitle,
+        creationDate: access.creationDate
+      });
+    }
+    this.accesses = mapped;
   }
 
   getClients(): void {

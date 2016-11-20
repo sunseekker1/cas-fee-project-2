@@ -5,7 +5,6 @@ var clientController = require('./controllers/client');
 var adminController = require('./controllers/admin');
 var siteController = require('./controllers/site');
 var accessController = require('./controllers/access');
-var heroController = require('./controllers/hero');
 var passport = require('passport');
 var authController = require('./controllers/auth');
 var routes = require('./routes');
@@ -44,8 +43,7 @@ var routerHandlers = {
     adminController: adminController,
     clientController: clientController,
     siteController: siteController,
-    accessController: accessController,
-    heroController: heroController
+    accessController: accessController
 };
 
 var router = routes.setup(routerHandlers);

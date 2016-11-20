@@ -44,15 +44,6 @@ function setup(handlers) {
         .get(handlers.accessController.getAccess)
         .put(handlers.accessController.putAccess);
 
-    // Heroes
-    router.route('/heroes')
-        .get(handlers.heroController.getHeroes)
-        .post(handlers.heroController.postHero);
-
-    router.route('/heroes/:id')
-        .get(handlers.heroController.getHero)
-        .put(handlers.heroController.putHero)
-        .delete(handlers.heroController.deleteHero);
 
     return router;
 }
