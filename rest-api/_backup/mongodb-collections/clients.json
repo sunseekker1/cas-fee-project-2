@@ -1,3 +1,4 @@
-{ "_id" : { "$oid" : "57fa0cc37e0980024b7646c5" }, "username" : "hans", "password" : "$2a$05$gKacjb5ptMFLYpkoLb3Hiu5tZehC3nISb.nYcQjbFDWEye.jp4Vte", "email" : "hans@mail.com", "__v" : 0 }
 { "_id" : { "$oid" : "57fa0cb87e0980024b7646c4" }, "username" : "sepp", "password" : "$2a$05$6XhQoX.BvgDG7GneOwT7Uupm9iRAX8zqKrzlecVkFDUP8VmDkw4NW", "email" : "sepp@mail.com", "__v" : 0 }
-{ "_id" : { "$oid" : "582759349d92e00f66314c20" }, "username" : "urs", "password" : "$2a$05$pXocBMU2dq84yGUYtyHZfu/xXHkgfSdNEYLBUDFX0EEhTG/1wKdBK", "email" : "urs@mail.com", "__v" : 0 }
+{ "_id" : { "$oid" : "58317951a182bc03f00f839a" }, "username" : "hanswurst3", "password" : "$2a$05$JcopkX69oEj8Pe/ebxLnEe839S3bEGIKwYR6QQ7owXvLeGo9IIZKq", "email" : "hanswurst@email.com", "__v" : 0 }
+{ "_id" : { "$oid" : "58317d4897d16005a7c8e840" }, "username" : "konrad", "password" : "$2a$05$.e9JbIieDosIqVjOsAEctuShDZWHlQDaA4hBlYiUiygnfX69DnYca", "email" : "konrad@gmail.com", "__v" : 0 }
+{ "_id" : { "$oid" : "5831e349251e2b0389b3d2cc" }, "username" : "sfe2", "password" : "$2a$05$XC9FcutALASmPy6GOCvWNu.bj0.fjreHIZqQFMlDyihIK7zlBRTh6", "email" : "23d2", "__v" : 0 }

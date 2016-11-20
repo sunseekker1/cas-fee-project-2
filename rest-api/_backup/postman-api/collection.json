@@ -8,9 +8,9 @@
 	},
 	"item": [
 		{
-			"name": "/api/access",
+			"name": "/api/accesses",
 			"request": {
-				"url": "http://localhost:8080/api/access",
+				"url": "http://localhost:8080/api/accesses",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -41,14 +41,14 @@
 			"response": []
 		},
 		{
-			"name": "/api/access",
+			"name": "/api/accesses",
 			"request": {
-				"url": "http://localhost:8080/api/access",
+				"url": "http://localhost:8080/api/accesses",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"description": ""
 					}
 				],
@@ -80,11 +80,17 @@
 			"response": []
 		},
 		{
-			"name": "/api/access/:accessId",
+			"name": "/api/accesses/:accessId",
 			"request": {
-				"url": "http://localhost:8080/api/access/xxx",
+				"url": "http://localhost:8080/api/accesses/xxx",
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": [
@@ -113,14 +119,14 @@
 			"response": []
 		},
 		{
-			"name": "/api/access/:accessId",
+			"name": "/api/accesses/:accessId",
 			"request": {
-				"url": "http://localhost:8080/api/access/xxx",
+				"url": "http://localhost:8080/api/accesses/xxx",
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"description": ""
 					}
 				],
@@ -198,7 +204,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"description": ""
 					},
 					{
@@ -241,8 +247,8 @@
 				"method": "GET",
 				"header": [
 					{
-						"key": "Authorization",
-						"value": "Basic c2VwcDpzZXBw",
+						"key": "Content-Type",
+						"value": "application/json",
 						"description": ""
 					}
 				],
@@ -281,7 +287,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"description": ""
 					}
 				],
@@ -317,13 +323,7 @@
 			"request": {
 				"url": "http://localhost:8080/api/admins/xxx",
 				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"description": ""
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": []
@@ -373,7 +373,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"description": ""
 					}
 				],
@@ -445,7 +445,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"description": ""
 					}
 				],
@@ -481,13 +481,7 @@
 			"request": {
 				"url": "http://localhost:8080/api/clients/xxx",
 				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"description": ""
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": []
@@ -537,7 +531,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"description": ""
 					}
 				],
@@ -609,7 +603,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"description": ""
 					}
 				],
@@ -645,13 +639,7 @@
 			"request": {
 				"url": "http://localhost:8080/api/sites/xxx",
 				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"description": ""
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": []
@@ -701,7 +689,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"description": ""
 					}
 				],
@@ -767,7 +755,7 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
+						"value": "application/json",
 						"description": ""
 					}
 				],
@@ -803,13 +791,7 @@
 			"request": {
 				"url": "http://localhost:8080/api/heroes/xxx",
 				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded",
-						"description": ""
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": []

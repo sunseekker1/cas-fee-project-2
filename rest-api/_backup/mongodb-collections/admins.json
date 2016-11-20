@@ -1,1 +1,3 @@
-{ "_id" : { "$oid" : "57fa0c5e7e0980024b7646c3" }, "username" : "admin1", "password" : "$2a$05$a/.s6XoVmIeNKBKVV/1E0.0sIE0m0GQJ4WYYyTsdwqh.s2Mmzc0KS", "email" : "admin1@mail.ch", "__v" : 0 }
+{ "_id" : { "$oid" : "57fa0c5e7e0980024b7646c3" }, "username" : "admin", "password" : "$2a$05$a/.s6XoVmIeNKBKVV/1E0.0sIE0m0GQJ4WYYyTsdwqh.s2Mmzc0KS", "email" : "admin1@mail.ch", "__v" : 0 }
+{ "_id" : { "$oid" : "58317afba182bc03f00f839b" }, "username" : "admin2", "password" : "$2a$05$A1R/4iDzE5wCZzhgh31tu.10TwpWjUce85ycaN943MDoTthH1wIkO", "email" : "admin2@email.com", "__v" : 0 }
+{ "_id" : { "$oid" : "58317d8b97d16005a7c8e842" }, "username" : "admin3", "password" : "$2a$05$iPaGp9ydDfiKF3Sd3yqc/.0pBat3mtL3DP4PHhrr3amZUiIugBJTG", "email" : "asdfe@sfew.ch", "__v" : 0 }

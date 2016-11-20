@@ -1,2 +1,3 @@
-{ "_id" : { "$oid" : "57fa0cd87e0980024b7646c6" }, "secret" : "12345", "title" : "Google", "clientId" : "57fa0cb87e0980024b7646c4", "__v" : 0 }
-{ "_id" : { "$oid" : "57fa0d1e7e0980024b7646c7" }, "secret" : "SectretValue", "title" : "Facebook4", "clientId" : "57f9f25ab7c59c03760ca7fe", "__v" : 0 }
+{ "_id" : { "$oid" : "5831766ea182bc03f00f8398" }, "title" : "Facebook2", "clientId" : "57fa0cc37e0980024b7646c5", "__v" : 0, "secret" : null }
+{ "_id" : { "$oid" : "58317798a182bc03f00f8399" }, "title" : "Google", "clientId" : "123", "__v" : 0 }
+{ "_id" : { "$oid" : "58317d7297d16005a7c8e841" }, "title" : "Motogp", "clientId" : "af32", "__v" : 0 }
