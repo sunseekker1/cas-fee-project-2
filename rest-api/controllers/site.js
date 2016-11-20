@@ -13,7 +13,7 @@ exports.postSite = function(req, res) {
         if (err)
             res.send(err);
 
-        res.json({ message: 'Site added', data: site });
+        res.json({ message: 'New Site added', data: site });
     });
 };
 

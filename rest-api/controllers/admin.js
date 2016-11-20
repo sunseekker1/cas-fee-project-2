@@ -12,7 +12,7 @@ exports.postAdmin = function(req, res) {
         if (err)
             res.send(err);
 
-        res.json({ message: 'New admin added' });
+        res.json({ message: 'New Admin added', data: admin });
     });
 };
 

@@ -54,9 +54,9 @@ export class ClientService {
   }
 
 
-  create(username: string): Promise<Client> {
+  create(client: Client): Promise<Client> {
     return this.http
-      .post(this.clientsUrl, JSON.stringify({username: username}), {headers: this.headers})
+      .post(this.clientsUrl, JSON.stringify(client), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);

@@ -46,25 +46,5 @@ export class AccessesComponent implements OnInit {
   gotoDetail(): void {
     this.router.navigate(['/accesses', this.selectedAccess.id]);
   }
-
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.accessesService.create(name)
-      .then(access => {
-        this.accesses.push(access);
-        this.selectedAccess = null;
-      });
-  }
-
-  delete(access: Access): void {
-    this.accessesService
-      .delete(access.id)
-      .then(() => {
-        this.accesses = this.accesses.filter(h => h !== access);
-        if (this.selectedAccess === access) { this.selectedAccess = null; }
-      });
-  }
-
 }
 

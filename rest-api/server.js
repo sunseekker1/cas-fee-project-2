@@ -17,8 +17,7 @@ mongoose.connect('mongodb://localhost:27017/cas-fee-project-2-rest-api');
 var app = express();
 
 // Use the body-parser package in our application
-app.use(bodyParser.urlencoded({
-    extended: true
+app.use(bodyParser.json({
 }));
 
 app.use(function (req, res, next) {

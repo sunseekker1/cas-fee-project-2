@@ -1,7 +1,9 @@
 <h2>Admin</h2>
 <div>
-  <label>Admin name:</label> <input #adminName />
-  <button (click)="add(adminName.value); adminName.value=''">
+  <label>Usename:</label> <input #username />
+  <label>Password:</label> <input #password />
+  <label>Email:</label> <input #email />
+  <button (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value='';; email.value='';">
     Add
   </button>
 </div>
@@ -17,7 +19,7 @@
 </ul>
 <div *ngIf="selectedAdmin">
   <h2>
-    {{selectedAdmin.name | uppercase}} is my admin
+    {{selectedAdmin.username | uppercase}} is my admin
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>

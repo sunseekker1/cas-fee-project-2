@@ -29,11 +29,4 @@ export class AccessDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
-  save(): void {
-    this.accessService.update(this.access)
-      .then(() => this.goBack());
-  }
-
-
 }

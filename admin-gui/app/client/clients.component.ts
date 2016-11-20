@@ -26,6 +26,7 @@ export class ClientsComponent implements OnInit {
     for (let client of result) {
 
       mapped.push({
+        _id: client._id,
         id: client._id,
         shortId: client._id.substring(21, 25),
         username: client.username,
@@ -48,22 +49,25 @@ export class ClientsComponent implements OnInit {
     this.router.navigate(['/clients', this.selectedClient.id]);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.clientService.create(name)
-      .then(hero => {
-        this.clients.push(hero);
+  add(client: Client): void {
+    client.username = client.username.trim();
+    if (!client.username || !client.password || !client.email) {
+      return;
+    }
+    this.clientService.create(client)
+      .then((client) => {
+        client.shortId = client._id.substring(21, 25);
+        this.clients.push(client);
         this.selectedClient = null;
       });
   }
 
-  delete(hero: Client): void {
+  delete(client: Client): void {
     this.clientService
-      .delete(hero.id)
+      .delete(client.id)
       .then(() => {
-        this.clients = this.clients.filter(h => h !== hero);
-        if (this.selectedClient === hero) { this.selectedClient = null; }
+        this.clients = this.clients.filter(h => h !== client);
+        if (this.selectedClient === client) { this.selectedClient = null; }
       });
   }
 

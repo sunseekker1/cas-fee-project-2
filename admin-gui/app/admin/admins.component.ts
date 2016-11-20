@@ -18,7 +18,7 @@ export class AdminsComponent implements OnInit {
     private adminService: AdminService) { }
 
   getAdmins(): void {
-    this.adminService.getAdmins().then(admins => this.mapResult(admins));
+    this.adminService.getAdmins().then((admins) => this.mapResult(admins));
   }
 
   mapResult(result: any): void{
@@ -28,6 +28,7 @@ export class AdminsComponent implements OnInit {
 
       mapped.push({
         _id: admin._id,
+        id: admin._id,
         shortId: admin._id.substring(21, 25),
         username: admin.username,
         email: admin.email
@@ -48,11 +49,14 @@ export class AdminsComponent implements OnInit {
     this.router.navigate(['/admins', this.selectedAdmin._id]);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.adminService.create(name)
-      .then(admin => {
+  add(admin: Admin): void {
+    admin.username = admin.username.trim();
+    if (!admin.username || !admin.password || !admin.email) {
+      return;
+    }
+    this.adminService.create(admin)
+      .then((admin) => {
+        admin.shortId = admin._id.substring(21, 25);
         this.admins.push(admin);
         this.selectedAdmin = null;
       });

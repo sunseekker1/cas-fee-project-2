@@ -11,7 +11,7 @@ exports.postHero = function(req, res) {
         if (err)
             res.send(err);
 
-        res.json({ message: 'Hero added', data: hero });
+        res.json({ message: 'New Hero added', data: hero });
     });
 };
 

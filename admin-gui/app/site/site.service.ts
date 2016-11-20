@@ -37,9 +37,9 @@ export class SiteService {
   }
 
 
-  create(name: string): Promise<Site> {
+  create(site: Site): Promise<Site> {
     return this.http
-      .post(this.sitesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.sitesUrl, JSON.stringify(site), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);

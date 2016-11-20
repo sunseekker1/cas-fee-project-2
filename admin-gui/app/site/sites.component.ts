@@ -29,6 +29,7 @@ export class SitesComponent implements OnInit {
     for (let site of result) {
 
       mappedSites.push({
+        _id: site._id,
         id: site._id,
         shortId: site._id.substring(21, 25),
         clientId: site.clientId,
@@ -50,11 +51,14 @@ export class SitesComponent implements OnInit {
     this.router.navigate(['/sites', this.selectedSite.id]);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.siteService.create(name)
-      .then(site => {
+  add(site: Site): void {
+    site.title = site.title.trim();
+    if (!site.title || !site.clientId) {
+      return;
+    }
+    this.siteService.create(site)
+      .then((site) => {
+        site.shortId = site._id.substring(21, 25);
         this.sites.push(site);
         this.selectedSite = null;
       });

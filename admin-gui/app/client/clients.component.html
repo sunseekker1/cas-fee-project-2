@@ -1,7 +1,9 @@
 <h2>Clients</h2>
 <div>
-  <label>Client name:</label> <input #clientName />
-  <button (click)="add(clientName.value); clientName.value=''">
+  <label>Usename:</label> <input #username />
+  <label>Password:</label> <input #password />
+  <label>Email:</label> <input #email />
+  <button (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value='';; email.value='';">
     Add
   </button>
 </div>

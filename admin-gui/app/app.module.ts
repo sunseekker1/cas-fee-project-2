@@ -31,6 +31,8 @@ import {ClientService}       from './client/client.service';
 import {AdminService}         from './admin/admin.service';
 import {AccessService}      from './access/access.service';
 
+import { ShortIdPipe } from './short-id.pipe'; // import our pipe here
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import {AccessService}      from './access/access.service';
     AdminsComponent,
     AdminDetailComponent,
     AccessesComponent,
-    AccessDetailComponent
+    AccessDetailComponent,
+    ShortIdPipe
   ],
   providers: [HeroService, SiteService, ClientService, AdminService, AccessService],
   bootstrap: [AppComponent]

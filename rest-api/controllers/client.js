@@ -3,6 +3,7 @@ var Client = require('../models/client');
 // Create endpoint /api/clients for POST
 exports.postClient = function(req, res) {
     var client = new Client({
+        id: req.body.id,
         username: req.body.username,
         password: req.body.password,
         email: req.body.email
@@ -12,7 +13,7 @@ exports.postClient = function(req, res) {
         if (err)
             res.send(err);
 
-        res.json({ message: 'New client added' });
+        res.json({ message: 'New Client added', data: client });
     });
 };
 

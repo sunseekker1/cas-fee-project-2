@@ -22,7 +22,7 @@ export class AdminService {
 
   getAdmin(id: string): Promise<Admin> {
     return this.getAdmins()
-      .then(admins => admins.find(admin => admin._id == id));
+      .then(admins => admins.find((admin) => admin._id == id));
   }
 
   private headers = new Headers({'Content-Type': 'application/json'});
@@ -37,9 +37,9 @@ export class AdminService {
   }
 
 
-  create(name: string): Promise<Admin> {
+  create(admin: Admin): Promise<Admin> {
     return this.http
-      .post(this.adminUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.adminUrl, JSON.stringify(admin), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);
