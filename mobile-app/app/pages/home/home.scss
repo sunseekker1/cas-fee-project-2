@@ -1,0 +1,15 @@
+.home {
+
+  &.vertical-align-content > *
+  {
+    display: flex!important;
+    align-content: center!important;
+    align-items: center!important;
+  }
+
+  .startteaser {
+    text-align: center;
+    width: 100%;
+  }
+
+}

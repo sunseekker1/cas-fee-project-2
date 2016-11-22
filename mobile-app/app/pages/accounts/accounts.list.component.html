@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Accounts</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item-sliding *ngFor="let account of accounts">
+            <ion-item>
+                <ion-avatar item-left>
+                    <img src="{{account.profileimg}}">
+                </ion-avatar>
+                <h2>{{account.sitetitle}}</h2>
+                <h3>Username: {{account.username}}</h3>
+                <!--<p>description</p>-->
+            </ion-item>
+            <ion-item-options side="right">
+                <button primary (click)="editAccount(account)">
+                    <ion-icon name="create"></ion-icon>
+                    Bearbeiten
+                </button>
+                <button danger (click)="deleteAccount(account)">
+                    <ion-icon name="trash"></ion-icon>
+                    Löschen
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+
+    </ion-list>
+</ion-content>
