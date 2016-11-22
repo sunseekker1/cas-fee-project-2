@@ -1,0 +1,9 @@
+{
+  "name": "fastlogin-socket",
+  "version": "0.0.1",
+  "description": "Fastlogin socket service for pushing credentials to the website",
+  "dependencies": {
+    "express": "^4.10.2",
+    "socket.io": "^1.5.1"
+  }
+}

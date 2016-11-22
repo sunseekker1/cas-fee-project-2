@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <title>Socket.IO chat</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font: 13px Helvetica, Arial; }
+        h1 {margin: 20px 0}
+        div.container { max-width: 60%; margin-top: 100px; margin: 100px auto 0 auto; }
+        div.loginbox {display: flex}
+        div#qr-container {margin-right: 20px;}
+        form input { border: 1px solid #eee; padding: 10px; width: 100%; margin-right: .5%; margin-bottom: 20px }
+        form button { width: 100%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+        #success {padding: 20px; background-color: #62d274; color: #ffffff; margin-top: 20px; text-align: center; display: none}
+        #messages { list-style-type: none; margin: 0; padding: 0; }
+        #messages li { padding: 5px 10px; }
+        #messages li:nth-child(odd) { background: #eee; }
+    </style>
+</head>
+<body>
+<ul id="messages"></ul>
+
+
+<div class="container">
+    <h1>FastLogin Demo</h1>
+    <div class="loginbox">
+        <div id="qr-container"></div>
+        <div id="form-container">
+            <form action="" id="#loginform">
+                <input id="username" autocomplete="off" placeholder="username"/>
+                <input id="password" autocomplete="off" placeholder="password"/>
+                <button id="submitbtn">Login</button>
+                <div id="output"></div>
+            </form>
+        </div>
+    </div>
+    <div id="success">Erfolgreich eingeloggt</div>
+</div>
+
+
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="/lib/jquery-qrcode-0.14.0.min.js"></script>
+<script src="/lib/jquery-fastlogin.js"></script>
+
+<script>
+    // Initialize FastLogin Script
+    $('#qr-container').fastlogin({
+        usernameSelector    : '#username',
+        passwordSelector    : '#password',
+        siteId              : "1234567",
+        siteTitle           : "FastLogin Test Account"
+    });
+</script>
+
+</body>
+</html>
