@@ -31,11 +31,11 @@ export class AccessesComponent implements OnInit {
     );
   }
 
-  mapResult(result: any, sites: any): void{
+  mapResult(accesses: any, sites: any): void{
     let mapped: any = [];
     let siteTitle = '';
 
-    for (let access of result) {
+    for (let access of accesses) {
 
       for (var i=0; i < sites.length; i++) {
 
