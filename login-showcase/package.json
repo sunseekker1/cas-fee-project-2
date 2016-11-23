@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Fastlogin socket service for pushing credentials to the website",
   "scripts": {
-    "start": "PORT=3600 node server.js"
+    "start": "PORT=3500 node server.js"
   },
   "dependencies": {
     "express": "^4.10.2",
