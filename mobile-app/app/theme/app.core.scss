@@ -11,6 +11,7 @@
 
 @import "../pages/accounts/accounts";
 
+
 .alert {
   padding: 15px;
   margin-bottom: 20px;
@@ -24,7 +25,131 @@
   border-color: #ebccd1;
 }
 
+.home-bg {
+  max-width: 300px;
+}
+
+ion-input {
+  background-color: #3f3f3f;
+  color: white;
+  padding: 6px 12px;
+}
+
+.item {
+  padding-right: 16px;
+}
+
+.item .item-inner {
+  padding-right: 0;
+}
+
+.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner, .item-input.input-has-focus .item-inner {
+  border: none;
+  box-shadow: none;
+}
 
 ion-content {
-  color: #444444;
+  color: #7f7f7f;
+}
+
+ion-content ion-card ion-card-content {
+  padding: 13px 16px 13px 16px;
+}
+
+.toolbar-background {
+  background-color: #663ab8;
+  color: white;
+}
+
+.toolbar-title, .bar-button-default {
+  color: white;
+}
+
+scroll-content {
+  background-color: #3f3f3f;
+}
+
+ion-menu scroll-content, ion-list .item {
+  background-color: #5b34a5;
+  color: white;
+}
+
+ion-list .item .item-inner {
+  border-bottom: 1px solid #8461c6;
+}
+
+ion-list .item.activated {
+  background-color: #8461c6;
+}
+
+ion-list > .item:first-child, ion-list > .item-wrapper:first-child .item {
+  border-top: 1px solid #8461c6;
+}
+
+ion-list > .item:last-child, ion-list > .item-wrapper:last-child .item {
+  border-bottom: 1px solid #8461c6;
+}
+
+ion-card ion-card-header {
+  color: white;
+  background-color: #663ab8;
+}
+
+ion-card-header.info {
+  padding: 20px 20px;
+  background-color: #fee271;
+  color: #a28201;
+  text-align: center;
+}
+
+ion-card-header.success {
+  padding: 20px 20px;
+  background-color: #71c175;
+  color: white;
+  text-align: center;
+}
+
+
+ion-card-content, .item {
+  background-color: #333333;
+  padding: 10px;
+}
+
+
+.input-has-focus ion-label[stacked],.input-has-focus ion-label[floating] {
+  color: #663ab8;
+}
+
+ion-label[stacked], ion-label[floating] {
+  padding-left: 12px;
+}
+
+ion-label[floating] {
+  -webkit-transform: translate3d(0, 34px, 0);
+  transform: translate3d(-11, 34px, 14);
+}
+
+.button {
+  background-color: #663ab8;
+}
+
+.button.activated, .button:hover:not(.disable-hover) {
+  background-color: #5a33a2;
+}
+
+.button.button-fab {
+  background-color: #FDCD0C;
+}
+
+.button.button-fab.activated, .button.button-fab:hover:not(.disable-hover) {
+  background-color: #d0a30c;
+}
+
+ion-item-sliding .item {
+  padding: 0;
+}
+
+ion-list ion-item-options {
+  border-bottom: 1px solid #8461c6;
+  border-top: 1px solid #8461c6;
 }

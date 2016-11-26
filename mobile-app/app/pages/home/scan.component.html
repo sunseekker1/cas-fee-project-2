@@ -5,16 +5,21 @@
 </ion-header>
 
 <ion-content padding class="home">
-    <h5>Login at:</h5>
-    <h3>{{barcodeData.sitetitle}}</h3>
-    (channel id: {{barcodeData.channelid}})<br><br>
 
-    <ion-card-header>
+    <!--(channel id: {{barcodeData.channelid}})<br><br>-->
+
+    <ion-card-header class="info" *ngIf="!loggedIn">
+        <h3>{{barcodeData.sitetitle}}</h3>
         <div *ngIf="accountFound">Account found, you are ready to login.</div>
-        <div *ngIf="!accountFound">Account not found, please enter your correct Account username and password.</div>
+        <div *ngIf="!accountFound">Account not found, enter username and password.</div>
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-header class="success" *ngIf="loggedIn">
+        <h3>Login Success</h3>
+        <div>Successfully logged in to {{barcodeData.sitetitle}}</div>
+    </ion-card-header>
+
+    <ion-card-content *ngIf="!loggedIn">
 
         <form class="list" [formGroup]="loginFrm" (ngSubmit)="login()" novalidate>
             <ion-item>

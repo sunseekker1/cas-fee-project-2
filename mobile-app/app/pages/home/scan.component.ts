@@ -20,6 +20,7 @@ export class ScanComponent {
     username: String;
     password: String;
     accountFound: Boolean;
+    loggedIn: Boolean = false;
 
     constructor(
                 private formBuilder: FormBuilder,
@@ -94,7 +95,9 @@ export class ScanComponent {
         this.http.get(pushUrl)
             .map(res => res.text())
             .subscribe(
-                data => alert("pushed"),
+                data => {
+                    this.loggedIn = true;
+                },
                 err => console.log(err)
             );
     }
