@@ -1,36 +1,45 @@
-<h2>Admin</h2>
-<div>
-  <label>Usename:</label> <input #username />
-  <label>Password:</label> <input #password />
-  <label>Email:</label> <input #email />
-  <button (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value='';; email.value='';">
-    Add
-  </button>
+<div class="clearfix">
+  <h2>Admin</h2>
+  <div>
+    <label>Usename:</label> <input #username />
+    <label>Password:</label> <input #password />
+    <label>Email:</label> <input #email />
+    <button (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value='';; email.value='';" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      Add
+    </button>
+  </div>
 </div>
 
-<ul class="heroes">
-  <li *ngFor="let admin of admins"
-      [class.selected]="admin === selectedAdmin"
-      (click)="onSelect(admin)">
-    <span class="badge">{{admin.shortId}}</span> {{admin.username}}
-    <button class="delete" (click)="delete(admin); $event.stopPropagation()">x</button>
+<div class="clearfix">
+  <div class="dashboard-box">
+    <ul class="heroes">
+      <li *ngFor="let admin of admins"
+          [class.selected]="admin === selectedAdmin"
+          (click)="onSelect(admin)">
+        <span class="badge">{{admin.shortId}}</span> {{admin.username}}
+        <button class="delete" (click)="delete(admin); $event.stopPropagation()">x</button>
 
-  </li>
-</ul>
-<div *ngIf="selectedAdmin">
-  <h2>
-    {{selectedAdmin.username | uppercase}}
-  </h2>
-  <div>
-    <label>id: </label>{{selectedAdmin._id}}
+      </li>
+    </ul>
   </div>
-  <div>
-    <label>username: </label>
-    {{selectedAdmin.username}}
+
+  <div class="dashboard-box">
+    <div *ngIf="selectedAdmin">
+      <h2>
+        Detail: {{selectedAdmin.username }}
+      </h2>
+      <div>
+        <label>id: </label>{{selectedAdmin._id}}
+      </div>
+      <div>
+        <label>username: </label>
+        {{selectedAdmin.username}}
+      </div>
+      <div>
+        <label>email: </label>
+        {{selectedAdmin.email}}
+      </div>
+      <button (click)="gotoDetail()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit Details</button>
+    </div>
   </div>
-  <div>
-    <label>email: </label>
-    {{selectedAdmin.email}}
-  </div>
-  <button (click)="gotoDetail()">Edit Details</button>
 </div>

@@ -62,11 +62,12 @@ Prio 1
 - Comment source code > Thomas > Noel
 - Code formatting > Thomas > Noel
 - Update git readme.md
-- Alle CSS declarationen in eine Haupt CSS File > Noel
+- Put all CSS declarations in one main CSS File > Noel
 
 Prio 2
 
 - Admin UI Searchfunction
+- Admin UI Input Validation
 - Gulp Task Build, Minify, compile scss, compress
 - package.json > dev / prod dependencies
 - Unit Tests Admin UI

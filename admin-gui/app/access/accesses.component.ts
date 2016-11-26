@@ -64,9 +64,5 @@ export class AccessesComponent implements OnInit {
   onSelect(access: Access): void {
     this.selectedAccess = access;
   }
-
-  gotoDetail(): void {
-    this.router.navigate(['/accesses', this.selectedAccess._id]);
-  }
 }
 

@@ -9,6 +9,12 @@ h2 {
   padding-top: 0;
 }
 
+.dashboard-box{
+  float: left;
+  /*width: 200px;*/
+  margin: 20px;
+}
+
 .clearfix:after {
   content: " "; /* Older browser do not support empty content */
   visibility: hidden;

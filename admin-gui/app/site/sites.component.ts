@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class SitesComponent implements OnInit {
   public sites: Site[];
-  selectedSite: Site;
+  private selectedSite: Site;
+  private editedSite: Site;
+  private detailEditMode: string;
 
   constructor(
     private router: Router,
@@ -43,11 +45,22 @@ export class SitesComponent implements OnInit {
   }
 
   onSelect(site: Site): void {
+    this.editedSite = null;
     this.selectedSite = site;
+    this.detailEditMode = 'detail';
   }
 
-  gotoDetail(): void {
-    this.router.navigate(['/sites', this.selectedSite._id]);
+  cloneObject(obj) {
+    if (obj === null || typeof obj !== 'object') {
+      return obj;
+    }
+
+    var newObj = obj.constructor(); // give temp the original obj's constructor
+    for (var key in obj) {
+      newObj[key] = this.cloneObject(obj[key]);
+    }
+
+    return newObj;
   }
 
   add(site: Site): void {
@@ -69,6 +82,26 @@ export class SitesComponent implements OnInit {
       .then(() => {
         this.sites = this.sites.filter(h => h !== site);
         if (this.selectedSite === site) { this.selectedSite = null; }
+      });
+  }
+
+  edit(): void {
+    this.editedSite = this.cloneObject(this.selectedSite);
+    this.detailEditMode = 'edit';
+  }
+
+  goBack(): void {
+    this.editedSite = null;
+    this.detailEditMode = 'detail';
+  }
+
+  save(): void {
+    this.siteService.update(this.editedSite)
+      .then(() => {
+        this.getSites();
+        this.selectedSite = this.editedSite;
+        this.editedSite = null;
+        this.detailEditMode = 'detail';
       });
   }
 

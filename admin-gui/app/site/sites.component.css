@@ -65,6 +65,20 @@ button.delete {
   color:white;
 }
 
+.dashboard-box{
+  float: left;
+  /*width: 200px;*/
+  margin: 20px;
+}
+
+.clearfix:after {
+  content: " "; /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
 
 
 

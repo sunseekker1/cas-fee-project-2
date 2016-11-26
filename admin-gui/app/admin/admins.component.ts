@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class AdminsComponent implements OnInit {
   admins: Admin[];
   selectedAdmin: Admin;
+  private detailEditMode: string;
 
   constructor(
     private router: Router,

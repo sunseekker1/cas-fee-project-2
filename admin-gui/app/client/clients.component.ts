@@ -11,12 +11,14 @@ import { Router } from '@angular/router';
 export class ClientsComponent implements OnInit {
   clients: Client[];
   selectedClient: Client;
+  editedClient: Client;
+  private detailEditMode: string;
 
   constructor(
     private router: Router,
     private clientService: ClientService) { }
 
-  getClientes(): void {
+  getClients(): void {
     this.clientService.getClients().then(clients => this.mapResult(clients));
   }
 
@@ -38,15 +40,26 @@ export class ClientsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getClientes();
+    this.getClients();
   }
 
-  onSelect(hero: Client): void {
-    this.selectedClient = hero;
+  cloneObject(obj) {
+    if (obj === null || typeof obj !== 'object') {
+      return obj;
+    }
+
+    var newObj = obj.constructor(); // give temp the original obj's constructor
+    for (var key in obj) {
+      newObj[key] = this.cloneObject(obj[key]);
+    }
+
+    return newObj;
   }
 
-  gotoDetail(): void {
-    this.router.navigate(['/clients', this.selectedClient._id]);
+  onSelect(client: Client): void {
+    this.editedClient = null;
+    this.selectedClient = client;
+    this.detailEditMode = 'detail';
   }
 
   add(client: Client): void {
@@ -68,6 +81,26 @@ export class ClientsComponent implements OnInit {
       .then(() => {
         this.clients = this.clients.filter(h => h !== client);
         if (this.selectedClient === client) { this.selectedClient = null; }
+      });
+  }
+
+  edit(): void {
+    this.editedClient = this.cloneObject(this.selectedClient);
+    this.detailEditMode = 'edit';
+  }
+
+  goBack(): void {
+    this.editedClient = null;
+    this.detailEditMode = 'detail';
+  }
+
+  save(): void {
+    this.clientService.update(this.editedClient)
+      .then(() => {
+        this.getClients();
+        this.selectedClient = this.editedClient;
+        this.editedClient = null;
+        this.detailEditMode = 'detail';
       });
   }
 

@@ -1,31 +1,37 @@
-<h2>Accesses</h2>
+<div class="clearfix">
+  <div class="dashboard-box">
+    <h2>Accesses</h2>
 
-<ul class="heroes">
-  <li *ngFor="let access of accesses"
-      [class.selected]="access === selectedAccess"
-      (click)="onSelect(access)">
-    <span class="badge">{{access.shortId}}</span> {{access.siteTitle}} - {{access.creationDate | date:'d.M.y hh :mm:ss' }}
+    <ul class="heroes">
+      <li *ngFor="let access of accesses"
+          [class.selected]="access === selectedAccess"
+          (click)="onSelect(access)">
+        <span class="badge">{{access.shortId}}</span> {{access.siteTitle}} - {{access.creationDate | date:'d.M.y hh :mm:ss' }}
 
-  </li>
-</ul>
-<div *ngIf="selectedAccess">
-  <h2>
-    {{selectedAccess.siteTitle | uppercase}}
-  </h2>
-  <div>
-    <label>id: </label>{{selectedAccess._id}}
+      </li>
+    </ul>
   </div>
-  <div>
-    <label>siteId: </label>
-    {{selectedAccess.siteId}}
+  <div class="dashboard-box">
+    <div *ngIf="selectedAccess">
+      <h2>
+        Detail: {{selectedAccess.siteTitle}}
+      </h2>
+      <div>
+        <label>id: </label>{{selectedAccess._id}}
+      </div>
+      <div>
+        <label>siteId: </label>
+        {{selectedAccess.siteId}}
+      </div>
+      <div>
+        <label>used: </label>
+        {{selectedAccess.used}}
+      </div>
+      <div>
+        <label>Date: </label>
+        {{ selectedAccess.creationDate | date:'d.M.y HH:mm:ss' }}
+      </div>
+    </div>
   </div>
-  <div>
-    <label>used: </label>
-    {{selectedAccess.used}}
-  </div>
-  <div>
-    <label>Date: </label>
-    {{ selectedAccess.creationDate | date:'d.M.y HH:mm:ss' }}
-  </div>
-  <button (click)="gotoDetail()">Edit Details</button>
 </div>
+

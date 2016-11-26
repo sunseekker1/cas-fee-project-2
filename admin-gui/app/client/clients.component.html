@@ -1,36 +1,64 @@
-<h2>Clients</h2>
-<div>
-  <label>Usename:</label> <input #username />
-  <label>Password:</label> <input #password />
-  <label>Email:</label> <input #email />
-  <button (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value='';; email.value='';">
-    Add
-  </button>
+
+<div class="clearfix">
+  <h2>Clients</h2>
+  <div>
+    <label>Usename:</label> <input #username />
+    <label>Password:</label> <input #password />
+    <label>Email:</label> <input #email />
+    <button (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value='';; email.value='';" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      Add
+    </button>
+  </div>
 </div>
 
-<ul class="heroes">
-  <li *ngFor="let client of clients"
-      [class.selected]="client === selectedHero"
-      (click)="onSelect(client)">
-    <span class="badge">{{client.shortId}}</span> {{client.username}}
-    <button class="delete" (click)="delete(client); $event.stopPropagation()">x</button>
+<div class="clearfix">
+  <div class="dashboard-box">
+    <ul class="heroes">
+      <li *ngFor="let client of clients"
+          [class.selected]="client === selectedHero"
+          (click)="onSelect(client)">
+        <span class="badge">{{client.shortId}}</span> {{client.username}}
+        <button class="delete" (click)="delete(client); $event.stopPropagation()">x</button>
 
-  </li>
-</ul>
-<div *ngIf="selectedClient">
-  <h2>
-    {{selectedClient.username | uppercase}}
-  </h2>
-  <div>
-    <label>id: </label>{{selectedClient._id}}
+      </li>
+    </ul>
   </div>
-  <div>
-    <label>username: </label>
-    {{selectedClient.username}}
+
+  <div class="dashboard-box">
+      <div *ngIf="detailEditMode == 'detail'">
+        <h2>
+          Detail: {{selectedClient.username}}
+        </h2>
+        <div>
+          <label>id: </label>{{selectedClient._id}}
+        </div>
+        <div>
+          <label>username: </label>
+          {{selectedClient.username}}
+        </div>
+        <div>
+          <label>email: </label>
+          {{selectedClient.email}}
+        </div>
+        <button (click)="edit()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit Details</button>
+      </div>
+
+      <div *ngIf="detailEditMode == 'edit'">
+        <h2>
+          Edit: {{editedClient.username}}
+        </h2>
+        <div>
+          <label>id: </label>{{editedClient._id}}</div>
+        <div>
+          <label>username: </label>
+          <input [(ngModel)]="editedClient.username" placeholder="username" />
+        </div>
+        <div>
+          <label>email: </label>
+          <input [(ngModel)]="editedClient.email" placeholder="email" />
+        </div>
+        <button (click)="goBack()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back</button>
+        <button (click)="save()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save</button>
+      </div>
   </div>
-  <div>
-    <label>email: </label>
-    {{selectedClient.email}}
-  </div>
-  <button (click)="gotoDetail()">Edit Details</button>
 </div>

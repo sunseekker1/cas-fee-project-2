@@ -24,6 +24,9 @@ export class DashboardComponent implements OnInit {
   selectedAdmin: Admin;
   sites: Site[];
   selectedSite: Site;
+  accessesLength: number;
+  clientsLength: number;
+  sitesLength: number;
 
   constructor(
     private router: Router,
@@ -33,6 +36,8 @@ export class DashboardComponent implements OnInit {
     private siteService: SiteService) { }
 
   getAccesses(): void {
+
+
 
     this.siteService.getSites().then(
       (sites) => {
@@ -68,10 +73,14 @@ export class DashboardComponent implements OnInit {
       });
     }
     this.accesses = mapped;
+    this.accessesLength = this.accesses.length;
   }
 
   getClients(): void {
-    this.clientService.getClients().then((clients) => this.clients = clients);
+    this.clientService.getClients().then((clients) => {
+      this.clients = clients;
+      this.clientsLength = this.clients.length;
+    });
   }
 
   getAdmins(): void {
@@ -79,7 +88,10 @@ export class DashboardComponent implements OnInit {
   }
 
   getSites(): void {
-    this.siteService.getSites().then((sites) => this.sites = sites);
+    this.siteService.getSites().then((sites) => {
+      this.sites = sites;
+      this.sitesLength = this.sites.length;
+    });
   }
 
   ngOnInit(): void {
