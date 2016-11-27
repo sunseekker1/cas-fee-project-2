@@ -1,13 +1,37 @@
-<div class="clearfix">
-  <nav>
-    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-    <a routerLink="/sites" routerLinkActive="active">Sites</a>
-    <a routerLink="/accesses" routerLinkActive="active">Accesses</a>
-    <a routerLink="/clients" routerLinkActive="active">Clients</a>
-    <a routerLink="/admins" routerLinkActive="active">Admins</a>
-  </nav>
+<div mdl class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+
+      <!-- Title -->
+      <span class="mdl-layout-title">Fastlogin</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a routerLink="/dashboard" class="mdl-navigation__link">Dashboard</a>
+        <a routerLink="/sites" class="mdl-navigation__link">Sites</a>
+        <a routerLink="/accesses" class="mdl-navigation__link">Accesses</a>
+        <a routerLink="/clients" class="mdl-navigation__link">Clients</a>
+        <a routerLink="/admins" class="mdl-navigation__link">Admins</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Title</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+      <a class="mdl-navigation__link" href="">Link</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="main-container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </main>
 </div>
 
-<div class="main-container">
-  <router-outlet></router-outlet>
-</div>
+

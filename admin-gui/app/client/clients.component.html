@@ -5,9 +5,7 @@
     <label>Usename:</label> <input #username />
     <label>Password:</label> <input #password />
     <label>Email:</label> <input #email />
-    <button (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value='';; email.value='';" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-      Add
-    </button>
+    <button md-raised-button color="primary" (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value=''; email.value='';">Add</button>
   </div>
 </div>
 
