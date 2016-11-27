@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class AccessesComponent implements OnInit {
   accesses: Access[];
   selectedAccess: Access;
+  private detailEditMode: string;
 
   constructor(
     private router: Router,
@@ -63,6 +64,7 @@ export class AccessesComponent implements OnInit {
 
   onSelect(access: Access): void {
     this.selectedAccess = access;
+    this.detailEditMode = 'detail';
   }
 }
 

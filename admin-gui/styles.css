@@ -1,1 +1,21 @@
+body{
+    background-color: #efefef;
+}
 
+.mdl-grid{
+    margin-top: 60px;
+}
+
+.mdl-layout .mdl-layout__header>.mdl-layout-icon {
+    background-image: url(icon.png);
+}
+
+
+.demo-card-square.mdl-card {
+
+}
+
+.demo-card-square > .mdl-card__title {
+    color: #fff;
+    background: url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+}

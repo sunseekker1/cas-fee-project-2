@@ -1,43 +1,129 @@
-<div class="clearfix">
-  <h2>Admin</h2>
-  <div>
-    <label>Usename:</label> <input #username />
-    <label>Password:</label> <input #password />
-    <label>Email:</label> <input #email />
-    <button md-raised-button color="primary" (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value=''; email.value='';">Add</button>
-  </div>
-</div>
 
-<div class="clearfix">
-  <div class="dashboard-box">
-    <ul class="heroes">
-      <li *ngFor="let admin of admins"
-          [class.selected]="admin === selectedAdmin"
-          (click)="onSelect(admin)">
-        <span class="badge">{{admin.shortId}}</span> {{admin.username}}
-        <button class="delete" (click)="delete(admin); $event.stopPropagation()">x</button>
 
-      </li>
-    </ul>
-  </div>
 
-  <div class="dashboard-box">
-    <div *ngIf="selectedAdmin">
-      <h2>
-        Detail: {{selectedAdmin.username }}
-      </h2>
-      <div>
-        <label>id: </label>{{selectedAdmin._id}}
-      </div>
-      <div>
-        <label>username: </label>
-        {{selectedAdmin.username}}
-      </div>
-      <div>
-        <label>email: </label>
-        {{selectedAdmin.email}}
-      </div>
-      <button (click)="gotoDetail()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit Details</button>
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col">
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text">Admins</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                    <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">ID</th>
+                        <th>Username</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let admin of admins" [class.selected]="admin === selectedAdmin" (click)="onSelect(admin)">
+                        <td class="mdl-data-table__cell--non-numeric">{{admin.shortId}}</td>
+                        <td>{{admin.username}}</td>
+                        <td>
+                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons" (click)="delete(admin); $event.stopPropagation()">delete_forever</i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mdl-card__menu">
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons" (click)="new()">add_circle</i>
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="mdl-cell mdl-cell--4-col">
+        <div *ngIf="detailEditMode == 'detail'">
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Detail: {{selectedAdmin.username}}</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <div>
+                        <label>id: </label>{{selectedAdmin._id}}
+                    </div>
+                    <div>
+                        <label>username: </label>
+                        {{selectedAdmin.username}}
+                    </div>
+                    <div>
+                        <label>email: </label>
+                        {{selectedAdmin.email}}
+                    </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a (click)="edit()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Edit
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="detailEditMode == 'edit'">
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Edit: {{editedAdmin.username}}</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <div>
+                        <label>id: </label>{{editedAdmin._id}}
+                    </div>
+                    <div>
+                        <label>username: </label>
+                        <input [(ngModel)]="editedAdmin.username" placeholder="username"/>
+                    </div>
+                    <div>
+                        <label>email: </label>
+                        <input [(ngModel)]="editedAdmin.email" placeholder="email"/>
+                    </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a (click)="goBack()"class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Back
+                    </a>
+                    <a (click)="save()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Save
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="detailEditMode == 'new'">
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Add new Admin</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <div>
+                        <label>Usename: </label><input #username/>
+                    </div>
+                    <div>
+                        <label>Password: </label><input #password/>
+                    </div>
+                    <div>
+                        <label>Email: </label><input #email/>
+                    </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value=''; email.value='';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Add
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdl-cell mdl-cell--4-col">
+
+    </div>
 </div>
+
+
+
+
+

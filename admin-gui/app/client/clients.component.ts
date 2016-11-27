@@ -16,7 +16,9 @@ export class ClientsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private clientService: ClientService) { }
+    private clientService: ClientService) {
+    this.detailEditMode = 'new';
+  }
 
   getClients(): void {
     this.clientService.getClients().then(clients => this.mapResult(clients));
@@ -87,6 +89,10 @@ export class ClientsComponent implements OnInit {
   edit(): void {
     this.editedClient = this.cloneObject(this.selectedClient);
     this.detailEditMode = 'edit';
+  }
+
+  new(): void {
+    this.detailEditMode = 'new';
   }
 
   goBack(): void {

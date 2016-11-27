@@ -5,7 +5,6 @@ import { SitesComponent }       from './site/sites.component';
 import { AccessesComponent }    from './access/accesses.component';
 import { ClientsComponent }     from './client/clients.component';
 import { AdminsComponent }       from './admin/admins.component';
-import { AdminDetailComponent } from './admin/admin-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -13,8 +12,7 @@ const routes: Routes = [
   { path: 'sites',     component: SitesComponent },
   { path: 'accesses',     component: AccessesComponent },
   { path: 'clients',     component: ClientsComponent },
-  { path: 'admins',     component: AdminsComponent },
-  { path: 'admins/:id',     component: AdminDetailComponent }
+  { path: 'admins',     component: AdminsComponent }
 ];
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
