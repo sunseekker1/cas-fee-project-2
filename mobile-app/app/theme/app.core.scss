@@ -29,14 +29,30 @@
   max-width: 300px;
 }
 
+.icon-inline {
+  max-width: 40px;
+  margin-top: -5px;
+  vertical-align: middle;
+}
+
+
 ion-input {
   background-color: #3f3f3f;
   color: white;
   padding: 6px 12px;
 }
 
+.input-wrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .item {
   padding-right: 16px;
+}
+
+ion-item-sliding .item{
+  padding-left: 16px;
 }
 
 .item .item-inner {
@@ -57,7 +73,7 @@ ion-content ion-card ion-card-content {
 }
 
 .toolbar-background {
-  background-color: #663ab8;
+  background-color: map-get($colors, lila1);
   color: white;
 }
 
@@ -70,29 +86,34 @@ scroll-content {
 }
 
 ion-menu scroll-content, ion-list .item {
-  background-color: #5b34a5;
+  background-color: map-get($colors, lila3);
   color: white;
 }
 
+ion-list .item {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 ion-list .item .item-inner {
-  border-bottom: 1px solid #8461c6;
+  border-bottom: 1px solid map-get($colors, lila2);
 }
 
 ion-list .item.activated {
-  background-color: #8461c6;
+  background-color: map-get($colors, lila2);
 }
 
 ion-list > .item:first-child, ion-list > .item-wrapper:first-child .item {
-  border-top: 1px solid #8461c6;
+  border-top: 1px solid map-get($colors, lila2);
 }
 
 ion-list > .item:last-child, ion-list > .item-wrapper:last-child .item {
-  border-bottom: 1px solid #8461c6;
+  border-bottom: 1px solid map-get($colors, lila2);
 }
 
 ion-card ion-card-header {
   color: white;
-  background-color: #663ab8;
+  background-color: map-get($colors, lila1);
 }
 
 ion-card-header.info {
@@ -117,7 +138,7 @@ ion-card-content, .item {
 
 
 .input-has-focus ion-label[stacked],.input-has-focus ion-label[floating] {
-  color: #663ab8;
+  color: map-get($colors, lila1);
 }
 
 ion-label[stacked], ion-label[floating] {
@@ -130,7 +151,7 @@ ion-label[floating] {
 }
 
 .button {
-  background-color: #663ab8;
+  background-color: map-get($colors, lila1);
 }
 
 .button.activated, .button:hover:not(.disable-hover) {
@@ -146,10 +167,10 @@ ion-label[floating] {
 }
 
 ion-item-sliding .item {
-  padding: 0;
+  padding: 0 0 0 16px;
 }
 
 ion-list ion-item-options {
-  border-bottom: 1px solid #8461c6;
-  border-top: 1px solid #8461c6;
+  border-bottom: 1px solid map-get($colors, lila2);
+  border-top: 1px solid map-get($colors, lila2);
 }
