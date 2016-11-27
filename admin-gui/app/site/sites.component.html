@@ -1,78 +1,153 @@
-
 <div class="clearfix">
-  <div class="dashboard-box">
-    <h2>Sites</h2>
-    <div>
-      <form action="#">
-        <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="title1" >
-          <label class="mdl-textfield__label" for="title1">Site name:</label>
+    <div class="dashboard-box">
+        <h2>Sites</h2>
+        <div>
+            <label>clientId:</label> <input #clientId/>
+            <label>title:</label> <input #title/>
 
+            <!--<md-input _ngcontent-uht-1="" placeholder="Site clientId" class="md2 md-input">-->
+            <!--<div class="md-input-wrapper">-->
+            <!--<div class="md-input-table">-->
+            <!--<div class="md-input-prefix"></div>-->
+            <!--<div class="md-input-infix">-->
+            <!--<input class="md-input-element ng-pristine ng-valid ng-touched" id="md-input-client-id" spellcheck="false" type="text" #clientId >-->
+            <!--<label class="md-input-placeholder md-empty md-float" for="md-input-client-id">-->
+            <!--Site clientId:-->
+            <!--</label>-->
+            <!--</div>-->
+            <!--<div class="md-input-suffix"></div>-->
+            <!--</div>-->
+            <!--<div class="md-input-underline">-->
+            <!--<span class="md-input-ripple"></span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</md-input>-->
+            <!--<md-input _ngcontent-uht-1="" placeholder="Site Title" class="md2 md-input">-->
+            <!--<div class="md-input-wrapper">-->
+            <!--<div class="md-input-table">-->
+            <!--<div class="md-input-prefix"></div>-->
+            <!--<div class="md-input-infix">-->
+            <!--<input class="md-input-element ng-pristine ng-valid ng-touched" id="md-input-title" spellcheck="false" type="text" #title >-->
+            <!--<label class="md-input-placeholder md-empty md-float" for="md-input-title">-->
+            <!--Site Title:-->
+            <!--</label>-->
+            <!--</div>-->
+            <!--<div class="md-input-suffix"></div>-->
+            <!--</div>-->
+            <!--<div class="md-input-underline">-->
+            <!--<span class="md-input-ripple"></span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</md-input>-->
+
+            <button md-raised-button color="primary"
+                    (click)="add({title: title.value, clientId: clientId.value}); title.value=''; clientId.value='';">
+                Add
+            </button>
         </div>
-        <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="clientId1" #entId>
-          <label class="mdl-textfield__label" for="clientId1">Site clientId:</label>
-
-        </div>
-
-        <button (click)="add({title: title.value, clientId: clientId.value}); title.value=''; clientId.value='';" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-          Add
-        </button>
-      </form>
     </div>
-  </div>
 </div>
 
+
+
+
 <div class="clearfix">
-  <div class="dashboard-box">
 
-    <ul class="heroes">
-      <li *ngFor="let site of sites"
-          [class.selected]="site === selectedSite"
-          (click)="onSelect(site)">
-        <span class="badge">{{site.shortId}}</span> {{site.title}}
-        <button class="delete" (click)="delete(site); $event.stopPropagation()">x</button>
-      </li>
-    </ul>
-  </div>
+    <div class="dashboard-box">
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+            <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">ID</th>
+                <th>Title</th>
+                <th>Unit price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let site of sites" [class.selected]="site === selectedSite" (click)="onSelect(site)">
+                <td class="mdl-data-table__cell--non-numeric">{{site.shortId}}</td>
+                <td>{{site.title}}</td>
+                <td>
+                    <button class="delete" (click)="delete(site); $event.stopPropagation()">x</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-  <div class="dashboard-box">
-      <div *ngIf="detailEditMode == 'detail'">
-        <h2>
-          Detail: {{selectedSite.title}}
-        </h2>
-        <div>
-          <label>id: </label>{{selectedSite._id}}
-        </div>
-        <div>
-          <label>title: </label>
-          {{selectedSite.title}}
-        </div>
-        <div>
-          <label>clientId: </label>
-          {{selectedSite.clientId}}
-        </div>
-        <button (click)="edit()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Edit Details</button>
-      </div>
+    <div class="dashboard-box">
 
-      <div *ngIf="detailEditMode == 'edit'">
-        <h2>Edit: {{editedSite.title}}</h2>
-        <div>
-          <label>id: </label>{{editedSite._id}}
+        <style>
+            .demo-card-square.mdl-card {
+                width: 320px;
+                height: 320px;
+            }
+
+            .demo-card-square > .mdl-card__title {
+                color: #fff;
+                background: url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+            }
+        </style>
+
+        <div *ngIf="detailEditMode == 'detail'">
+
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Detail: {{selectedSite.title}}</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <div>
+                        <label>id: </label>{{selectedSite._id}}
+                    </div>
+                    <div>
+                        <label>title: </label>
+                        {{selectedSite.title}}
+                    </div>
+                    <div>
+                        <label>clientId: </label>
+                        {{selectedSite.clientId}}
+                    </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <button (click)="edit()"
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                        Edit
+                        Details
+                    </button>
+                </div>
+            </div>
+
         </div>
-        <div>
-          <p>
-            <label>title: </label>
-            <input [(ngModel)]="editedSite.title" placeholder="title" />
-          </p>
-          <p>
-            <label>clientId: </label>
-            <input [(ngModel)]="editedSite.clientId" placeholder="clientId" />
-          </p>
+
+        <div *ngIf="detailEditMode == 'edit'">
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Edit: {{editedSite.title}}</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <div>
+                        <label>id: </label>{{editedSite._id}}
+                    </div>
+                    <div>
+                        <p>
+                            <label>title: </label>
+                            <input [(ngModel)]="editedSite.title" placeholder="title"/>
+                        </p>
+                        <p>
+                            <label>clientId: </label>
+                            <input [(ngModel)]="editedSite.clientId" placeholder="clientId"/>
+                        </p>
+                    </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <button (click)="goBack()"
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back
+                    </button>
+                    <button (click)="save()"
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save
+                    </button>
+                </div>
+            </div>
         </div>
-        <button (click)="goBack()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back</button>
-        <button (click)="save()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save</button>
-      </div>
     </div>
 </div>
 

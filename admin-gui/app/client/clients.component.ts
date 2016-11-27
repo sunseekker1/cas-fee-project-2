@@ -43,7 +43,7 @@ export class ClientsComponent implements OnInit {
     this.getClients();
   }
 
-  cloneObject(obj) {
+  cloneObject(obj: any) {
     if (obj === null || typeof obj !== 'object') {
       return obj;
     }

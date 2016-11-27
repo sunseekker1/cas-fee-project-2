@@ -50,7 +50,7 @@ export class SitesComponent implements OnInit {
     this.detailEditMode = 'detail';
   }
 
-  cloneObject(obj) {
+  cloneObject(obj: any) {
     if (obj === null || typeof obj !== 'object') {
       return obj;
     }
@@ -74,6 +74,9 @@ export class SitesComponent implements OnInit {
         this.sites.push(site);
         this.selectedSite = null;
       });
+
+    this.selectedSite = null;
+    this.editedSite = null;
   }
 
   delete(site: Site): void {
@@ -83,6 +86,9 @@ export class SitesComponent implements OnInit {
         this.sites = this.sites.filter(h => h !== site);
         if (this.selectedSite === site) { this.selectedSite = null; }
       });
+
+    this.selectedSite = null;
+    this.editedSite = null;
   }
 
   edit(): void {
