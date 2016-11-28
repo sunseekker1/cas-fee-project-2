@@ -21,7 +21,8 @@
             
             if (type == 'init')
             {
-                $('#output').append('channel id: ' + data.channelid);
+                // For Deveolopment purposes
+                //$('#output').append('channel id: ' + data.channelid);
                 
                 // create QR Code with the channel Id
                 createQRCode(data.channelid)
@@ -48,7 +49,7 @@
         
         function logAccess(logData)
         {
-
+            
             $.ajax({
                 type: "POST",
                 url: "http://localhost:8080/api/accesses",
@@ -97,7 +98,7 @@
                 size: 200,
                 
                 // code color or image element
-                fill: '#000',
+                fill: '#dedede',
                 
                 // background color or image element, null for transparent background
                 background: null,
