@@ -46,6 +46,8 @@ div.loginbox {
 
 div#qr-container {
     margin-right: 20px;
+    padding: 10px;
+    background-color: white;
 }
 
 .input-group {
@@ -113,4 +115,17 @@ form button {
 
 #messages li:nth-child(odd) {
     background: #eee;
+}
+
+#successPanel {
+    display: none;
+}
+
+#successPanel h1 {
+    color: #4eb152;
+    text-align: center;
+}
+
+#successPanel img {
+    max-width: 100%;
 }

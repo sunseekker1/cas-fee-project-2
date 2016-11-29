@@ -10,28 +10,33 @@
 
 <div id="login" class="image-bg">
     <div class="container">
-        <h1>Sign In</h1>
-        <div class="loginbox">
-            <div id="qr-container"></div>
-            <div id="form-container">
-                <form action="" id="#loginform">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                        <input id="username" autocomplete="off" placeholder="username" class="form-control"/>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
-                        <input id="password" autocomplete="off" placeholder="password" class="form-control"/>
-                    </div>
+        <div id="loginPanel">
+            <h1>Sign In</h1>
+            <div class="loginbox">
+                <div id="qr-container"></div>
+                <div id="form-container">
+                    <form id="#loginform">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <input id="username" autocomplete="off" placeholder="username" class="form-control"/>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                            <input id="password" autocomplete="off" placeholder="password" class="form-control"/>
+                        </div>
 
-                    <button id="submitbtn">Login</button>
+                        <button id="submitbtn">Login</button>
 
-                    <!-- For Development purposes -->
-                    <div id="output"></div>
-                </form>
+                        <!-- For Development purposes -->
+                        <div id="output"></div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div id="success">Erfolgreich eingeloggt</div>
+        <div id="successPanel">
+            <h1>Successfully logged in</h1>
+            <img src="/img/applaus.gif"/>
+        </div>
     </div>
 </div>
 

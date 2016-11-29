@@ -12,7 +12,10 @@
             siteTitle: "Demo"
         }, options);
         
+        //event listeners
+        $('#submitbtn').on('click', submitform);
         
+        // socket io url
         var socket = io('http://fastlogin.eu-2.evennode.com:80');
         
         socket.on('fastlogin', function (data)
@@ -31,9 +34,6 @@
                 //Fill the form input fields with the specific data
                 $(settings.usernameSelector).val(data.username);
                 $(settings.passwordSelector).val(data.password);
-                $('#success').show();
-                $('#submitbtn').hide();
-                
                 
                 logData = {
                     siteId: settings.siteId,
@@ -43,9 +43,19 @@
                 
                 // log the data through the rest api
                 logAccess(logData);
+                
+                // Delay for prasentation purposes
+                setTimeout(submitform, 10000);
             }
             
         });
+        
+        function submitform()
+        {
+            $('#loginPanel').hide();
+            $('#successPanel').show();
+            return false;
+        }
         
         function logAccess(logData)
         {
@@ -98,10 +108,10 @@
                 size: 200,
                 
                 // code color or image element
-                fill: '#dedede',
+                fill: '#000000',
                 
                 // background color or image element, null for transparent background
-                background: null,
+                background: '#ffffff',
                 
                 // content
                 text: qrData,
