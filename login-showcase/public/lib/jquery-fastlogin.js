@@ -45,7 +45,7 @@
                 logAccess(logData);
                 
                 // Delay for prasentation purposes
-                setTimeout(submitform, 10000);
+                setTimeout(submitform, 5000);
             }
             
         });

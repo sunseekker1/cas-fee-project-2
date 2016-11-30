@@ -29,6 +29,11 @@
   max-width: 300px;
 }
 
+.start-icon {
+  vertical-align: middle;
+  font-size: 20px;
+}
+
 .icon-inline {
   max-width: 40px;
   margin-top: -5px;
@@ -43,8 +48,8 @@ ion-input {
 }
 
 .input-wrapper {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  /*margin-top: 10px;
+  margin-bottom: 10px;*/
 }
 
 .item {
@@ -109,6 +114,10 @@ ion-list > .item:first-child, ion-list > .item-wrapper:first-child .item {
 
 ion-list > .item:last-child, ion-list > .item-wrapper:last-child .item {
   border-bottom: 1px solid map-get($colors, lila2);
+}
+
+ion-card-header div {
+  white-space: normal;
 }
 
 ion-card ion-card-header {

@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-navbar>
-    <button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title><img src="build/assets/img/icon.png"class="icon-inline"> FastLogin</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title><img src="build/assets/img/icon.png" class="icon-inline"> FastLogin</ion-title>
+    </ion-navbar>
 </ion-header>
 
 
@@ -13,8 +13,10 @@
     <div class="startteaser">
         <img src="build/assets/img/icon.png" (click)="scan()" class="home-bg">
         <h2>Start Scanning a QRCode</h2>
-        Click on the QR Code Button to start the login process.
+        Click on the <ion-icon name="qr-scanner" class="start-icon"></ion-icon> button below to start the login process.
     </div>
 
-    <button fab fab-right fab-bottom (click)="scan()"><ion-icon name="qr-scanner"></ion-icon></button>
+    <button fab fab-right fab-bottom (click)="scan()">
+        <ion-icon name="qr-scanner"></ion-icon>
+    </button>
 </ion-content>

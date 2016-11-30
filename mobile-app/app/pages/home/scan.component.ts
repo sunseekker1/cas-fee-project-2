@@ -90,7 +90,7 @@ export class ScanComponent {
 
     pushLogin() {
 
-        let pushUrl = 'http://fastlogin.eu-2.evennode.com/push?channelid=' + this.barcodeData.channelid + '&username=' + this.loginFrm.value.username + '&password=' + this.loginFrm.value.password;
+        let pushUrl = this.appDataProvider.pushServerUrl + '?channelid=' + this.barcodeData.channelid + '&username=' + this.loginFrm.value.username + '&password=' + this.loginFrm.value.password;
 
         this.http.get(pushUrl)
             .map(res => res.text())
