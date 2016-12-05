@@ -38,16 +38,16 @@ describe('Access', () => {
     /*
      * Test the /POST route
      */
-    describe('/POST book', () => {
+    describe('/POST access', () => {
         it('it should POST a new access entry', (done) => {
-            let book = {
+            let access = {
                 siteId: "testsiteid-123456",
                 socketId: "testsocketid-123456",
                 used: false
-            }
+            };
             chai.request(server)
                 .post('/api/accesses')
-                .send(book)
+                .send(access)
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
