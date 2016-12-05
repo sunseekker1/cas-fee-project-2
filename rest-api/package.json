@@ -12,7 +12,8 @@
     "import-mongodb-collections": "mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection accesses --drop --file ./_backup/mongodb-collections/script-export/accesses.json; mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection admins --drop --file ./_backup/mongodb-collections/script-export/admins.json; mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection clients --drop --file ./_backup/mongodb-collections/script-export/clients.json; mongoimport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection sites --drop --file ./_backup/mongodb-collections/script-export/sites.json",
     "export-mongodb": "mongodump --host localhost --port 27017 -d cas-fee-project-2-rest-api -o ./_backup/mongodb-collections/script-export/",
     "import-mongodb": "mongorestore --host localhost --port 27017 -d cas-fee-project-2-rest-api ./_backup/mongodb-collections/script-export/",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "test": "mocha --timeout 10000"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -22,5 +23,10 @@
     "mongoose": "^4.6.2",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5"
   }
 }
