@@ -1,6 +1,6 @@
 
-<div class="clearfix">
-    <div class="dashboard-box">
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col">
 
 
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
@@ -19,7 +19,24 @@
 
 
     </div>
-    <div class="dashboard-box">
+    <div class="mdl-cell mdl-cell--3-col">
+
+        <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text">Admins</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                {{ adminsLength }}
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a routerLink="/admins" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    View Admins
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="mdl-cell mdl-cell--3-col">
 
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title mdl-card--expand">
@@ -36,7 +53,7 @@
         </div>
 
     </div>
-    <div class="dashboard-box">
+    <div class="mdl-cell mdl-cell--3-col">
 
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title mdl-card--expand">
@@ -55,17 +72,13 @@
 
     </div>
 </div>
-<div class="clearfix">
-
-    <div class="dashboard-box">
-
-
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--6-col">
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title mdl-card--expand">
                 <h2 class="mdl-card__title-text">Accesses</h2>
             </div>
             <div class="mdl-card__supporting-text">
-
                 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                     <thead>
                     <tr>
@@ -87,31 +100,38 @@
 
 
     </div>
-    <div class="dashboard-box">
+    <div class="mdl-cell mdl-cell--6-col">
 
 
 
         <div *ngIf="selectedAccess">
-
             <div class="demo-card-square mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
                     <h2 class="mdl-card__title-text">Detail: {{selectedAccess.siteTitle}}</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <div>
-                        <label>id: </label>{{selectedAccess._id}}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedAccess._id}}">
+                        <span class="bar"></span>
+                        <label>Id</label>
                     </div>
-                    <div>
-                        <label>title: </label>
-                        {{selectedAccess.siteTitle}}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedAccess.siteTitle}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>title</label>
                     </div>
-                    <div>
-                        <label>Date: </label>
-                        {{ selectedAccess.creationDate | date:'d.M.y HH:mm:ss' }}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{ selectedAccess.creationDate | date:'d.M.y HH:mm:ss' }}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>clientId</label>
                     </div>
-                    <div>
-                        <label>used: </label>
-                        {{selectedAccess.used}}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedAccess.used}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>used</label>
                     </div>
                 </div>
             </div>

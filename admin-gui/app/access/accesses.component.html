@@ -1,7 +1,7 @@
 
 
 <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-cell mdl-cell--6-col">
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title mdl-card--expand">
                 <h2 class="mdl-card__title-text">Accesses</h2>
@@ -14,6 +14,7 @@
                         <th class="mdl-data-table__cell--non-numeric">ID</th>
                         <th>Title</th>
                         <th>Access Date</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -21,6 +22,11 @@
                         <td class="mdl-data-table__cell--non-numeric">{{access.shortId}}</td>
                         <td>{{access.siteTitle}}</td>
                         <td>{{access.creationDate | date:'d.M.y hh :mm:ss' }}</td>
+                        <td>
+                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons" (click)="onSelect(access)">open_in_new</i>
+                            </button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -28,37 +34,45 @@
         </div>
     </div>
 
-    <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-cell mdl-cell--6-col">
         <div *ngIf="detailEditMode == 'detail'">
             <div class="demo-card-square mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
                     <h2 class="mdl-card__title-text">Detail: {{selectedAccess.siteTitle}}</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <div>
-                        <label>id: </label>{{selectedAccess._id}}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedAccess._id}}">
+                        <span class="bar"></span>
+                        <label>Id</label>
                     </div>
-                    <div>
-                        <label>title: </label>
-                        {{selectedAccess.siteTitle}}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedAccess.siteTitle}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>title</label>
                     </div>
-                    <div>
-                        <label>Date: </label>
-                        {{ selectedAccess.creationDate | date:'d.M.y HH:mm:ss' }}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{ selectedAccess.creationDate | date:'d.M.y HH:mm:ss' }}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>clientId</label>
                     </div>
-                    <div>
-                        <label>used: </label>
-                        {{selectedAccess.used}}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedAccess.used}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>used</label>
                     </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <p><br></p>
                 </div>
             </div>
         </div>
 
     </div>
 
-    <div class="mdl-cell mdl-cell--4-col">
-
-    </div>
 </div>
 
 

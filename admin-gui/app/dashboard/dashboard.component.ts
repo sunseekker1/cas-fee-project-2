@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   selectedAdmin: Admin;
   sites: Site[];
   selectedSite: Site;
+  adminsLength: number;
   accessesLength: number;
   clientsLength: number;
   sitesLength: number;
@@ -36,8 +37,6 @@ export class DashboardComponent implements OnInit {
     private siteService: SiteService) { }
 
   getAccesses(): void {
-
-
 
     this.siteService.getSites().then(
       (sites) => {
@@ -84,7 +83,10 @@ export class DashboardComponent implements OnInit {
   }
 
   getAdmins(): void {
-    this.adminService.getAdmins().then((admins) => this.admins = admins);
+    this.adminService.getAdmins().then((admins) => {
+      this.admins = admins;
+      this.adminsLength = this.admins.length;
+    });
   }
 
   getSites(): void {

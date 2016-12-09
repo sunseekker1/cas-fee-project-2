@@ -15,53 +15,42 @@ export class SitesComponent implements OnInit {
     private editedSite: Site;
     private detailEditMode: string;
 
-    constructor(private router: Router,
-                private siteService: SiteService) {
-        this.detailEditMode = 'new';
-    }
-
-    getSites(): void {
-        this.siteService.getSites().then(
-            sites => this.mapResult(sites)
-        );
-    }
-
-    mapResult(result: any): void {
-        let mappedSites: any = [];
-
-        for (let site of result) {
-
-            mappedSites.push({
-                _id: site._id,
-                shortId: site._id.substring(21, 25),
-                clientId: site.clientId,
-                title: site.title
-            });
-        }
-        this.sites = mappedSites;
+    constructor(private router: Router, private siteService: SiteService) {
+        this.resetDetailEditForms();
     }
 
     ngOnInit(): void {
         this.getSites();
     }
 
-    onSelect(site: Site): void {
-        this.editedSite = null;
-        this.selectedSite = site;
-        this.detailEditMode = 'detail';
+    getSites(): void {
+        this.resetDetailEditForms();
+
+        this.siteService.getSites().then(
+            sites => this.mapResult(sites)
+        );
     }
 
-    cloneObject(obj: any) {
-        if (obj === null || typeof obj !== 'object') {
-            return obj;
-        }
+    save(): void {
+        this.siteService.update(this.editedSite)
+            .then(() => {
+                let selectedSite = this.editedSite;
+                this.getSites();
+                this.selectedSite = selectedSite;
+                this.detailEditMode = 'detail';
+            });
+    }
 
-        var newObj = obj.constructor(); // give temp the original obj's constructor
-        for (var key in obj) {
-            newObj[key] = this.cloneObject(obj[key]);
-        }
-
-        return newObj;
+    delete(site: Site): void {
+        this.resetDetailEditForms();
+        this.siteService
+            .delete(site._id)
+            .then(() => {
+                this.sites = this.sites.filter(h => h !== site);
+                if (this.selectedSite === site) {
+                    this.selectedSite = null;
+                }
+            });
     }
 
     add(site: Site): void {
@@ -74,20 +63,6 @@ export class SitesComponent implements OnInit {
                 site.shortId = site._id.substring(21, 25);
                 this.sites.push(site);
                 this.selectedSite = null;
-            });
-
-        this.selectedSite = null;
-        this.editedSite = null;
-    }
-
-    delete(site: Site): void {
-        this.siteService
-            .delete(site._id)
-            .then(() => {
-                this.sites = this.sites.filter(h => h !== site);
-                if (this.selectedSite === site) {
-                    this.selectedSite = null;
-                }
             });
 
         this.selectedSite = null;
@@ -108,15 +83,44 @@ export class SitesComponent implements OnInit {
         this.detailEditMode = 'detail';
     }
 
-    save(): void {
-        this.siteService.update(this.editedSite)
-            .then(() => {
-                this.getSites();
-                this.selectedSite = this.editedSite;
-                this.editedSite = null;
-                this.detailEditMode = 'detail';
-            });
+    onSelect(site: Site): void {
+        this.editedSite = null;
+        this.selectedSite = site;
+        this.detailEditMode = 'detail';
     }
 
+    resetDetailEditForms(): void{
+        this.selectedSite = null;
+        this.editedSite = null;
+        this.detailEditMode = 'new';
+    }
+
+    mapResult(result: any): void {
+        let mappedSites: any = [];
+
+        for (let site of result) {
+
+            mappedSites.push({
+                _id: site._id,
+                shortId: site._id.substring(21, 25),
+                clientId: site.clientId,
+                title: site.title
+            });
+        }
+        this.sites = mappedSites;
+    }
+
+    cloneObject(obj: any) {
+        if (obj === null || typeof obj !== 'object') {
+            return obj;
+        }
+
+        var newObj = obj.constructor(); // give temp the original obj's constructor
+        for (var key in obj) {
+            newObj[key] = this.cloneObject(obj[key]);
+        }
+
+        return newObj;
+    }
 }
 

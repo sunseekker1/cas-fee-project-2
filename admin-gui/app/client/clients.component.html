@@ -1,6 +1,6 @@
 
 <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-cell mdl-cell--6-col">
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title mdl-card--expand">
                 <h2 class="mdl-card__title-text">Clients</h2>
@@ -22,6 +22,9 @@
                             <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                                 <i class="material-icons" (click)="delete(client); $event.stopPropagation()">delete_forever</i>
                             </button>
+                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons" (click)="onSelect(client)">open_in_new</i>
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -29,34 +32,43 @@
             </div>
             <div class="mdl-card__menu">
                 <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                    <i class="material-icons" (click)="new()">add_circle</i>
+                    <i class="material-icons" (click)="new()">add_circle_outline</i>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="mdl-cell mdl-cell--4-col">
+    <div class="mdl-cell mdl-cell--6-col">
         <div *ngIf="detailEditMode == 'detail'">
             <div class="demo-card-square mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
                     <h2 class="mdl-card__title-text">Detail: {{selectedClient.username}}</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <div>
-                        <label>id: </label>{{selectedClient._id}}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedClient._id}}">
+                        <span class="bar"></span>
+                        <label>Id</label>
                     </div>
-                    <div>
-                        <label>username: </label>
-                        {{selectedClient.username}}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedClient.username}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>title</label>
                     </div>
-                    <div>
-                        <label>email: </label>
-                        {{selectedClient.email}}
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedClient.email}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>clientId</label>
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
                     <a (click)="edit()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Edit
+                    </a>
+                    <a (click)="delete(selectedClient)" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Delete
                     </a>
                 </div>
             </div>
@@ -68,16 +80,30 @@
                     <h2 class="mdl-card__title-text">Edit: {{editedClient.username}}</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <div>
-                        <label>id: </label>{{editedClient._id}}
+
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{editedClient._id}}">
+                        <span class="bar"></span>
+                        <label>Id</label>
                     </div>
-                    <div>
-                        <label>username: </label>
-                        <input [(ngModel)]="editedClient.username" placeholder="username"/>
+                    <div class="group">
+                        <input type="text" required [(ngModel)]="editedClient.username">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Username</label>
                     </div>
-                    <div>
-                        <label>email: </label>
-                        <input [(ngModel)]="editedClient.email" placeholder="email"/>
+
+                    <div class="group">
+                        <input type="text" required [(ngModel)]="editedClient.email">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Email</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required [(ngModel)]="editedClient.password">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Password</label>
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
@@ -97,14 +123,23 @@
                     <h2 class="mdl-card__title-text">Add new Client</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <div>
-                        <label>Usename: </label><input #username/>
+                    <div class="group">
+                        <input type="text" required #username>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Username</label>
                     </div>
-                    <div>
-                        <label>Password: </label><input #password/>
+                    <div class="group">
+                        <input type="text" required #email>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Email</label>
                     </div>
-                    <div>
-                        <label>Email: </label><input #email/>
+                    <div class="group">
+                        <input type="text" required #password>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Password</label>
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
@@ -114,10 +149,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="mdl-cell mdl-cell--4-col">
-
     </div>
 </div>
 
