@@ -13,14 +13,13 @@ import {SitesComponent}       from './site/sites.component';
 import {ClientsComponent}     from './client/clients.component';
 import {AdminsComponent}       from './admin/admins.component';
 import {AccessesComponent}    from './access/accesses.component';
-import {LoginComponent} from './authentication/login.component';
-import {PrivateComponent} from './authentication/private.component';
+import {LoginComponent} from './login/login.component';
 
 import {SiteService}         from './site/site.service';
 import {ClientService}       from './client/client.service';
 import {AdminService}         from './admin/admin.service';
 import {AccessService}      from './access/access.service';
-import {AuthenticationService}      from './authentication/authentication.service';
+import {LoginService}      from './login/login.service';
 
 import {ShortIdPipe} from './short-id.pipe'; // import our pipe here
 
@@ -39,10 +38,9 @@ import {ShortIdPipe} from './short-id.pipe'; // import our pipe here
         AdminsComponent,
         AccessesComponent,
         ShortIdPipe,
-        LoginComponent,
-        PrivateComponent
+        LoginComponent
     ],
-    providers: [SiteService, ClientService, AdminService, AccessService, AuthenticationService],
+    providers: [SiteService, ClientService, AdminService, AccessService, LoginService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
