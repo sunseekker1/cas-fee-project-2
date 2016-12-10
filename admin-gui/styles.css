@@ -22,6 +22,14 @@ body{
 
 .mdl-layout .mdl-layout__header>.mdl-layout-icon {
 }
+.mdl-layout__header-row .mdl-navigation__link{
+    border-bottom: 3px solid rgba(256,256,256,0.0);
+}
+
+.mdl-layout__header-row .mdl-navigation__link:hover,
+.mdl-layout__header-row .mdl-navigation__link:focus{
+    border-bottom: 3px solid yellow;
+}
 
 
 .demo-card-square.mdl-card {

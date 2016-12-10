@@ -85,6 +85,7 @@
                         <th class="mdl-data-table__cell--non-numeric">ID</th>
                         <th>Title</th>
                         <th>Access Date</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -92,7 +93,13 @@
                         <td class="mdl-data-table__cell--non-numeric">{{access.shortId}}</td>
                         <td>{{access.siteTitle}}</td>
                         <td>{{access.creationDate | date:'d.M.y hh :mm:ss' }}</td>
+                        <td>
+                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons" (click)="onSelectAccess(access)">open_in_new</i>
+                            </button>
+                        </td>
                     </tr>
+
                     </tbody>
                 </table>
             </div>
