@@ -44,7 +44,7 @@ exports.getAccess = function(req, res) {
 
 // Create endpoint /api/accesses/:access_id for PUT
 exports.putAccess = function(req, res) {
-    Access.update({ _id: req.params.id }, { used: req.body.used }, function(err, num, raw) {
+    Access.update({ _id: req.params.id }, { used: req.body.used}, function(err, num, raw) {
         if (err)
             res.send(err);
 

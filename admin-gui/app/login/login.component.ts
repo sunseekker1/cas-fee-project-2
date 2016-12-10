@@ -17,11 +17,10 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    public loginAdmin(username: string, password: string): void {
-        this.loginService.loginAdmin(username, password).then((result) => {
-            console.log(result);
+    public login(username: string, password: string): void {
+        this.loginService.login(username, password).subscribe((result) => {
             if (result) {
-                Cookie.set('userSession', username);
+                console.log("login passed");
                 this.router.navigate(['dashboard']);
             }
             else {
@@ -29,10 +28,23 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['login']);
             }
         });
+
+        // this.loginService.login(username, password).then((result) => {
+        //     console.log(result);
+        //     if (result) {
+        //         Cookie.set('userSession', username);
+        //         this.router.navigate(['dashboard']);
+        //     }
+        //     else {
+        //         console.log("login failed");
+        //         this.router.navigate(['login']);
+        //     }
+        // });
     }
 
     public logout(): void {
-        Cookie.delete('userSession');
+        this.loginService.logout();
+        // Cookie.delete('userSession');
         this.router.navigate(['login']);
     }
 }

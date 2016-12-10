@@ -16,7 +16,7 @@ function setup(handlers) {
         .delete(handlers.adminController.deleteAdmin);
 
     router.route('/admins/login')
-        .post(handlers.adminController.loginAdmin);
+        .post(handlers.adminController.login);
 
     // Clients
     router.route('/clients')

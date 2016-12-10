@@ -8,21 +8,56 @@ import 'rxjs/add/operator/toPromise';
 export class LoginService {
     private adminUrl = 'http://localhost:8080/api/admins/login';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
+    private loggedIn = false;
 
     constructor(private http: Http) {
+        this.loggedIn = !!sessionStorage.getItem('userSession');
     }
 
-    public loginAdmin(username: string, password: string): Promise<Admin> {
-        let requestParams = {"username": username, "password": password};
+    // public login(username: string, password: string): Promise<Admin> {
+    //     let requestParams = {"username": username, "password": password};
+    //
+    //     return this.http
+    //         .post(this.adminUrl, JSON.stringify(requestParams), {headers: this.headers})
+    //         .toPromise()
+    //         .then((res) => res.json().data)
+    //         .catch(this.handleError);
+    // }
+
+    public login(username: string, password: string) {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
 
         return this.http
-            .post(this.adminUrl, JSON.stringify(requestParams), {headers: this.headers})
-            .toPromise()
-            .then((res) => res.json().data)
-            .catch(this.handleError);
+            .post(
+                this.adminUrl,
+                JSON.stringify({ username, password }),
+                { headers }
+            )
+            .map(res => res.json())
+            .map((res) => {
+                if (res) {
+                    sessionStorage.setItem('userSession', JSON.stringify(res));
+                    this.loggedIn = true;
+                    return true;
+                }
+                else{
+                    this.handleError(res);
+                    return false;
+                }
+
+
+            });
     }
 
+    public logout() {
+        sessionStorage.removeItem('userSession');
+        this.loggedIn = false;
+    }
 
+    public isLoggedIn() {
+        return this.loggedIn;
+    }
 
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only

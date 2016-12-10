@@ -6,15 +6,16 @@ import {AccessesComponent}    from './access/accesses.component';
 import {ClientsComponent}     from './client/clients.component';
 import {AdminsComponent}       from './admin/admins.component';
 import {LoginComponent}       from './login/login.component';
+import { LoggedInGuard }        from './login/logged-in.guard';
 
 const routes: Routes = [
-    {path: 'login', component: LoginComponent},
     {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'sites', component: SitesComponent},
-    {path: 'accesses', component: AccessesComponent},
-    {path: 'clients', component: ClientsComponent},
-    {path: 'admins', component: AdminsComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'dashboard', component: DashboardComponent, canActivate: [LoggedInGuard] },
+    {path: 'sites', component: SitesComponent, canActivate: [LoggedInGuard] },
+    {path: 'accesses', component: AccessesComponent, canActivate: [LoggedInGuard] },
+    {path: 'clients', component: ClientsComponent, canActivate: [LoggedInGuard] },
+    {path: 'admins', component: AdminsComponent, canActivate: [LoggedInGuard] },
 
 ];
 @NgModule({

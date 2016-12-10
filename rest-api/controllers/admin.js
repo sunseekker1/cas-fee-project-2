@@ -59,7 +59,7 @@ exports.deleteAdmin = function(req, res) {
 };
 
 // Create endpoint /api/admins/:admin_id for GET
-exports.loginAdmin = function(req, res) {
+exports.login = function(req, res) {
 
 
     // bcrypt.genSalt(5, function(err, salt) {
@@ -72,24 +72,37 @@ exports.loginAdmin = function(req, res) {
     //     });
     // });
 
-    var encryptedPassword;
+    // var encryptedPassword;
 
-    bcrypt.genSalt(5, function(err, salt) {
-        if (err) return err;
+    // bcrypt.genSalt(5, function(err, salt) {
+    //     if (err) return err;
+    //
+    //     bcrypt.hash(req.body.password, salt, null, function(err, hash) {
+    //         console.log('req.body.password', hash);
+    //         if (err) return err;
+    //         this.encryptedPassword = hash;
+    //     });
+    // });
 
-        bcrypt.hash(req.body.password, salt, null, function(err, hash) {
-            console.log('req.body.password', hash);
-            if (err) return err;
-            this.encryptedPassword = hash;
+    var result;
+
+    Admin.findOne({username: req.body.username, password: req.body.password }, function (err, admin) {
+        if (err) { return false; }
+
+        // No user found with that username
+        if (!admin) { return false; }
+
+        // Make sure the password is correct
+        this.result = admin.verifyPassword(req.body.password, function(err, isMatch) {
+            if (err) { return false; }
+
+            // Password did not match
+            if (!isMatch) { return false; }
+
+            // Success
+            return admin;
         });
     });
 
-    console.log('req.body.password', req.body.password, "enc", encryptedPassword);
-
-    Admin.find({username: req.body.username, password: encryptedPassword }, function(err, admin) {
-        if (err)
-            res.send(err);
-
-        res.json(admin);
-    });
+    console.log('req.body.password', req.body.password, "test", this.result);
 };
