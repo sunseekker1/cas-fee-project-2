@@ -117,14 +117,13 @@ describe('SITE API Test', () =>
     {
         it('it should DELETE a site given the id', (done) =>
         {
-            /*chai.request(server)
+            chai.request(server)
                 .delete('/api/sites/' + testId)
                 .end((err, res) =>
                 {
                     res.should.have.status(200);
                     done();
-                });*/
-            done();
+                });
             
         });
     });
