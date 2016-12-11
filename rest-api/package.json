@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "PORT=8080 nodemon server.js",
     "start-mongodb": "mongod",
     "init-mongodb": "mkdir mongodb; mongod --dbpath mongodb",
     "export-mongodb-collections": "mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection accesses --out ./_backup/mongodb-collections/script-export/accesses.json; mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection admins --out ./_backup/mongodb-collections/script-export/admins.json; mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection clients --out ./_backup/mongodb-collections/script-export/clients.json; mongoexport --host localhost --port 27017 --db cas-fee-project-2-rest-api --collection sites --out ./_backup/mongodb-collections/script-export/sites.json",
@@ -13,7 +13,7 @@
     "export-mongodb": "mongodump --host localhost --port 27017 -d cas-fee-project-2-rest-api -o ./_backup/mongodb-collections/script-export/",
     "import-mongodb": "mongorestore --host localhost --port 27017 -d cas-fee-project-2-rest-api ./_backup/mongodb-collections/script-export/",
     "gulp": "gulp",
-    "test": "mocha --timeout 10000"
+    "test": "PORT=8081 mocha --timeout 10000"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
