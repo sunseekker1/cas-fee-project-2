@@ -74,7 +74,7 @@ describe('Access', () =>
         it('it should UPDATE an access entry by a given id', (done) =>
         {
             let access = {
-                used: true
+                used: "true"
             };
             chai.request(server)
                 .put('/api/accesses/' + testId)
@@ -82,7 +82,6 @@ describe('Access', () =>
                 .end((err, res) =>
                 {
                     res.should.have.status(200);
-                    //assert.isTrue(teaServed, 'the tea has been served');
                     done();
                 });
             
