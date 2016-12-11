@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    public submitForm(event: any, username: string, password: string){
-        if(event.keyCode == 13) {
+    public submitForm(event: any, username: string, password: string) {
+        if (event.keyCode == 13) {
             this.login(username, password);
         }
     }

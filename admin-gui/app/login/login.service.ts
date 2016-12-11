@@ -32,8 +32,8 @@ export class LoginService {
         return this.http
             .post(
                 this.adminUrl,
-                JSON.stringify({ username, password }),
-                { headers }
+                JSON.stringify({username, password}),
+                {headers}
             )
             .map(res => res.json())
             .map((res) => {
@@ -48,7 +48,7 @@ export class LoginService {
                     this.admin.password = password;
                     return true;
                 }
-                else{
+                else {
                     console.log(res.err);
                     return false;
                 }

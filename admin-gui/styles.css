@@ -2,36 +2,34 @@
 @import url("material.min.css");
 @import url("node_modules/material-design-icons/iconfont/material-icons.css");
 
-
-body{
+body {
     background-color: #efefef;
 }
 
-.mdl-grid{
+.mdl-grid {
     margin-top: 60px;
 }
 
-.mdl-data-table{
+.mdl-data-table {
     width: 100%;
 }
 
-.mdl-layout-title>a{
+.mdl-layout-title > a {
     color: #ffffff;
     text-decoration: none;
 }
 
-.mdl-layout .mdl-layout__header>.mdl-layout-icon {
+.mdl-layout .mdl-layout__header > .mdl-layout-icon {
 }
-.mdl-layout__header-row .mdl-navigation__link{
-    border-bottom: 3px solid rgba(256,256,256,0.0);
+
+.mdl-layout__header-row .mdl-navigation__link {
+    border-bottom: 3px solid rgba(256, 256, 256, 0.0);
 }
 
 .mdl-layout__header-row .mdl-navigation__link:hover,
-.mdl-layout__header-row .mdl-navigation__link:focus,
 .mdl-layout__header-row .mdl-navigation__link.active-route {
     border-bottom: 3px solid yellow;
 }
-
 
 .demo-card-square.mdl-card {
     width: 100%;
@@ -39,16 +37,16 @@ body{
 
 .demo-card-square > .mdl-card__title {
     color: #fff;
-    background:  bottom right 15% no-repeat #46B6AC; /*url('/assets/img/dog.png')*/
+    background: bottom right 15% no-repeat #46B6AC; /*url('/assets/img/dog.png')*/
 }
 
-.mdl-card__supporting-text{
+.mdl-card__supporting-text {
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
-thead{
-    background:#eeeeee;
+thead {
+    background: #eeeeee;
 }
 
 

@@ -21,7 +21,7 @@ import {ClientService}       from './client/client.service';
 import {AdminService}         from './admin/admin.service';
 import {AccessService}      from './access/access.service';
 import {LoginService}      from './login/login.service';
-import { LoggedInGuard }        from './login/logged-in.guard';
+import {LoggedInGuard}        from './login/logged-in.guard';
 import {ShortIdPipe} from './short-id.pipe'; // import our pipe here
 
 @NgModule({

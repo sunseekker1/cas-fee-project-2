@@ -15,17 +15,17 @@ var AdminSchema = new mongoose.Schema({
 });
 
 // Execute before each admin.save() call
-AdminSchema.pre('save', function(callback) {
+AdminSchema.pre('save', function (callback) {
     var admin = this;
 
     // Break out if the password hasn't changed
     if (!admin.isModified('password')) return callback();
 
     // Password changed so we need to hash it
-    bcrypt.genSalt(5, function(err, salt) {
+    bcrypt.genSalt(5, function (err, salt) {
         if (err) return callback(err);
         console.log('salt', salt);
-        bcrypt.hash(admin.password, salt, null, function(err, hash) {
+        bcrypt.hash(admin.password, salt, null, function (err, hash) {
             console.log('err', err);
             if (err) return callback(err);
             console.log('hash2', hash);
@@ -35,8 +35,8 @@ AdminSchema.pre('save', function(callback) {
     });
 });
 
-AdminSchema.methods.verifyPassword = function(password, cb) {
-    bcrypt.compare(password, this.password, function(err, isMatch) {
+AdminSchema.methods.verifyPassword = function (password, cb) {
+    bcrypt.compare(password, this.password, function (err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
     });

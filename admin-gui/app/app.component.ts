@@ -17,15 +17,17 @@ export class AppComponent {
     viewState = '';
     activeRoute = '';
 
-    public setViewState(viewState: string){
+    public setViewState(viewState: string) {
 
         this.viewState = viewState;
     }
+
     // userSession: boolean;
     //
     constructor(private loginService: LoginService, private router: Router) {
         console.log(loginService.isLoggedIn());
     }
+
     //
     public logout() {
         console.log(this.loginService.isLoggedIn());

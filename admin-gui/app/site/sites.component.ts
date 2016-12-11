@@ -89,7 +89,7 @@ export class SitesComponent implements OnInit {
         this.detailEditMode = 'detail';
     }
 
-    resetDetailEditForms(): void{
+    resetDetailEditForms(): void {
         this.selectedSite = null;
         this.editedSite = null;
         this.detailEditMode = 'new';

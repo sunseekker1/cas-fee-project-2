@@ -53,27 +53,8 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "siteId",
-							"value": "57f9f2a6b7c59c03760ca800",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "socketId",
-							"value": "f23f23f",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "used",
-							"value": "false",
-							"type": "text",
-							"enabled": true
-						}
-					]
+					"mode": "raw",
+					"raw": " {\n      \"socketId\": \"23\",\n      \"siteId\": \"5831766ea182bc03f00f8398\",\n      \"used\": false\n    }"
 				},
 				"description": ""
 			},
@@ -121,7 +102,7 @@
 		{
 			"name": "/api/accesses/:accessId",
 			"request": {
-				"url": "http://localhost:8080/api/accesses/xxx",
+				"url": "http://localhost:8080/api/accesses/57fa0d7a7e0980024b7646ca",
 				"method": "PUT",
 				"header": [
 					{
@@ -131,27 +112,8 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "siteId",
-							"value": "f2f323f23f",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "socketId",
-							"value": "23f23f23f3",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "used",
-							"value": "false",
-							"type": "text",
-							"enabled": true
-						}
-					]
+					"mode": "raw",
+					"raw": " {\n      \"socketId\": \"23\",\n      \"siteId\": \"5831766ea182bc03f00f8398\",\n      \"used\": false\n    }"
 				},
 				"description": ""
 			},
@@ -165,7 +127,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic aGFuczpoYW5z",
+						"value": "Basic YWRtaW46YWRtaW4=",
 						"description": ""
 					}
 				],
@@ -209,32 +171,38 @@
 					},
 					{
 						"key": "Authorization",
+						"value": "Basic YWRtaW4yOmFkbWluMg==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"email\": \"admin@email.ch\",\r\n \"username\": \"admin\",\r\n \"password\": \"admin\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/admins/login",
+			"request": {
+				"url": "http://localhost:8080/api/admins/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
 						"value": "Basic c2VwcDpzZXBw",
 						"description": ""
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "admin1",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "password",
-							"value": "admin1",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "email",
-							"value": "admin1@mail.ch",
-							"type": "text",
-							"enabled": true
-						}
-					]
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"admin2\",\n\t\"password\": \"admin2\"\n}"
 				},
 				"description": ""
 			},
@@ -282,37 +250,23 @@
 		{
 			"name": "/api/admins/:adminId",
 			"request": {
-				"url": "http://localhost:8080/api/admins/xxx",
+				"url": "http://localhost:8080/api/admins/58317afba182bc03f00f839b",
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW4yOmFkbWluMg==",
+						"description": ""
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "hans",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "password",
-							"value": "hans",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "email",
-							"value": "hans@mail.ch",
-							"type": "text",
-							"enabled": true
-						}
-					]
+					"mode": "raw",
+					"raw": "{\r\n \"email\": \"\",\r\n \"username\": \"11\",\r\n \"password\": \"sepp123password\"\r\n}"
 				},
 				"description": ""
 			},
@@ -323,10 +277,16 @@
 			"request": {
 				"url": "http://localhost:8080/api/admins/xxx",
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/plain",
+						"description": ""
+					}
+				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
+					"mode": "raw",
+					"raw": ""
 				},
 				"description": ""
 			},
@@ -378,27 +338,8 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "sepp",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "password",
-							"value": "sepp",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "email",
-							"value": "sepp@mail.com",
-							"type": "text",
-							"enabled": true
-						}
-					]
+					"mode": "raw",
+					"raw": "{\n      \"username\": \"user\",\n      \"password\": \"user\",\n      \"email\": \"user@mail.ch\"\n    }"
 				},
 				"description": ""
 			},
@@ -440,7 +381,7 @@
 		{
 			"name": "/api/clients/:clientId",
 			"request": {
-				"url": "http://localhost:8080/api/clients/xxx",
+				"url": "http://localhost:8080/api/clients/58317d4897d16005a7c8e840",
 				"method": "PUT",
 				"header": [
 					{
@@ -450,27 +391,8 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "Feldschlösschen",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "password",
-							"value": "Naturtrüb",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "email",
-							"value": "12",
-							"type": "text",
-							"enabled": true
-						}
-					]
+					"mode": "raw",
+					"raw": "{\r\n \"email\": \"test@asdfasdf.com\"\r\n}"
 				},
 				"description": ""
 			},
@@ -483,8 +405,8 @@
 				"method": "DELETE",
 				"header": [],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
+					"mode": "raw",
+					"raw": ""
 				},
 				"description": ""
 			},
@@ -536,27 +458,8 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "clientId",
-							"value": "57f9f25ab7c59c03760ca7fe",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "title",
-							"value": "Google",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "secret",
-							"value": "12345",
-							"type": "text",
-							"enabled": true
-						}
-					]
+					"mode": "raw",
+					"raw": "{\n      \"title\": \"Facebook3\",\n      \"clientId\": \"57fa0cc37e0980024b7646c5\",\n      \"secret\": null\n    }"
 				},
 				"description": ""
 			},
@@ -608,27 +511,8 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "clientId",
-							"value": "Feldschlösschen",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "title",
-							"value": "Naturtrüb",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "secred",
-							"value": "12",
-							"type": "text",
-							"enabled": true
-						}
-					]
+					"mode": "raw",
+					"raw": "{\n      \"title\": \"Facebook3\",\n      \"clientId\": \"57fa0cc37e0980024b7646c5\",\n      \"secret\": null\n    }"
 				},
 				"description": ""
 			},
@@ -641,160 +525,8 @@
 				"method": "DELETE",
 				"header": [],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "/api/heroes",
-			"request": {
-				"url": "http://localhost:8080/api/heroes",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "name",
-							"value": "Feldschlösschen",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "type",
-							"value": "Naturtrüb",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "quantity",
-							"value": "12",
-							"type": "text",
-							"enabled": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "/api/heroes",
-			"request": {
-				"url": "http://localhost:8080/api/heroes",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id",
-							"value": "15",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "name",
-							"value": "Superman",
-							"type": "text",
-							"enabled": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "/api/heroes/:heroId",
-			"request": {
-				"url": "http://localhost:8080/api/heroes/xxx",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "name",
-							"value": "Feldschlösschen",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "type",
-							"value": "Naturtrüb",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "quantity",
-							"value": "12",
-							"type": "text",
-							"enabled": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "/api/heroes/:heroId",
-			"request": {
-				"url": "http://localhost:8080/api/heroes/xxx",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "clientId",
-							"value": "Feldschlösschen",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "title",
-							"value": "Naturtrüb",
-							"type": "text",
-							"enabled": true
-						},
-						{
-							"key": "secred",
-							"value": "12",
-							"type": "text",
-							"enabled": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "/api/heroes/:heroId",
-			"request": {
-				"url": "http://localhost:8080/api/heroes/xxx",
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": []
+					"mode": "raw",
+					"raw": ""
 				},
 				"description": ""
 			},

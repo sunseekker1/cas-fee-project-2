@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var SiteSchema   = new mongoose.Schema({
+var SiteSchema = new mongoose.Schema({
     clientId: String,
     title: String,
     secret: String
