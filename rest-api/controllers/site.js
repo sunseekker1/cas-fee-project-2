@@ -41,14 +41,19 @@ exports.getSite = function(req, res) {
 
 // Create endpoint /api/sites/:id for PUT
 exports.putSite = function(req, res) {
-    Site.update(
-        {
-            _id: req.params.id
-        },
-        {
-            title: req.body.title, //TODO wie können Daten beim RequestType application/json gelesen werden?
-            secret: req.body.secret
-        },
+
+    var fieldsToUpdate = {};
+    if (req.body.password !== undefined && req.body.password.length){
+        fieldsToUpdate.password = req.body.password;
+    }
+    if (req.body.title !== undefined && req.body.title.length){
+        fieldsToUpdate.title = req.body.title;
+    }
+    if (req.body.secret !== undefined){
+        fieldsToUpdate.secret = req.body.secret;
+    }
+
+    Site.update({_id: req.params.id}, fieldsToUpdate,
         function(err, num, raw) {
             if (err)
                 res.send(err);

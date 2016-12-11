@@ -36,7 +36,11 @@ export class LoginService {
             )
             .map(res => res.json())
             .map((res) => {
+
+                console.log("login.service.ts", res);
+
                 if (res) {
+                    console.log("login.service.ts", 'loggedIn');
                     sessionStorage.setItem('userSession', JSON.stringify(res));
                     this.loggedIn = true;
                     return true;

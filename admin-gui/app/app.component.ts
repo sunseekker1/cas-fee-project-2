@@ -12,7 +12,7 @@ import {Cookie} from 'ng2-cookies/ng2-cookies';
 })
 export class AppComponent {
     title = 'FastLogin';
-    // login: LoginService;
+    login: LoginService;
     // userSession: boolean;
     //
     // constructor() {

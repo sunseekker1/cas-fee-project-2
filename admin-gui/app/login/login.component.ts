@@ -17,8 +17,20 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    public submitForm(event: any){
+        console.log('submitForm');
+        if(event.keyCode == 13) {
+
+            // this.login();
+        }
+    }
+
     public login(username: string, password: string): void {
         this.loginService.login(username, password).subscribe((result) => {
+            console.log('login.component.ts', result);
+
+            this.router.navigate(['dashboard']);
+
             if (result) {
                 console.log("login passed");
                 this.router.navigate(['dashboard']);
