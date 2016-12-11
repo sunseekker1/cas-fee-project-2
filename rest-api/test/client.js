@@ -12,7 +12,7 @@ let testId;
 
 chai.use(chaiHttp);
 
-describe('Access', () =>
+describe('Client API Test', () =>
 {
     beforeEach((done) =>
     {
@@ -27,12 +27,12 @@ describe('Access', () =>
     /*
      * Test the /GET route
      */
-    describe('/GET access', () =>
+    describe('/GET clients', () =>
     {
-        it('it should GET all the accesses', (done) =>
+        it('it should GET all the clients', (done) =>
         {
             chai.request(server)
-                .get('/api/accesses/')
+                .get('/api/clients/')
                 .end((err, res) =>
                 {
                     res.should.have.status(200);
@@ -46,70 +46,31 @@ describe('Access', () =>
     /*
      * Test the /POST route
      */
-    describe('/POST access', () =>
+    describe('/POST client', () =>
     {
-        it('it should POST a new access entry', (done) =>
+        it('it should POST a new clients entry', (done) =>
         {
-            let access = {
-                siteId: "testsiteid-123456",
-                socketId: "testsocketid-123456",
-                used: false
+            let client = {
+                username: "fritz",
+                password: "tester",
+                email: "fritz@tester.ch"
             };
             chai.request(server)
-                .post('/api/accesses')
-                .send(access)
+                .post('/api/clients')
+                .send(client)
                 .end((err, res) =>
                 {
-                    res.should.have.status(200);
+                    console.log(res.body);
+                    /*res.should.have.status(200);
+                    
                     testId = res.body.data._id;
-                    assert(res.body.data.siteId === 'testsiteid-123456', 'saved site id is wrong');
-                    res.body.should.be.a('object');
+                    assert(res.body.data.email === 'fritz@tester.ch', 'saved site id is wrong');
+                    res.body.should.be.a('object');*/
                     done();
                 });
         });
         
     });
     
-    /*
-     * Test the /PUT/:id route
-     */
-    describe('/PUT/:id access', () =>
-    {
-        it('it should UPDATE an access entry by a given id', (done) =>
-        {
-            let access = {
-                used: true
-            };
-            chai.request(server)
-                .put('/api/accesses/' + testId)
-                .send({used: access.used})
-                .end((err, res) =>
-                {
-                    res.should.have.status(200);
-                    //assert.isTrue(teaServed, 'the tea has been served');
-                    done();
-                });
-            
-        });
-    });
-    
-    describe('/GET/:id access', () =>
-    {
-        it('it should GET a access entry by the given id', (done) =>
-        {
-            
-            chai.request(server)
-                .get('/api/accesses/' + testId)
-                .end((err, res) =>
-                {
-                    res.should.have.status(200);
-                    res.body[0].should.have.property('_id').eql(testId);
-                    assert.isTrue(res.body[0].used, 'check if used is true');
-                    done();
-                });
-            
-            
-        });
-    });
     
 });
