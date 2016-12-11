@@ -41,7 +41,23 @@ exports.getClient = function(req, res) {
 
 // Create endpoint /api/clients/:client_id for PUT
 exports.putClient = function(req, res) {
-    Client.update({ _id: req.params.id }, { username: req.body.username, password: req.body.password, email: req.body.email   }, function(err, num, raw) {
+    if (!req.params.id.length){
+        console.log('Error on PUT Operation');
+        return null;
+    }
+
+    var fieldsToUpdate = {};
+    if (req.body.password !== undefined && req.body.password.length){
+        fieldsToUpdate.password = req.body.password;
+    }
+    if (req.body.username !== undefined && req.body.username.length){
+        fieldsToUpdate.username = req.body.username;
+    }
+    if (req.body.email !== undefined){
+        fieldsToUpdate.email = req.body.email;
+    }
+
+    Client.update({ _id: req.params.id }, fieldsToUpdate, function(err, num, raw) {
         if (err)
             res.send(err);
 

@@ -40,7 +40,24 @@ exports.getAdmin = function(req, res) {
 
 // Create endpoint /api/admins/:admin_id for PUT
 exports.putAdmin = function(req, res) {
-    Admin.update({ _id: req.params.id }, { password: req.body.password, username: req.body.username, email: req.body.email }, function(err, num, raw) {
+
+    if (!req.params.id.length){
+        console.log('Error on PUT Operation');
+        return null;
+    }
+
+    var fieldsToUpdate = {};
+    if (req.body.password !== undefined && req.body.password.length){
+        fieldsToUpdate.password = req.body.password;
+    }
+    if (req.body.username !== undefined && req.body.username.length){
+        fieldsToUpdate.username = req.body.username;
+    }
+    if (req.body.email !== undefined){
+        fieldsToUpdate.email = req.body.email;
+    }
+
+    Admin.update({ _id: req.params.id }, fieldsToUpdate, function(err, num, raw) {
         if (err)
             res.send(err);
 
@@ -84,25 +101,30 @@ exports.login = function(req, res) {
     //     });
     // });
 
+    console.log("login.service.ts", req.body.password);
+
     var result;
 
-    Admin.findOne({username: req.body.username, password: req.body.password }, function (err, admin) {
-        if (err) { return false; }
 
-        // No user found with that username
-        if (!admin) { return false; }
+    return {"username": "admin"};
 
-        // Make sure the password is correct
-        this.result = admin.verifyPassword(req.body.password, function(err, isMatch) {
-            if (err) { return false; }
+    // Admin.findOne({username: req.body.username, password: req.body.password }, function (err, admin) {
+    //     if (err) { return false; }
+    //
+    //     // No user found with that username
+    //     if (!admin) { return false; }
+    //
+    //     // Make sure the password is correct
+    //     this.result = admin.verifyPassword(req.body.password, function(err, isMatch) {
+    //         if (err) { return false; }
+    //
+    //         // Password did not match
+    //         if (!isMatch) { return false; }
+    //
+    //         // Success
+    //         return admin;
+    //     });
+    // });
 
-            // Password did not match
-            if (!isMatch) { return false; }
 
-            // Success
-            return admin;
-        });
-    });
-
-    console.log('req.body.password', req.body.password, "test", this.result);
 };

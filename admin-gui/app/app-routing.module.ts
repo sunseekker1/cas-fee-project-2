@@ -9,7 +9,7 @@ import {LoginComponent}       from './login/login.component';
 import { LoggedInGuard }        from './login/logged-in.guard';
 
 const routes: Routes = [
-    {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+    {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'dashboard', component: DashboardComponent, canActivate: [LoggedInGuard] },
     {path: 'sites', component: SitesComponent, canActivate: [LoggedInGuard] },
