@@ -58,4 +58,7 @@ var router = routes.setup(routerHandlers);
 app.use('/api', router);
 
 // Start the server
-app.listen(8080);
+app.listen(process.env.PORT);
+
+// export app for testing purposes
+module.exports = app;

@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams, Platform} from 'ionic-angular';
+import {NavController, Platform} from 'ionic-angular';
 import {BarcodeScanner} from 'ionic-native';
 import {QRcodeData} from './QRcodeData';
 import {ScanComponent} from './scan.component';
-import * as CryptoJS from 'crypto-js';
 import {AppDataProvider} from '../../providers/app.data.provider';
 import {MasterPasswordPage} from '../shared/masterpassword.component';
 
@@ -16,7 +15,6 @@ export class HomeComponent {
     qrFormat: String = 'no data';
 
     constructor(private navCtrl: NavController,
-                private navParams: NavParams,
                 private appDataProvider: AppDataProvider,
                 private platform: Platform) {
 
