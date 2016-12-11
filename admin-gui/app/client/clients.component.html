@@ -1,3 +1,7 @@
+
+<button md-raised-button (click)="open('sepp')">Open dialog</button>
+
+
 <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--6-col">
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
@@ -18,7 +22,7 @@
                         <td class="mdl-data-table__cell--non-numeric">{{client.shortId}}</td>
                         <td>{{client.username}}</td>
                         <td>
-                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="test">
                                 <i class="material-icons" (click)="delete(client); $event.stopPropagation()">delete_forever</i>
                             </button>
                             <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
@@ -30,7 +34,7 @@
                 </table>
             </div>
             <div class="mdl-card__menu">
-                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <button id="tt1" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                     <i class="material-icons" (click)="new()">add_circle_outline</i>
                 </button>
             </div>

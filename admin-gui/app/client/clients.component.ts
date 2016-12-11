@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Client} from './client';
 import {ClientService} from './client.service';
 import {Router} from '@angular/router';
+import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
+import {DialogComponent} from "../dialog/dialog.component";
 
 @Component({
     moduleId: module.id,
@@ -14,8 +16,24 @@ export class ClientsComponent implements OnInit {
     editedClient: Client;
     private detailEditMode: string;
 
-    constructor(private router: Router, private clientService: ClientService) {
+    dialogRef: MdDialogRef<any>;
+
+
+    constructor(private router: Router, private clientService: ClientService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
         this.resetDetailEditForms();
+    }
+
+    open(key: any) {
+        console.log(key);
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.viewContainerRef;
+
+        this.dialogRef = this.dialog.open(DialogComponent, config);
+
+        this.dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+            this.dialogRef = null;
+        });
     }
 
     ngOnInit(): void {

@@ -62,6 +62,7 @@ Prio 1
 Prio 2
 
 - Refactor CSS Admin UI
+- Admin UI Dropdown For Selectable Values
 - Admin UI Searchfunction
 - Admin UI Input Validation
 - Gulp Task Build, Minify, compile scss, compress

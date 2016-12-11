@@ -16,19 +16,16 @@ export class AppComponent {
     // login: LoginService;
     viewState = '';
     activeRoute = '';
+    constructor(private loginService: LoginService, private router: Router) {
+        this.loginService.logout();
+        this.router.navigate(['login']);
+    }
 
     public setViewState(viewState: string) {
 
         this.viewState = viewState;
     }
 
-    // userSession: boolean;
-    //
-    constructor(private loginService: LoginService, private router: Router) {
-        console.log(loginService.isLoggedIn());
-    }
-
-    //
     public logout() {
         console.log(this.loginService.isLoggedIn());
         this.loginService.logout();

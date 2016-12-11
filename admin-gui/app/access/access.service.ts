@@ -8,13 +8,14 @@ import {LoginService} from "../login/login.service";
 @Injectable()
 export class AccessService {
     private accessesUrl = 'http://localhost:8080/api/accesses';  // URL to web api
+
+    constructor(private http: Http, private loginService: LoginService) {
+    }
+
     private headers = new Headers({
         'Content-Type': 'application/json',
         'Authorization': "Basic " + btoa(this.loginService.admin.username + ":" + this.loginService.admin.password)
     });
-
-    constructor(private http: Http, private loginService: LoginService) {
-    }
 
     getAccesses(): Promise<Access[]> {
         return this.http.get(this.accessesUrl, {headers: this.headers})

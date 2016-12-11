@@ -5,6 +5,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule}   from '@angular/forms';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpModule}    from '@angular/http';
+import {MaterialModule} from '@angular/material';
 
 import {AppRoutingModule}     from './app-routing.module';
 
@@ -23,6 +24,7 @@ import {AccessService}      from './access/access.service';
 import {LoginService}      from './login/login.service';
 import {LoggedInGuard}        from './login/logged-in.guard';
 import {ShortIdPipe} from './short-id.pipe'; // import our pipe here
+import {DialogComponent} from './dialog/dialog.component';
 
 @NgModule({
     imports: [
@@ -30,7 +32,8 @@ import {ShortIdPipe} from './short-id.pipe'; // import our pipe here
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MaterialModule.forRoot()
     ],
     declarations: [
         AppComponent,
@@ -40,7 +43,11 @@ import {ShortIdPipe} from './short-id.pipe'; // import our pipe here
         AdminsComponent,
         AccessesComponent,
         ShortIdPipe,
-        LoginComponent
+        LoginComponent,
+        DialogComponent
+    ],
+    entryComponents: [
+        DialogComponent
     ],
     providers: [SiteService, ClientService, AdminService, AccessService, LoginService, LoggedInGuard],
     bootstrap: [AppComponent]
