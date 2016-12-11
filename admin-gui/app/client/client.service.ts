@@ -2,14 +2,17 @@ import { Injectable }    from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Client } from './client';
 import 'rxjs/add/operator/toPromise';
+import {LoginService} from "../login/login.service";
 
 
 
 @Injectable()
 export class ClientService {
   private clientsUrl = 'http://localhost:8080/api/clients';  // URL to web api
+  private headers = new Headers({'Content-Type': 'application/json', 'Authorization': "Basic " + btoa(this.loginService.admin.username + ":" + this.loginService.admin.password)});
 
-  constructor(private http: Http) { }
+
+  constructor(private http: Http, private loginService: LoginService) { }
 
   getClients(): Promise<Client[]> {
     return this.http.get(this.clientsUrl, {headers: this.headers})
@@ -42,7 +45,6 @@ export class ClientService {
       );
   }*/
 
-  private headers = new Headers({'Content-Type': 'application/json'});
 
   update(client: Client): Promise<Client> {
     const url = `${this.clientsUrl}/${client._id}`;

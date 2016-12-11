@@ -27,7 +27,8 @@ body{
 }
 
 .mdl-layout__header-row .mdl-navigation__link:hover,
-.mdl-layout__header-row .mdl-navigation__link:focus{
+.mdl-layout__header-row .mdl-navigation__link:focus,
+.mdl-layout__header-row .mdl-navigation__link.active-route {
     border-bottom: 3px solid yellow;
 }
 

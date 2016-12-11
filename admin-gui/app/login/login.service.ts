@@ -8,7 +8,8 @@ import 'rxjs/add/operator/toPromise';
 export class LoginService {
     private adminUrl = 'http://localhost:8080/api/admins/login';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
-    private loggedIn = false;
+    public loggedIn = false;
+    public admin: Admin;
 
     constructor(private http: Http) {
         this.loggedIn = !!sessionStorage.getItem('userSession');
@@ -39,14 +40,16 @@ export class LoginService {
 
                 console.log("login.service.ts", res);
 
-                if (res) {
+                if (res.success) {
                     console.log("login.service.ts", 'loggedIn');
                     sessionStorage.setItem('userSession', JSON.stringify(res));
                     this.loggedIn = true;
+                    this.admin = res.admin;
+                    this.admin.password = password;
                     return true;
                 }
                 else{
-                    this.handleError(res);
+                    console.log(res.err);
                     return false;
                 }
 
@@ -61,11 +64,6 @@ export class LoginService {
 
     public isLoggedIn() {
         return this.loggedIn;
-    }
-
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
     }
 
 }

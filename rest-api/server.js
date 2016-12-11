@@ -35,7 +35,7 @@ app.use(function (req, res, next) {
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization');
 
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
@@ -63,7 +63,6 @@ var router = routes.setup(routerHandlers);
 app.use('/api', router);
 
 // Start the server
-// app.listen(process.env.PORT);
-app.listen(8081);
+app.listen(process.env.PORT);
 // export app for testing purposes
 module.exports = app;

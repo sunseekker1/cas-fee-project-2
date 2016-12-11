@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {MDL} from './material-design-lite-upgrade-element'; // Inofficial Angular Material Design Lite
 import {LoginService} from './login/login.service';
 import {Cookie} from 'ng2-cookies/ng2-cookies';
+import {Router} from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -12,14 +13,24 @@ import {Cookie} from 'ng2-cookies/ng2-cookies';
 })
 export class AppComponent {
     title = 'FastLogin';
-    login: LoginService;
+    // login: LoginService;
+    viewState = '';
+    activeRoute = '';
+
+    public setViewState(viewState: string){
+
+        this.viewState = viewState;
+    }
     // userSession: boolean;
     //
-    // constructor() {
-    //     this.login
-    // }
+    constructor(private loginService: LoginService, private router: Router) {
+        console.log(loginService.isLoggedIn());
+    }
     //
-    // public logout() {
-    //     this.login.logout();
-    // }
+    public logout() {
+        console.log(this.loginService.isLoggedIn());
+        this.loginService.logout();
+        this.router.navigate(['login']);
+        console.log(this.loginService.isLoggedIn());
+    }
 }

@@ -8,14 +8,15 @@
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
 
-            <nav  class="mdl-navigation mdl-layout--large-screen-only"> <!--*ngIf="userSession"-->
+            <nav *ngIf="loginService.isLoggedIn()" class="mdl-navigation mdl-layout--large-screen-only"> <!--*ngIf="userSession"-->
 
-                    <a routerLink="/dashboard" class="mdl-navigation__link">Dashboard</a>
-                    <a routerLink="/sites" class="mdl-navigation__link">Sites</a>
-                    <a routerLink="/accesses" class="mdl-navigation__link">Accesses</a>
-                    <a routerLink="/clients" class="mdl-navigation__link">Clients</a>
-                    <a routerLink="/admins" class="mdl-navigation__link">Admins</a>
+                    <a routerLink="/dashboard" class="mdl-navigation__link" [class.active-route]="viewState === 'dashboard'" (click)="setViewState('dashboard')">Dashboard</a>
+                    <a routerLink="/sites" class="mdl-navigation__link" [class.active-route]="viewState === 'sites'" (click)="setViewState('sites')">Sites</a>
+                    <a routerLink="/accesses" class="mdl-navigation__link" [class.active-route]="viewState === 'accesses'" (click)="setViewState('accesses')">Accesses</a>
+                    <a routerLink="/clients" class="mdl-navigation__link" [class.active-route]="viewState === 'clients'" (click)="setViewState('clients')">Clients</a>
+                    <a routerLink="/admins" class="mdl-navigation__link" [class.active-route]="viewState === 'admins'" (click)="setViewState('admins')">Admins</a>
                     <a (click)="logout()" class="mdl-navigation__link">Logout</a>
+
 
                     <button id="demo-menu-lower-right"
                             class="mdl-button mdl-js-button mdl-button--icon">

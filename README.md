@@ -54,19 +54,14 @@ This project has the purpose to give the users a simple way to login to their fa
 
 Prio 1
 
-- Design Admin UI > Noel > OK
-- Login Admin UI (Admin) > Noel
-- Design Login Showcase > Thomas > OK
-- Landing Page Login Showcase > Thomas > OK
-- Icon App > Thomas > OK
-- Colorize App > Thomas > OK
 - Comment source code > Thomas > Noel
 - Code formatting > Thomas > Noel
 - Update git readme.md
-- Put all CSS declarations in one main CSS File > Noel > OK
+
 
 Prio 2
 
+- Refactor CSS Admin UI
 - Admin UI Searchfunction
 - Admin UI Input Validation
 - Gulp Task Build, Minify, compile scss, compress
@@ -74,10 +69,20 @@ Prio 2
 - Admin UI Error Handling
 - REST API Error Handling
 - Unit Tests Admin UI
-- Unit Tests REST API
 - REST API > npm install > install mongodb if not installed -> fill with testdata
 - put configuration values to config file -> hostnames, ports
 - Git cleanup and check .gitignore
+
+
+Done
+- Design Admin UI > Noel > OK
+- Login Admin UI (Admin) > Noel
+- Design Login Showcase > Thomas > OK
+- Landing Page Login Showcase > Thomas > OK
+- Icon App > Thomas > OK
+- Colorize App > Thomas > OK
+- Put all CSS declarations in one main CSS File > Noel > OK
+- Unit Tests REST API > Thomas > OK
 
 
 ## 5. Resume

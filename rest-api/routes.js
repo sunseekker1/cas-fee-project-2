@@ -6,47 +6,46 @@ function setup(handlers) {
 
     // Admins
     router.route('/admins')
-        .get(handlers.adminController.getAdmins)
-        .post(handlers.adminController.postAdmin);
+        .get(handlers.authController.isAuthenticated, handlers.adminController.getAdmins)
+        .post(handlers.authController.isAuthenticated, handlers.adminController.postAdmin);
 
     router.route('/admins/:id')
-        .get(handlers.adminController.getAdmin)
-        //.put(handlers.authController.isAuthenticated, handlers.adminController.putAdmin)
-        .put(handlers.adminController.putAdmin)
-        .delete(handlers.adminController.deleteAdmin);
+        .get(handlers.authController.isAuthenticated, handlers.adminController.getAdmin)
+        .put(handlers.authController.isAuthenticated, handlers.adminController.putAdmin)
+        // .put(handlers.adminController.putAdmin)
+        .delete(handlers.authController.isAuthenticated, handlers.adminController.deleteAdmin);
 
     router.route('/admins/login')
         .post(handlers.adminController.login);
 
     // Clients
     router.route('/clients')
-        .get(handlers.clientController.getClients)
-        .post(handlers.clientController.postClient);
+        .get(handlers.authController.isAuthenticated, handlers.clientController.getClients)
+        .post(handlers.authController.isAuthenticated, handlers.clientController.postClient);
 
     router.route('/clients/:id')
-        .get(handlers.clientController.getClient)
-        .put(handlers.clientController.putClient)
-        .delete(handlers.clientController.deleteClient);
+        .get(handlers.authController.isAuthenticated, handlers.clientController.getClient)
+        .put(handlers.authController.isAuthenticated, handlers.clientController.putClient)
+        .delete(handlers.authController.isAuthenticated, handlers.clientController.deleteClient);
 
     // Sites
     router.route('/sites')
-        .get(handlers.siteController.getSites)
-        .post(handlers.siteController.postSite);
+        .get(handlers.authController.isAuthenticated, handlers.siteController.getSites)
+        .post(handlers.authController.isAuthenticated, handlers.siteController.postSite);
 
     router.route('/sites/:id')
-        .get(handlers.siteController.getSite)
-        .put(handlers.siteController.putSite)
-        .delete(handlers.siteController.deleteSite);
+        .get(handlers.authController.isAuthenticated, handlers.siteController.getSite)
+        .put(handlers.authController.isAuthenticated, handlers.siteController.putSite)
+        .delete(handlers.authController.isAuthenticated, handlers.siteController.deleteSite);
 
     // Access
     router.route('/accesses')
-        .get(handlers.accessController.getAccesses)
-        .post(handlers.accessController.postAccess);
+        .get(handlers.authController.isAuthenticated, handlers.accessController.getAccesses)
+        .post(handlers.authController.isAuthenticated, handlers.accessController.postAccess);
 
     router.route('/accesses/:id')
-        .get(handlers.accessController.getAccess)
-        .put(handlers.accessController.putAccess);
-
+        .get(handlers.authController.isAuthenticated, handlers.accessController.getAccess)
+        .put(handlers.authController.isAuthenticated, handlers.accessController.putAccess);
 
     return router;
 }

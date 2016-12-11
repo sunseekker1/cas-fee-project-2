@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Admin} from './admin';
 import {AdminService} from './admin.service';
 import {Router} from '@angular/router';
+import {LoginService} from "../login/login.service";
 
 @Component({
     moduleId: module.id,
@@ -15,7 +16,7 @@ export class AdminsComponent implements OnInit {
     editedAdmin: Admin;
     private detailEditMode: string;
 
-    constructor(private router: Router, private adminService: AdminService) {
+    constructor(private router: Router, private adminService: AdminService, private loginService: LoginService) {
         this.resetDetailEditForms();
     }
 

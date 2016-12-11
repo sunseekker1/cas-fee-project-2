@@ -2,14 +2,17 @@ import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Site } from './site';
 import 'rxjs/add/operator/toPromise';
+import {LoginService} from "../login/login.service";
 
 
 
 @Injectable()
 export class SiteService {
   private sitesUrl = 'http://localhost:8080/api/sites';  // URL to web api
+  private headers = new Headers({'Content-Type': 'application/json', 'Authorization': "Basic " + btoa(this.loginService.admin.username + ":" + this.loginService.admin.password)});
 
-  constructor(private http: Http) { }
+
+  constructor(private http: Http, private loginService: LoginService) { }
 
   getSites(): Promise<Site[]> {
     return this.http.get(this.sitesUrl, {headers: this.headers})
@@ -25,7 +28,6 @@ export class SiteService {
       .then(sites => sites.find(site => site._id == id));
   }
 
-  private headers = new Headers({'Content-Type': 'application/json'});
 
   update(site: Site): Promise<Site> {
     const url = `${this.sitesUrl}/${site._id}`;
