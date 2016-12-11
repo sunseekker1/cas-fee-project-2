@@ -9,6 +9,7 @@ let server = require('../server');
 let should = chai.should();
 let assert = require('chai').assert;
 let testId;
+let basicAuthUser = new Buffer("testuser:123456").toString("base64");
 
 chai.use(chaiHttp);
 
@@ -29,6 +30,7 @@ describe('Admin API Test', () =>
         {
             chai.request(server)
                 .get('/api/admins/')
+                .set('Authorization', "Basic " + basicAuthUser)
                 .end((err, res) =>
                 {
                     res.should.have.status(200);
@@ -53,6 +55,7 @@ describe('Admin API Test', () =>
             };
             chai.request(server)
                 .post('/api/admins')
+                .set('Authorization', "Basic " + basicAuthUser)
                 .send(admin)
                 .end((err, res) =>
                 {
@@ -81,6 +84,7 @@ describe('Admin API Test', () =>
             chai.request(server)
                 .put('/api/admins/' + testId)
                 .send(admin)
+                .set('Authorization', "Basic " + basicAuthUser)
                 .end((err, res) =>
                 {
                     res.should.have.status(200);
@@ -97,6 +101,7 @@ describe('Admin API Test', () =>
             
             chai.request(server)
                 .get('/api/admins/' + testId)
+                .set('Authorization', "Basic " + basicAuthUser)
                 .end((err, res) =>
                 {
                     res.should.have.status(200);
@@ -118,6 +123,7 @@ describe('Admin API Test', () =>
         {
             chai.request(server)
                 .delete('/api/admins/' + testId)
+                .set('Authorization', "Basic " + basicAuthUser)
                 .end((err, res) =>
                 {
                     res.should.have.status(200);

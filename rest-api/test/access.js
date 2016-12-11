@@ -9,6 +9,7 @@ let server = require('../server');
 let should = chai.should();
 let assert = require('chai').assert;
 let testId;
+let basicAuthUser = new Buffer("testuser:123456").toString("base64");
 
 chai.use(chaiHttp);
 
@@ -29,6 +30,7 @@ describe('Access', () =>
         {
             chai.request(server)
                 .get('/api/accesses/')
+                .set('Authorization', "Basic " + basicAuthUser)
                 .end((err, res) =>
                 {
                     res.should.have.status(200);
@@ -54,6 +56,7 @@ describe('Access', () =>
             chai.request(server)
                 .post('/api/accesses')
                 .send(access)
+                .set('Authorization', "Basic " + basicAuthUser)
                 .end((err, res) =>
                 {
                     res.should.have.status(200);
@@ -79,6 +82,7 @@ describe('Access', () =>
             chai.request(server)
                 .put('/api/accesses/' + testId)
                 .send({used: access.used})
+                .set('Authorization', "Basic " + basicAuthUser)
                 .end((err, res) =>
                 {
                     res.should.have.status(200);
@@ -95,6 +99,7 @@ describe('Access', () =>
             
             chai.request(server)
                 .get('/api/accesses/' + testId)
+                .set('Authorization', "Basic " + basicAuthUser)
                 .end((err, res) =>
                 {
                     res.should.have.status(200);
