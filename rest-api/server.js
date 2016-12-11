@@ -11,6 +11,11 @@ var routes = require('./routes');
 
 mongoose.connect('mongodb://localhost:27017/cas-fee-project-2-rest-api');
 
+if(process.env.NODE_ENV && process.env.NODE_ENV == "test") {
+    process.env.PORT = 8081;
+} else {
+    process.env.PORT = 8080;
+}
 
 // Create our Express application
 var app = express();
