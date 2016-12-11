@@ -4,6 +4,7 @@ import {Admin} from '../admin/admin';
 import {Router} from '@angular/router';
 import {Cookie} from 'ng2-cookies/ng2-cookies';
 
+
 @Component({
     moduleId: module.id,
     selector: 'my-heroes',
@@ -17,11 +18,9 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    public submitForm(event: any){
-        console.log('submitForm');
+    public submitForm(event: any, username: string, password: string){
         if(event.keyCode == 13) {
-
-            // this.login();
+            this.login(username, password);
         }
     }
 

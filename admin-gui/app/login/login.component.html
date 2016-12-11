@@ -3,30 +3,31 @@
     <div class="mdl-cell mdl-cell--4-col"></div>
     <div class="mdl-cell mdl-cell--4-col">
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Login</h2>
-            </div>
-            <div class="mdl-card__supporting-text">
-                <form (keydown)="submitForm($event)">
+            <form (keydown)="submitForm($event, username.value, password.value)">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Login</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
                     <div class="group">
-                        <input type="text" required #username>
+                        <input type="text" formControlName="username" required #username>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Username</label>
                     </div>
                     <div class="group">
-                        <input type="text" required #password>
+                        <input type="text" formControlName="password" required #password>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Password</label>
                     </div>
-                </form>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-                <a (click)="login(username.value, password.value);" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                    Login
-                </a>
-            </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <button type="submit" [disabled]="!form.valid">Submit</button>
+                    <a (click)="login(username.value, password.value);" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Login
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
     <div class="mdl-cell mdl-cell--4-col"></div>
