@@ -16,7 +16,6 @@
                 <a routerLink="/accesses" class="mdl-navigation__link" [class.active-route]="viewState === 'accesses'" (click)="setViewState('accesses')">Accesses</a>
                 <a routerLink="/clients" class="mdl-navigation__link" [class.active-route]="viewState === 'clients'" (click)="setViewState('clients')">Clients</a>
                 <a routerLink="/admins" class="mdl-navigation__link" [class.active-route]="viewState === 'admins'" (click)="setViewState('admins')">Admins</a>
-                <a (click)="logout()" class="mdl-navigation__link">Logout</a>
 
                 <!-- menu opens when trigger button is clicked -->
                 <button md-icon-button [md-menu-trigger-for]="menu">

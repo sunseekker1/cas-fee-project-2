@@ -2,12 +2,19 @@ import {Component} from '@angular/core';
 import {MdDialogRef} from "@angular/material";
 
 @Component({
-    selector: 'your-dialog-selector',
-    template: `
-  <h2>Hi! I am modal dialog!</h2>
-  <button md-raised-button (click)="dialogRef.close(true)">Close dialog TRUE</button>
-<button md-raised-button (click)="dialogRef.close(false)">Close dialog FALSE</button>`
+    moduleId: module.id,
+    templateUrl: 'dialog.component.html'
 })
-export class DialogComponent {
+export class DeleteDialogComponent {
+    private dialogType = 'delete';
+    constructor(public dialogRef: MdDialogRef<any>) { }
+}
+
+@Component({
+    moduleId: module.id,
+    templateUrl: 'dialog.component.html'
+})
+export class LoginDialogComponent {
+    private dialogType = 'login';
     constructor(public dialogRef: MdDialogRef<any>) { }
 }

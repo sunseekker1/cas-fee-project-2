@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {LoginService} from './login.service';
-import {Admin} from '../admin/admin';
 import {Router} from '@angular/router';
 import {Cookie} from 'ng2-cookies/ng2-cookies';
+import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
+import {LoginDialogComponent} from "../dialog/dialog.component";
+
 
 
 @Component({
@@ -11,8 +13,9 @@ import {Cookie} from 'ng2-cookies/ng2-cookies';
     templateUrl: 'login.component.html'
 })
 export class LoginComponent implements OnInit {
+    dialogRef: MdDialogRef<any>;
 
-    constructor(private router: Router, private loginService: LoginService) {
+    constructor(private router: Router, private loginService: LoginService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
     }
 
     ngOnInit(): void {
@@ -35,22 +38,28 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['dashboard']);
             }
             else {
-                console.log("login failed");
-                this.router.navigate(['login']);
+                this.showDialog();
+
+                // console.log("login failed");
+                // this.router.navigate(['login']);
             }
         });
 
-        // this.loginService.login(username, password).then((result) => {
-        //     console.log(result);
-        //     if (result) {
-        //         Cookie.set('userSession', username);
-        //         this.router.navigate(['dashboard']);
-        //     }
-        //     else {
-        //         console.log("login failed");
-        //         this.router.navigate(['login']);
-        //     }
-        // });
+    }
+
+    public showDialog(){
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.viewContainerRef;
+        this.dialogRef = this.dialog.open(LoginDialogComponent, config);
+
+        this.dialogRef.afterClosed().subscribe(confirm => {
+            console.log(confirm);
+            this.dialogRef = null;
+
+            if(confirm){
+                //just close the dialog
+            }
+        });
     }
 
     public logout(): void {

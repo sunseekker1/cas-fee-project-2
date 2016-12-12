@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Admin} from './admin';
 import {AdminService} from './admin.service';
 import {Router} from '@angular/router';
 import {LoginService} from "../login/login.service";
+import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
+import {DeleteDialogComponent} from "../dialog/dialog.component";
 
 @Component({
     moduleId: module.id,
@@ -11,12 +13,13 @@ import {LoginService} from "../login/login.service";
     styleUrls: ['admins.component.css']
 })
 export class AdminsComponent implements OnInit {
+    dialogRef: MdDialogRef<any>;
     admins: Admin[];
     selectedAdmin: Admin;
     editedAdmin: Admin;
     private detailEditMode: string;
 
-    constructor(private router: Router, private adminService: AdminService, private loginService: LoginService) {
+    constructor(private router: Router, private adminService: AdminService, private loginService: LoginService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
         this.resetDetailEditForms();
     }
 
@@ -53,15 +56,29 @@ export class AdminsComponent implements OnInit {
     }
 
     delete(admin: Admin): void {
-        this.resetDetailEditForms();
-        this.adminService
-            .delete(admin._id)
-            .then(() => {
-                this.admins = this.admins.filter(h => h !== admin);
-                if (this.selectedAdmin === admin) {
-                    this.selectedAdmin = null;
-                }
-            });
+
+
+
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.viewContainerRef;
+        this.dialogRef = this.dialog.open(DeleteDialogComponent, config);
+
+        this.dialogRef.afterClosed().subscribe(confirm => {
+            console.log(confirm);
+            this.dialogRef = null;
+
+            if(confirm){
+                this.resetDetailEditForms();
+                this.adminService
+                    .delete(admin._id)
+                    .then(() => {
+                        this.admins = this.admins.filter(h => h !== admin);
+                        if (this.selectedAdmin === admin) {
+                            this.selectedAdmin = null;
+                        }
+                    });
+            }
+        });
     }
 
     edit(): void {

@@ -17,6 +17,7 @@ const routes: Routes = [
     {path: 'accesses', component: AccessesComponent, canActivate: [LoggedInGuard]},
     {path: 'clients', component: ClientsComponent, canActivate: [LoggedInGuard]},
     {path: 'admins', component: AdminsComponent, canActivate: [LoggedInGuard]},
+    {path: '**', component: LoginComponent}
 
 ];
 @NgModule({

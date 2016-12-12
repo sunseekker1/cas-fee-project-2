@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Site} from './site';
 import {SiteService} from './site.service';
 import {Router} from '@angular/router';
+import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
+import {DeleteDialogComponent} from "../dialog/dialog.component";
 
 @Component({
     moduleId: module.id,
@@ -10,12 +12,13 @@ import {Router} from '@angular/router';
     styleUrls: ['sites.component.css']
 })
 export class SitesComponent implements OnInit {
+    dialogRef: MdDialogRef<any>;
     public sites: Site[];
     private selectedSite: Site;
     private editedSite: Site;
     private detailEditMode: string;
 
-    constructor(private router: Router, private siteService: SiteService) {
+    constructor(private router: Router, private siteService: SiteService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
         this.resetDetailEditForms();
     }
 
@@ -42,15 +45,26 @@ export class SitesComponent implements OnInit {
     }
 
     delete(site: Site): void {
-        this.resetDetailEditForms();
-        this.siteService
-            .delete(site._id)
-            .then(() => {
-                this.sites = this.sites.filter(h => h !== site);
-                if (this.selectedSite === site) {
-                    this.selectedSite = null;
-                }
-            });
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.viewContainerRef;
+        this.dialogRef = this.dialog.open(DeleteDialogComponent, config);
+
+        this.dialogRef.afterClosed().subscribe(confirm => {
+            console.log(confirm);
+            this.dialogRef = null;
+
+            if (confirm) {
+                this.resetDetailEditForms();
+                this.siteService
+                    .delete(site._id)
+                    .then(() => {
+                        this.sites = this.sites.filter(h => h !== site);
+                        if (this.selectedSite === site) {
+                            this.selectedSite = null;
+                        }
+                    });
+            }
+        });
     }
 
     add(site: Site): void {

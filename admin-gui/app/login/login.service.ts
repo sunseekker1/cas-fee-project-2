@@ -15,16 +15,6 @@ export class LoginService {
         this.loggedIn = !!sessionStorage.getItem('userSession');
     }
 
-    // public login(username: string, password: string): Promise<Admin> {
-    //     let requestParams = {"username": username, "password": password};
-    //
-    //     return this.http
-    //         .post(this.adminUrl, JSON.stringify(requestParams), {headers: this.headers})
-    //         .toPromise()
-    //         .then((res) => res.json().data)
-    //         .catch(this.handleError);
-    // }
-
     public login(username: string, password: string) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -52,8 +42,6 @@ export class LoginService {
                     console.log(res.err);
                     return false;
                 }
-
-
             });
     }
 
