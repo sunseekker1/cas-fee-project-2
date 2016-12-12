@@ -8,13 +8,16 @@ var accessController = require('./controllers/access');
 var passport = require('passport');
 var authController = require('./controllers/auth');
 var routes = require('./routes');
+var config = require('./config');
 
-mongoose.connect('mongodb://localhost:27017/cas-fee-project-2-rest-api');
+
+// Connect to local mongo db
+mongoose.connect(config.mongodbConnectionUrl);
 
 if(process.env.NODE_ENV && process.env.NODE_ENV == "test") {
-    process.env.PORT = 8081;
+    process.env.PORT = config.testport;
 } else {
-    process.env.PORT = 8080;
+    process.env.PORT = config.port;
 }
 
 // Create our Express application
@@ -24,9 +27,10 @@ var app = express();
 app.use(bodyParser.json({
 }));
 
+
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
-    var allowedOrigins = ['http://localhost:3000', 'http://localhost:3500'];
+    var allowedOrigins = config.allowedOrigins;
     var origin = req.headers.origin;
     if(allowedOrigins.indexOf(origin) > -1){
         res.setHeader('Access-Control-Allow-Origin', origin);

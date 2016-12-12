@@ -92,6 +92,9 @@ describe('Access', () =>
         });
     });
     
+    /*
+     * Test the /GET/:id route
+     */
     describe('/GET/:id access', () =>
     {
         it('it should GET a access entry by the given id', (done) =>

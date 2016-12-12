@@ -94,6 +94,9 @@ describe('Client API Test', () =>
         });
     });
     
+    /*
+     * Test the /GET/:id route
+     */
     describe('/GET/:id client', () =>
     {
         it('it should GET a client entry by the given id', (done) =>

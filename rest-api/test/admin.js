@@ -94,6 +94,9 @@ describe('Admin API Test', () =>
         });
     });
     
+    /*
+     * Test the /GET/:id route
+     */
     describe('/GET/:id admin', () =>
     {
         it('it should GET a admin entry by the given id', (done) =>
