@@ -7,6 +7,7 @@ exports.postSite = function (req, res) {
     site.id = req.body._id;
     site.clientId = req.body.clientId;
     site.title = req.body.title;
+    site.url = req.body.url;
     site.secret = req.body.secret;
 
     site.save(function (err) {
@@ -48,6 +49,12 @@ exports.putSite = function (req, res) {
     }
     if (req.body.title !== undefined && req.body.title.length) {
         fieldsToUpdate.title = req.body.title;
+    }
+    if (req.body.url !== undefined && req.body.url.length) {
+        fieldsToUpdate.url = req.body.url;
+    }
+    if (req.body.clientId !== undefined && req.body.clientId.length) {
+        fieldsToUpdate.clientId = req.body.clientId;
     }
     if (req.body.secret !== undefined) {
         fieldsToUpdate.secret = req.body.secret;

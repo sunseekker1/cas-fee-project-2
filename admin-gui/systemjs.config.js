@@ -27,7 +27,8 @@
 
             // other libraries
             'rxjs': 'npm:rxjs',
-            'ng2-cookies': 'node_modules/ng2-cookies'
+            'ng2-cookies': 'node_modules/ng2-cookies',
+            'ng2-select': 'node_modules/ng2-select/ng2-select'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -38,7 +39,8 @@
             rxjs: {
                 defaultExtension: 'js'
             },
-            'ng2-cookies': {main: 'ng2-cookies.js', defaultExtension: 'js'}
+            'ng2-cookies': {main: 'ng2-cookies.js', defaultExtension: 'js'},
+            'ng2-select': {main: 'ng2-select.js', defaultExtension: 'js'}
         }
     });
 })(this);

@@ -10,6 +10,7 @@
                     <tr>
                         <th class="mdl-data-table__cell--non-numeric">ID</th>
                         <th>Title</th>
+                        <th>URL</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -17,6 +18,7 @@
                     <tr *ngFor="let site of sites" [class.selected]="site === selectedSite" (click)="onSelect(site)">
                         <td class="mdl-data-table__cell--non-numeric">{{site.shortId}}</td>
                         <td>{{site.title}}</td>
+                        <td>{{site.url}}</td>
                         <td>
                             <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                                 <i class="material-icons" (click)="delete(site); $event.stopPropagation()">delete_forever</i>
@@ -56,10 +58,16 @@
                         <label>title</label>
                     </div>
                     <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedSite.url}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>url</label>
+                    </div>
+                    <div class="group readonly">
                         <input type="text" class="readonly" readonly value="{{selectedSite.clientId}}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>clientId</label>
+                        <label>Client</label>
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
@@ -91,10 +99,19 @@
                         <label>title</label>
                     </div>
                     <div class="group">
-                        <input type="text" required [(ngModel)]="editedSite.clientId">
+                        <input type="text" required [(ngModel)]="editedSite.url">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>clientId</label>
+                        <label>url</label>
+                    </div>
+                    <div class="group">
+                        <select (change)="onSelectClient($event.target.value)">
+                            <option *ngFor="let client of clients" [value]="client._id" [selected]="editedSite.clientId == client._id">{{client.username}}</option>
+                        </select>
+                        <!--<input type="text" required [(ngModel)]="editedSite.clientId">-->
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Client</label>
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
@@ -121,14 +138,21 @@
                         <label>title</label>
                     </div>
                     <div class="group">
-                        <input type="text" required #clientId>
+                        <input type="text" required #url hasFocus="true">
                         <span class="highlight"></span>
                         <span class="bar"></span>
+                        <label>url</label>
+                    </div>
+                    <div class="group">
+                        <select (change)="onSelectClient($event.target.value)">
+                            <option *ngFor="let client of clients" [value]="client._id">{{client.username}}</option>
+                        </select>
                         <label>clientId</label>
                     </div>
+
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a (click)="add({title: title.value, clientId: clientId.value}); title.value=''; clientId.value='';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a (click)="add({title: title.value, clientId: selectedClientId, url: url.value}); title.value=''; url.value='';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Add
                     </a>
                 </div>

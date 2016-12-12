@@ -3,4 +3,5 @@ export class Site {
     shortId: string;
     title: string;
     clientId: string;
+    url: string;
 }

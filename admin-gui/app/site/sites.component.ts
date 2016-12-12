@@ -1,9 +1,11 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Site} from './site';
 import {SiteService} from './site.service';
+import {ClientService} from '../client/client.service';
 import {Router} from '@angular/router';
 import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {DeleteDialogComponent} from "../dialog/dialog.component";
+import {Client} from "../client/client";
 
 @Component({
     moduleId: module.id,
@@ -16,14 +18,17 @@ export class SitesComponent implements OnInit {
     public sites: Site[];
     private selectedSite: Site;
     private editedSite: Site;
+    private selectedClientId: string;
     private detailEditMode: string;
+    public clients: Client[];
 
-    constructor(private router: Router, private siteService: SiteService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
+    constructor(private router: Router, private siteService: SiteService, private clientService: ClientService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
         this.resetDetailEditForms();
     }
 
     ngOnInit(): void {
         this.getSites();
+        this.getClients();
     }
 
     getSites(): void {
@@ -35,6 +40,13 @@ export class SitesComponent implements OnInit {
     }
 
     save(): void {
+
+        console.log(this.selectedClientId);
+        console.log(this.editedSite);
+        this.editedSite.clientId = this.selectedClientId;
+        console.log(this.editedSite);
+
+
         this.siteService.update(this.editedSite)
             .then(() => {
                 let selectedSite = this.editedSite;
@@ -109,6 +121,18 @@ export class SitesComponent implements OnInit {
         this.detailEditMode = 'new';
     }
 
+    getClients(): void {
+        this.clientService.getClients().then(clients => {
+            console.log(clients);
+            this.clients = clients;
+        });
+    }
+
+    onSelectClient(clientId: string): void{
+        this.selectedClientId = clientId;
+        console.log(this.selectedClientId);
+    }
+
     mapResult(result: any): void {
         let mappedSites: any = [];
 
@@ -118,7 +142,8 @@ export class SitesComponent implements OnInit {
                 _id: site._id,
                 shortId: site._id.substring(21, 25),
                 clientId: site.clientId,
-                title: site.title
+                title: site.title,
+                url: site.url
             });
         }
         this.sites = mappedSites;
