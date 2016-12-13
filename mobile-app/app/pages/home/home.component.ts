@@ -24,9 +24,6 @@ export class HomeComponent {
         this.checkMasterPassword();
     }
 
-    onPageDidEnter() {
-        //
-    }
 
     checkMasterPassword() {
         if (this.appDataProvider.masterPassword == '') {

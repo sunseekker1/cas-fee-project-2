@@ -6,8 +6,6 @@
 
 <ion-content padding class="home">
 
-    <!--(channel id: {{barcodeData.channelid}})<br><br>-->
-
     <ion-card-header class="info" *ngIf="!loggedIn">
         <h3>{{barcodeData.sitetitle}}</h3>
         <div *ngIf="accountFound">Account found, you are ready to login.</div>
@@ -27,7 +25,7 @@
                 <ion-input type="text" formControlName="username" [(ngModel)]="username"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label floating>Password2</ion-label>
+                <ion-label floating>Password</ion-label>
                 <ion-input type="password" formControlName="password" [(ngModel)]="password"></ion-input>
             </ion-item>
             <ion-buttons>
