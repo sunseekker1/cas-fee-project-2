@@ -6,6 +6,7 @@
     "no-extra-semi": true,
     "no-console": true,
     "no-empty": true,
-    "quotemark": "single"
+    "quotemark": "single",
+    "semicolon": [true, "always"]
   }
 }

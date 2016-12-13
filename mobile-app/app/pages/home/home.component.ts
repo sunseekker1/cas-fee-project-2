@@ -55,7 +55,7 @@ export class HomeComponent {
         })
             .catch((err) => {
                 alert(err);
-            })
+            });
     }
 
     scanDummy() {
@@ -63,7 +63,7 @@ export class HomeComponent {
             siteid: '12345',
             channelid: 'OOIUOJ-LKJOI-LKJOI2',
             sitetitle: 'FastLogin Test2 Account'
-        }
+        };
         const qrcodeData = new QRcodeData(testCode.siteid, testCode.sitetitle, testCode.channelid);
         this.scanDetails(qrcodeData);
     }
