@@ -13,7 +13,10 @@ export class AppDataProvider {
 
     constructor(private http: Http) {
 
+    }
 
+    logout() {
+        this.masterPassword = '';
     }
 
 }

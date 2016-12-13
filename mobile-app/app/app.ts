@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {ionicBootstrap, Platform, Nav, NavController} from 'ionic-angular';
+import {ionicBootstrap, Platform, Nav, NavController, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 
 import {AccountsListComponent} from './pages/accounts/accounts.list.component';
@@ -9,7 +9,7 @@ import {MasterPasswordPage} from './pages/shared/masterpassword.component';
 
 @Component({
     templateUrl: 'build/app.html',
-    providers: [AppDataProvider, NavController]
+    providers: [AppDataProvider]
 })
 
 class MyApp {
@@ -17,11 +17,12 @@ class MyApp {
 
     rootPage: any = HomeComponent;
     pages: Array<{title: string, component: any}>;
+    private navCtrl:NavController;
 
     constructor(
             public platform: Platform,
             private appDataProvider:AppDataProvider,
-            private navCtrl:NavController
+            private menuCtrl:MenuController
         ) {
         this.initializeApp();
 
@@ -34,15 +35,19 @@ class MyApp {
     initializeApp() {
         this.platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
             StatusBar.styleDefault();
         });
 
     }
 
+    logout() {
+        this.appDataProvider.logout();
+        this.nav.push(MasterPasswordPage);
+        this.menuCtrl.close();
+    }
+
     openPage(page) {
         // Reset the content nav to have just this page
-        // we wouldn't want the back button to show in this scenario
         this.nav.setRoot(page.component);
     }
 }
