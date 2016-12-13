@@ -1,3 +1,4 @@
+var config = require('./config');
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -8,7 +9,7 @@ var accessController = require('./controllers/access');
 var passport = require('passport');
 var authController = require('./controllers/auth');
 var routes = require('./routes');
-var config = require('./config');
+
 
 
 // Connect to local mongo db
