@@ -21,6 +21,7 @@
     "browserify-istanbul": "2.0.0",
     "del": "2.2.0",
     "gulp": "3.9.1",
+    "gulp-tslint": "^7.0.1",
     "gulp-watch": "4.3.5",
     "ionic-gulp-browserify-typescript": "2.0.0",
     "ionic-gulp-fonts-copy": "^1.0.0",
@@ -35,7 +36,8 @@
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "run-sequence": "1.1.5",
-    "tsify": "0.16.0"
+    "tsify": "0.16.0",
+    "tslint-eslint-rules": "^3.1.0"
   },
   "cordovaPlugins": [
     "cordova-plugin-device",
