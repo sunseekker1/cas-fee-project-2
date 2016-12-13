@@ -41,11 +41,11 @@ function setup(handlers) {
     // Access
     router.route('/accesses')
         .get(handlers.authController.isAuthenticated, handlers.accessController.getAccesses)
-        .post(handlers.authController.isAuthenticated, handlers.accessController.postAccess);
+        .post(handlers.accessController.postAccess);
 
     router.route('/accesses/:id')
         .get(handlers.authController.isAuthenticated, handlers.accessController.getAccess)
-        .put(handlers.authController.isAuthenticated, handlers.accessController.putAccess);
+        .put(handlers.accessController.putAccess);
 
     return router;
 }
