@@ -47,8 +47,8 @@ body {
 }
 
 .md-overlay-pane {
-    margin-left: -100px;
-    margin-top: 0px;
+    /*margin-left: -100px;*/
+    /*margin-top: 0px;*/
 }
 
 thead {
@@ -57,6 +57,11 @@ thead {
 
 #mobilenav {
     display: none;
+}
+.dashboard-counter{
+    font-size: 68px;
+    /*padding-top: 10px;*/
+    /*padding-bottom: 10px;*/
 }
 
 @media all and (max-width: 768px){
