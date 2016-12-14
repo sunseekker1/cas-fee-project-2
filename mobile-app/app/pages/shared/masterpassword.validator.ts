@@ -11,7 +11,7 @@ export class MasterpasswordValidator {
                }
                else
                    resolve(null);
-           }, 2000)
+           }, 2000);
         });
     }
 

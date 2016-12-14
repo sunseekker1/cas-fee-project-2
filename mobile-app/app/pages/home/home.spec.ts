@@ -38,7 +38,7 @@ describe('Checking several DOM Elements', () => {
     ]);
 
     beforeEach(inject([TestComponentBuilder], _tcb => {
-        tcb = _tcb
+        tcb = _tcb;
     }));
 
     //specs
@@ -51,6 +51,6 @@ describe('Checking several DOM Elements', () => {
             expect(element.querySelector('#scanButton')  === null ).toBe(false);
             done();
 
-        })
+        });
     });
 });

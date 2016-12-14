@@ -42,7 +42,7 @@ export class MasterPasswordPage {
     signin() {
 
         if (!this.mpFrm.valid) {
-            console.log('not valid')
+            console.log('not valid');
         }
         else {
 
@@ -58,7 +58,7 @@ export class MasterPasswordPage {
                             console.log(decryptedMPCheck);
                             if (decryptedMPCheck == 'mpOK') {
                                 this.isCorrect = true;
-                                this.viewCtrl.dismiss()
+                                this.viewCtrl.dismiss();
                             } else {
                                 this.isCorrect = false;
                             }

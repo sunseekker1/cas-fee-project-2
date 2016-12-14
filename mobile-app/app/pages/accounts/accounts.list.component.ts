@@ -63,9 +63,6 @@ export class AccountsListComponent {
             position: 'bottom'
         });
 
-        toast.onDidDismiss(() => {
-
-        });
 
         toast.present();
     }
@@ -78,8 +75,8 @@ export class AccountsListComponent {
     }
 
     getIcon(): string {
-        let imgNr = Math.floor(Math.random() * 4) + 1
-        return 'build/assets/img/p' + imgNr + '.png'
+        let imgNr = Math.floor(Math.random() * 4) + 1;
+        return 'build/assets/img/p' + imgNr + '.png';
     }
 
     //

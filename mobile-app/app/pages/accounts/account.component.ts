@@ -53,7 +53,7 @@ export class AccountComponent {
     save(){
 
         if(!this.accountFrm.valid){
-            console.log('not valid')
+            console.log('not valid');
         }
         else {
 
