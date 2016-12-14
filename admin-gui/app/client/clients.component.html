@@ -9,6 +9,8 @@
                     <thead>
                     <tr>
                         <th class="mdl-data-table__cell--non-numeric">ID</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
                         <th>Username</th>
                         <th></th>
                     </tr>
@@ -16,6 +18,8 @@
                     <tbody>
                     <tr *ngFor="let client of clients" [class.selected]="client === selectedClient" (click)="onSelect(client)">
                         <td class="mdl-data-table__cell--non-numeric">{{client.shortId}}</td>
+                        <td>{{client.firstname}}</td>
+                        <td>{{client.lastname}}</td>
                         <td>{{client.username}}</td>
                         <td>
                             <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="test">
@@ -41,7 +45,7 @@
         <div *ngIf="detailEditMode == 'detail'">
             <div class="demo-card-square mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">Detail: {{selectedClient.username}}</h2>
+                    <h2 class="mdl-card__title-text">Detail: {{selectedClient.firstname}} {{selectedClient.lastname}}</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div class="group readonly">
@@ -50,16 +54,28 @@
                         <label>Id</label>
                     </div>
                     <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedClient.firstname}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Firstname</label>
+                    </div>
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedClient.lastname}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Lastname</label>
+                    </div>
+                    <div class="group readonly">
                         <input type="text" class="readonly" readonly value="{{selectedClient.username}}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>title</label>
+                        <label>Username</label>
                     </div>
                     <div class="group readonly">
                         <input type="text" class="readonly" readonly value="{{selectedClient.email}}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>clientId</label>
+                        <label>Email</label>
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
@@ -76,7 +92,7 @@
         <div *ngIf="detailEditMode == 'edit'">
             <div class="demo-card-square mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">Edit: {{editedClient.username}}</h2>
+                    <h2 class="mdl-card__title-text">Edit: {{editedClient.firstname}} {{editedClient.lastname}}</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
 
@@ -84,6 +100,18 @@
                         <input type="text" class="readonly" readonly value="{{editedClient._id}}">
                         <span class="bar"></span>
                         <label>Id</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required [(ngModel)]="editedClient.firstname">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Firstname</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required [(ngModel)]="editedClient.lastname">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Lastname</label>
                     </div>
                     <div class="group">
                         <input type="text" required [(ngModel)]="editedClient.username">
@@ -123,7 +151,19 @@
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div class="group">
-                        <input type="text" required #username hasFocus="true">
+                        <input type="text" required #firstname hasFocus="true">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Firstname</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required #lastname>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Lastname</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required #username>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Username</label>
@@ -142,7 +182,7 @@
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value=''; email.value='';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a (click)="add({firstname: firstname.value, lastname: lastname.value, username: username.value, password: password.value, email: email.value}); firstname.value=''; lastname.value=''; username.value=''; password.value=''; email.value='';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Add
                     </a>
                 </div>

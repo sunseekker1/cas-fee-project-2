@@ -1,3 +1,5 @@
-{ "_id" : { "$oid" : "57fa0c5e7e0980024b7646c3" }, "username" : "admin", "password" : "$2a$05$a/.s6XoVmIeNKBKVV/1E0.0sIE0m0GQJ4WYYyTsdwqh.s2Mmzc0KS", "email" : "admin1@mail.ch", "__v" : 0 }
-{ "_id" : { "$oid" : "58317afba182bc03f00f839b" }, "username" : "admin2", "password" : "$2a$05$A1R/4iDzE5wCZzhgh31tu.10TwpWjUce85ycaN943MDoTthH1wIkO", "email" : "admin2@email.com", "__v" : 0 }
-{ "_id" : { "$oid" : "58317d8b97d16005a7c8e842" }, "username" : "admin3", "password" : "$2a$05$iPaGp9ydDfiKF3Sd3yqc/.0pBat3mtL3DP4PHhrr3amZUiIugBJTG", "email" : "asdfe@sfew.ch", "__v" : 0 }
+{ "_id" : { "$oid" : "584d67627497fc0470b0693d" }, "username" : "admin2", "password" : "$2a$05$A1R/4iDzE5wCZzhgh31tu.10TwpWjUce85ycaN943MDoTthH1wIkO", "email" : "pablo@email.ch", "__v" : 0, "lastname" : "Escobar", "firstname" : "Pablo" }
+{ "_id" : { "$oid" : "585114853a44120498db3ca7" }, "username" : "admin3", "password" : "$2a$05$6.egs6t37pZ3fCMgs5mOJeKNZ4RLMBdE4P26d8ijF2Q5crXr/o4CK", "email" : "kurt@email.ch", "firstname" : "Kurt", "lastname" : "Kreuz", "__v" : 0 }
+{ "_id" : { "$oid" : "585115e4754d092d4cd3eb7e" }, "username" : "admin1", "password" : "$2a$05$Y5qRPULFP.5xhYyEqSTJTuZ47J72ij.aZJSHC6m62LQtpUoaKveG2", "email" : "james@email.ch", "firstname" : "James", "lastname" : "Bond", "__v" : 0 }
+{ "_id" : { "$oid" : "585115fa754d092d4cd3eb7f" }, "username" : "admin4", "password" : "$2a$05$Dyct7994ln.3yaofK/zP4OMUGPcerLhYW9ARQF7crWNyGrOpKfY7i", "email" : "katja@email.ch", "firstname" : "Katja", "lastname" : "Laufer", "__v" : 0 }
+{ "_id" : { "$oid" : "58511c48913cf501f43473be" }, "username" : "admin", "password" : "$2a$05$lfVlTJ4uR4Xbmyazs3btouraMUsPjoVrZLuQeNwih.KmZhzILhZNm", "email" : "admin@email.ch", "firstname" : "Super", "lastname" : "Admin", "__v" : 0 }
