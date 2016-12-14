@@ -8,7 +8,7 @@ exports.postAccess = function (req, res) {
     access.siteId = req.body.siteId;
     access.socketId = req.body.socketId;
     access.clientId = req.body.clientId;
-    access.used = false;
+    access.used = req.body.used;
     access.creationDate = new Date();
 
     access.save(function (err) {

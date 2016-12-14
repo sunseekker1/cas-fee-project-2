@@ -9,6 +9,8 @@
                     <thead>
                     <tr>
                         <th class="mdl-data-table__cell--non-numeric">ID</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
                         <th>Username</th>
                         <th></th>
                     </tr>
@@ -16,6 +18,8 @@
                     <tbody>
                     <tr *ngFor="let admin of admins" [class.selected]="admin === selectedAdmin" (click)="onSelect(admin)">
                         <td class="mdl-data-table__cell--non-numeric">{{admin.shortId}}</td>
+                        <td>{{admin.firstname}}</td>
+                        <td>{{admin.lastname}}</td>
                         <td>{{admin.username}}</td>
                         <td>
                             <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
@@ -53,8 +57,21 @@
                         <input type="text" class="readonly" readonly value="{{selectedAdmin.username}}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>title</label>
+                        <label>Username</label>
                     </div>
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedAdmin.firstname}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Firstname</label>
+                    </div>
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{selectedAdmin.lastname}}">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Lastname</label>
+                    </div>
+
                     <div class="group readonly">
                         <input type="text" class="readonly" readonly value="{{selectedAdmin.email}}">
                         <span class="highlight"></span>
@@ -81,17 +98,30 @@
                     <h2 class="mdl-card__title-text">Edit: {{editedAdmin.username}}</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <div class="group readonly">
-                        <input type="text" class="readonly" readonly value="{{editedAdmin._id}}">
-                        <span class="bar"></span>
-                        <label>Id</label>
-                    </div>
                     <div class="group">
                         <input type="text" required [(ngModel)]="editedAdmin.username">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Username</label>
                     </div>
+                    <div class="group readonly">
+                        <input type="text" class="readonly" readonly value="{{editedAdmin._id}}">
+                        <span class="bar"></span>
+                        <label>Id</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required [(ngModel)]="editedAdmin.firstname">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Firstname</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required [(ngModel)]="editedAdmin.lastname">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Lastname</label>
+                    </div>
+
                     <div class="group">
                         <input type="text" required [(ngModel)]="editedAdmin.email">
                         <span class="highlight"></span>
@@ -121,6 +151,7 @@
                 <div class="mdl-card__title mdl-card--expand">
                     <h2 class="mdl-card__title-text">Add new Admin</h2>
                 </div>
+
                 <div class="mdl-card__supporting-text">
                     <div class="group">
                         <input type="text" required #username hasFocus="true">
@@ -128,6 +159,19 @@
                         <span class="bar"></span>
                         <label>Username</label>
                     </div>
+                    <div class="group">
+                        <input type="text" required #firstname hasFocus="true">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Firstname</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required #lastname hasFocus="true">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Lastname</label>
+                    </div>
+
                     <div class="group">
                         <input type="text" required #email>
                         <span class="highlight"></span>
@@ -142,7 +186,7 @@
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a (click)="add({username: username.value, password: password.value, email: email.value}); username.value=''; password.value=''; email.value='';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a (click)="add({username: username.value, password: password.value, email: email.value, firstname: firstname.value, lastname: lastname.value}); username.value=''; password.value=''; email.value=''; firstname.value=''; lastname.value='';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Add
                     </a>
 
