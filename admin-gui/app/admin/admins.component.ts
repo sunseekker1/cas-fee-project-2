@@ -116,7 +116,9 @@ export class AdminsComponent implements OnInit {
                 _id: admin._id,
                 shortId: admin._id.substring(21, 25),
                 username: admin.username,
-                email: admin.email
+                email: admin.email,
+                firstname: admin.firstname,
+                lastname: admin.lastname
             });
         }
         this.admins = mapped;

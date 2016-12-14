@@ -5,11 +5,27 @@ by Noel Bellón & Thomas Brandenburger
 This project has the purpose to give the users a simple way to login to their favorite webapplications/websites (participant) with their smartphones by scanning a qr-code on the respective websites.
 
 **Features:**
-- Hybrid Mobile App
-- User backend running in the browser
-- Managing accounts
-- Autofill Logins by scanning qr-code
-- Encrypted client storage of login credentials
+- Mobile App
+    - Managing accounts
+    - Scan QR-Code
+    - Encrypted client storage of login credentials
+    - Hybrid App Running on Android, iOS and Windows Mobile
+
+- Admin User Interface
+    - Administration
+    - Dashboard with Overview of Clients, Sites, Accesses
+    - Access-Logs
+    - Responsive
+    - Authentication
+    
+- Login Showcase
+    - Autofill Credentials by Receiving Data from Websocket
+    - Providing QR-Code
+    
+- REST-API
+    - Data Persistance with MongoDB
+    - Authentication
+
 
 **Workflow:**
 
