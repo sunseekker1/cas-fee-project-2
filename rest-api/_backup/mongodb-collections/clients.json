@@ -1,4 +1,3 @@
-{ "_id" : { "$oid" : "57fa0cb87e0980024b7646c4" }, "username" : "sepp", "password" : "$2a$05$6XhQoX.BvgDG7GneOwT7Uupm9iRAX8zqKrzlecVkFDUP8VmDkw4NW", "email" : "sepp@mail.com", "__v" : 0 }
-{ "_id" : { "$oid" : "58317951a182bc03f00f839a" }, "username" : "hanswurst3", "password" : "$2a$05$JcopkX69oEj8Pe/ebxLnEe839S3bEGIKwYR6QQ7owXvLeGo9IIZKq", "email" : "hanswurst@email.com", "__v" : 0 }
-{ "_id" : { "$oid" : "58317d4897d16005a7c8e840" }, "username" : "konrad", "password" : "$2a$05$.e9JbIieDosIqVjOsAEctuShDZWHlQDaA4hBlYiUiygnfX69DnYca", "email" : "konrad@gmail.com", "__v" : 0 }
-{ "_id" : { "$oid" : "5831e349251e2b0389b3d2cc" }, "username" : "sfe2", "password" : "$2a$05$XC9FcutALASmPy6GOCvWNu.bj0.fjreHIZqQFMlDyihIK7zlBRTh6", "email" : "23d2", "__v" : 0 }
+{ "_id" : { "$oid" : "584bfb003fafdb35a4119d8e" }, "username" : "susanna1", "password" : "$2a$05$Jn5RcuBU/loQVDDEzh4VeODXinOmjBmOmainriA1cvkZ9Sz85xSoC", "email" : "susanna@email.ch", "__v" : 0, "lastname" : "Cava", "firstname" : "Susanna" }
+{ "_id" : { "$oid" : "584e708f718cd61d78069f04" }, "username" : "cecilia77", "password" : "$2a$05$PVXLq0BWh8sKI.OP//KsluVl3piZePkTjMUQZ2ci.mBT8QVXbPzGW", "email" : "cecilia@email.ch", "__v" : 0, "lastname" : "Monsanto", "firstname" : "Cecilia" }
+{ "_id" : { "$oid" : "584f1964c35fd424a06ab3f5" }, "username" : "jean", "password" : "$2a$05$V//H.WQShX94JsoWAGaGPuIg61EU/3BlQkSOiLgN.Xkq2aOhPxhlC", "email" : "jean@email.ch", "__v" : 0, "lastname" : "Paris", "firstname" : "Jean" }

@@ -61,7 +61,7 @@
                         <input type="text" class="readonly" readonly value="{{selectedSite.url}}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>url</label>
+                        <label>URL</label>
                     </div>
                     <div class="group readonly">
                         <input type="text" class="readonly" readonly value="{{selectedSite.clientId}}">
@@ -96,13 +96,13 @@
                         <input type="text" required [(ngModel)]="editedSite.title">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>title</label>
+                        <label>Title</label>
                     </div>
                     <div class="group">
                         <input type="text" required [(ngModel)]="editedSite.url">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>url</label>
+                        <label>URL</label>
                     </div>
                     <div class="group">
                         <select (change)="onSelectClient($event.target.value)">
@@ -135,19 +135,19 @@
                         <input type="text" required #title hasFocus="true">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>title</label>
+                        <label>Title</label>
                     </div>
                     <div class="group">
                         <input type="text" required #url hasFocus="true">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>url</label>
+                        <label>URL</label>
                     </div>
                     <div class="group">
                         <select (change)="onSelectClient($event.target.value)">
                             <option *ngFor="let client of clients" [value]="client._id">{{client.username}}</option>
                         </select>
-                        <label>clientId</label>
+                        <label>Client</label>
                     </div>
 
                 </div>

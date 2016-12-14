@@ -117,7 +117,9 @@ export class ClientsComponent implements OnInit {
                 shortId: client._id.substring(21, 25),
                 username: client.username,
                 password: client.password,
-                email: client.email
+                email: client.email,
+                firstname: client.firstname,
+                lastname: client.lastname
             });
         }
         this.clients = mapped;

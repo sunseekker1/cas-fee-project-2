@@ -6,7 +6,9 @@ exports.postClient = function (req, res) {
         id: req.body.id,
         username: req.body.username,
         password: req.body.password,
-        email: req.body.email
+        email: req.body.email,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname
     });
 
     client.save(function (err) {
@@ -55,6 +57,12 @@ exports.putClient = function (req, res) {
     }
     if (req.body.email !== undefined) {
         fieldsToUpdate.email = req.body.email;
+    }
+    if (req.body.firstname !== undefined) {
+        fieldsToUpdate.firstname = req.body.firstname;
+    }
+    if (req.body.lastname !== undefined) {
+        fieldsToUpdate.lastname = req.body.lastname;
     }
 
     Client.update({_id: req.params.id}, fieldsToUpdate, function (err, num, raw) {

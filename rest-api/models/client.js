@@ -11,7 +11,9 @@ var ClientSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    email: String
+    email: String,
+    firstname: String,
+    lastname: String
 });
 
 // Execute before each client.save() call

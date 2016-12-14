@@ -1,3 +1,6 @@
-{ "_id" : { "$oid" : "5831766ea182bc03f00f8398" }, "title" : "Facebook2", "clientId" : "57fa0cc37e0980024b7646c5", "__v" : 0, "secret" : null }
-{ "_id" : { "$oid" : "58317798a182bc03f00f8399" }, "title" : "Google", "clientId" : "123", "__v" : 0 }
-{ "_id" : { "$oid" : "58317d7297d16005a7c8e841" }, "title" : "Motogp", "clientId" : "af32", "__v" : 0 }
+{ "_id" : { "$oid" : "5831766ea182bc03f00f8398" }, "title" : "Facebook", "clientId" : "57fa0cc37e0980024b7646c5", "__v" : 0, "secret" : null, "url" : "http://www.facebook.ch" }
+{ "_id" : { "$oid" : "58317798a182bc03f00f8399" }, "title" : "Google", "clientId" : "584e708f718cd61d78069f04", "__v" : 0, "secret" : null, "url" : "http://www.google.ch" }
+{ "_id" : { "$oid" : "58317d7297d16005a7c8e841" }, "title" : "Twitter", "clientId" : "584f1964c35fd424a06ab3f5", "__v" : 0, "url" : "http://www.twitter.com" }
+{ "_id" : { "$oid" : "584efc3e1a58292974efb942" }, "url" : "http://www.sbb.ch", "title" : "SBB", "clientId" : "584f1964c35fd424a06ab3f5", "__v" : 0 }
+{ "_id" : { "$oid" : "585116dc754d092d4cd3eb80" }, "url" : "http://www.hsr.ch", "title" : "HSR Rapperswil", "clientId" : "584f1964c35fd424a06ab3f5", "__v" : 0 }
+{ "_id" : { "$oid" : "585116f6754d092d4cd3eb81" }, "url" : "http://www.meinewebseite.ch", "title" : "Meine Webseite", "clientId" : "584f1964c35fd424a06ab3f5", "__v" : 0 }

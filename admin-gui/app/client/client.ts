@@ -4,6 +4,6 @@ export class Client {
     username: string;
     password: string;
     email: string;
-    prename: string;
+    firstname: string;
     lastname: string;
 }
