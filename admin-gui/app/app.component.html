@@ -21,7 +21,15 @@
                 <button md-icon-button [md-menu-trigger-for]="menu">
                     <md-icon>more_vert</md-icon>
                 </button>
-                <md-menu #menu="mdMenu">
+                <md-menu #menu="mdMenu" id="mobilemenu">
+                    <div id="mobilenav">
+                        <button routerLink="/dashboard" md-menu-item >Dashboard</button>
+                        <button routerLink="/sites" md-menu-item >Sites</button>
+                        <button routerLink="/accesses" md-menu-item >Accesses</button>
+                        <button routerLink="/clients" md-menu-item >Clients</button>
+                        <button routerLink="/admins" md-menu-item >Admins</button>
+                    </div>
+
                     <button md-menu-item (click)="logout()">Log Out</button>
                 </md-menu>
 

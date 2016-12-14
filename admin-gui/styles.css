@@ -46,10 +46,28 @@ body {
     padding-bottom: 50px;
 }
 
+.md-overlay-pane {
+    margin-left: -100px;
+    margin-top: 0px;
+}
+
 thead {
     background: #eeeeee;
 }
 
+#mobilenav {
+    display: none;
+}
+
+@media all and (max-width: 768px){
+    #mobilenav {
+        display: block;
+    }
+
+    .mdl-layout__header-row .mdl-navigation__link {
+        display: none;
+    }
+}
 
 
 
