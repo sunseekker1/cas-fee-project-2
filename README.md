@@ -110,7 +110,6 @@ Done
 - Gute Idee -> funktionierender POC
 
 **Würden wir anders machen**
-- Konsolidierung verschiedener Node-Module
 - Einsatz von Betaversionen Ionic/Angular für Produktion überdenken
 - Mehr Zeit für Testing (Unit und EndtoEnd)
 - Mehr Zeit für GUI > Zeitaufwändig
