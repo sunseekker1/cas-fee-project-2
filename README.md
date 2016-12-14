@@ -122,3 +122,7 @@ Done
 - Socket Service
 - REST API implementieren
 - TypeScript
+- Gulp
+- Testing
+- MongoDB
+- SCSS
