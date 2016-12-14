@@ -16,7 +16,7 @@ This project has the purpose to give the users a simple way to login to their fa
 ![Alt text](/Fastlogin.png?raw=true "Fastlogin")
 
 ## 2. Technologies
-- jQuery
+- jQuery / jQuery Plugin
 - HTML
 - CSS
 - SCSS
@@ -24,10 +24,10 @@ This project has the purpose to give the users a simple way to login to their fa
 - Encryption
 - Angular2
 - Node.js
-- exress
-- socket.io
-- mongodb
-- ionic framework
+- Exress
+- Socket.io
+- MongoDB
+- Ionic Framework (Cordova)
 
 
 ## 3. Installation
@@ -89,20 +89,17 @@ Done
 ## 5. Resume
 
 **Besonders gut**
-
 - Aufteilung Workpackages
 - Vielfältiger Technologieeinsatz
 - Gute Idee -> funktionierender POC
 
 **Würden wir anders machen**
-
 - Konsolidierung verschiedener Node-Module
 - Einsatz von Betaversionen Ionic/Angular für Produktion überdenken
 - Mehr Zeit für Testing (Unit und EndtoEnd)
 - Mehr Zeit für GUI > Zeitaufwändig
 
-**Würden wir anders machen**
-
+**Was haben wir gelernt**
 - Nodejs
 - Angular2
 - Ionic > Cordova
