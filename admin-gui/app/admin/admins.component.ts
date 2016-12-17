@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {Admin} from './admin';
 import {AdminService} from './admin.service';
 import {Router} from '@angular/router';
 import {LoginService} from "../login/login.service";
-import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {DeleteDialogComponent} from "../dialog/dialog.component";
 
 @Component({
@@ -14,13 +15,34 @@ import {DeleteDialogComponent} from "../dialog/dialog.component";
 })
 export class AdminsComponent implements OnInit {
     dialogRef: MdDialogRef<any>;
+    editForm : FormGroup;
     admins: Admin[];
     selectedAdmin: Admin;
     editedAdmin: Admin;
     private detailEditMode: string;
 
-    constructor(private router: Router, private adminService: AdminService, private loginService: LoginService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
+    constructor(private router: Router,
+                private adminService: AdminService,
+                private loginService: LoginService,
+                public dialog: MdDialog,
+                public viewContainerRef: ViewContainerRef,
+                public formBuilder: FormBuilder) {
+
         this.resetDetailEditForms();
+        this.formBuilder = formBuilder;
+        this.editForm = formBuilder.group({
+            'id' : '',
+            'firstname': '',
+            'lastname' : '',
+            'username' : '',
+            'email' : '',
+            'password' : ''
+        })
+    }
+
+    submitForm(value: any):void{
+        console.log('Reactive Form Data: ')
+        console.log(value);
     }
 
     ngOnInit(): void {
@@ -84,6 +106,15 @@ export class AdminsComponent implements OnInit {
     edit(): void {
         this.editedAdmin = this.cloneObject(this.selectedAdmin);
         this.detailEditMode = 'edit';
+
+        this.editForm = this.formBuilder.group({
+            'id' : this.editedAdmin._id,
+            'firstname': this.editedAdmin.firstname,
+            'lastname' : this.editedAdmin.lastname,
+            'username' : this.editedAdmin.username,
+            'email' : this.editedAdmin.email,
+            'password' : this.editedAdmin.password
+        })
     }
 
     new(): void {

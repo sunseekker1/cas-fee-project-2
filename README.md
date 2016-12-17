@@ -70,6 +70,9 @@ This project has the purpose to give the users a simple way to login to their fa
 
 Prio 1
 
+- Admin UI Input Validation
+- Refactor CSS Admin UI
+
 - Comment source code > Thomas > Noel
 - Code formatting > Thomas > Noel
 - Update git readme.md
@@ -77,10 +80,12 @@ Prio 1
 
 Prio 2
 
-- Refactor CSS Admin UI
-- Admin UI Dropdown For Selectable Values
+
+
 - Admin UI Searchfunction
-- Admin UI Input Validation
+- Admin UI Grafical Display of Accesses > Timeline
+- Admin UI Make it Multilanguage Capable
+- Admin UI Move canActivate() Method to loginComponent
 - Gulp Task Build, Minify, compile scss, compress
 - package.json > dev / prod dependencies
 - Admin UI Error Handling
@@ -94,6 +99,7 @@ Prio 2
 Done
 - Design Admin UI > Noel > OK
 - Login Admin UI (Admin) > Noel
+- Admin UI Dropdown For Selectable Values > Noel
 - Design Login Showcase > Thomas > OK
 - Landing Page Login Showcase > Thomas > OK
 - Icon App > Thomas > OK

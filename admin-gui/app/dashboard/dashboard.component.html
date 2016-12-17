@@ -117,27 +117,27 @@
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div class="group readonly">
-                        <input type="text" class="readonly" readonly value="{{selectedAccess._id}}">
+                        <input type="text" class="readonly detail-view" readonly value="{{selectedAccess._id}}">
                         <span class="bar"></span>
                         <label>Id</label>
                     </div>
                     <div class="group readonly">
-                        <input type="text" class="readonly" readonly value="{{selectedAccess.siteTitle}}">
+                        <input type="text" class="readonly detail-view" readonly value="{{selectedAccess.siteTitle}}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>title</label>
+                        <label>Title</label>
                     </div>
                     <div class="group readonly">
-                        <input type="text" class="readonly" readonly value="{{ selectedAccess.creationDate | date:'d.M.y HH:mm:ss' }}">
+                        <input type="text" class="readonly detail-view" readonly value="{{ selectedAccess.creationDate | date:'d.M.y HH:mm:ss' }}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>clientId</label>
+                        <label>Access Date</label>
                     </div>
                     <div class="group readonly">
-                        <input type="text" class="readonly" readonly value="{{selectedAccess.used}}">
+                        <input type="text" class="readonly detail-view" readonly value="{{selectedAccess.used}}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>used</label>
+                        <label>Used</label>
                     </div>
                 </div>
             </div>

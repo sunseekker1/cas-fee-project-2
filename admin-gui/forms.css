@@ -54,6 +54,11 @@ select:not(.readonly):focus {
     outline: none;
 }
 
+input.detail-view,
+select.detail-view {
+    border-bottom: 1px solid #ffffff;
+}
+
 div.readonly input ,
 div.readonly select {
     color: #9e9e9e;

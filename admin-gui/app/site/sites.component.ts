@@ -18,6 +18,7 @@ export class SitesComponent implements OnInit {
     public sites: Site[];
     private selectedSite: Site;
     private editedSite: Site;
+    private selectedClientName: string;
     private selectedClientId: string;
     private detailEditMode: string;
     public clients: Client[];
@@ -44,6 +45,7 @@ export class SitesComponent implements OnInit {
         console.log(this.selectedClientId);
         console.log(this.editedSite);
         this.editedSite.clientId = this.selectedClientId;
+        this.selectedClientName = this.getClientName(this.editedSite.clientId);
         console.log(this.editedSite);
 
 
@@ -73,6 +75,8 @@ export class SitesComponent implements OnInit {
                         this.sites = this.sites.filter(h => h !== site);
                         if (this.selectedSite === site) {
                             this.selectedSite = null;
+                            this.selectedClientName = null;
+                            this.selectedClientId = null;
                         }
                     });
             }
@@ -88,15 +92,17 @@ export class SitesComponent implements OnInit {
             .then((site) => {
                 site.shortId = site._id.substring(21, 25);
                 this.sites.push(site);
-                this.selectedSite = null;
             });
 
         this.selectedSite = null;
         this.editedSite = null;
+        this.selectedClientName = null;
+        this.selectedClientId = null;
     }
 
     edit(): void {
         this.editedSite = this.cloneObject(this.selectedSite);
+        this.selectedClientName = this.getClientName(this.editedSite.clientId);
         this.detailEditMode = 'edit';
     }
 
@@ -112,6 +118,7 @@ export class SitesComponent implements OnInit {
     onSelect(site: Site): void {
         this.editedSite = null;
         this.selectedSite = site;
+        this.selectedClientName = this.getClientName(this.selectedSite.clientId);
         this.detailEditMode = 'detail';
     }
 
@@ -123,7 +130,6 @@ export class SitesComponent implements OnInit {
 
     getClients(): void {
         this.clientService.getClients().then(clients => {
-            console.log(clients);
             this.clients = clients;
         });
     }
@@ -160,6 +166,18 @@ export class SitesComponent implements OnInit {
         }
 
         return newObj;
+    }
+
+    getClientName(clientId: string){
+        let selectedClientName = clientId;
+
+        for (let client of this.clients){
+            if (client._id == clientId){
+                selectedClientName = client.firstname + ' ' + client.lastname;
+                break;
+            }
+        }
+        return selectedClientName;
     }
 }
 
