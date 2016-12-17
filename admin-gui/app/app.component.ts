@@ -3,6 +3,7 @@ import {MDL} from './material-design-lite-upgrade-element'; // Inofficial Angula
 import {LoginService} from './login/login.service';
 import {Cookie} from 'ng2-cookies/ng2-cookies';
 import {Router} from '@angular/router';
+import {AppConfigProvider} from './config/app.config.provider';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +17,7 @@ export class AppComponent {
     // login: LoginService;
     viewState = '';
     activeRoute = '';
-    constructor(private loginService: LoginService, private router: Router) {
+    constructor(private loginService: LoginService, private router: Router, private appConfig:AppConfigProvider) {
         this.loginService.logout();
         this.router.navigate(['login']);
     }
@@ -32,4 +33,14 @@ export class AppComponent {
         this.router.navigate(['login']);
         console.log(this.loginService.isLoggedIn());
     }
+
+    changeLang():void {
+        if(this.appConfig.appLang == 'de') {
+            this.appConfig.appLang = 'en';
+        }else {
+            this.appConfig.appLang = 'de';
+        }
+
+    }
+
 }

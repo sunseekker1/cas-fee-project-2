@@ -26,6 +26,8 @@ import {LoginService}      from './login/login.service';
 import {LoggedInGuard}        from './login/logged-in.guard';
 import {ShortIdPipe}        from './pipes/short-id.pipe';
 import {DeleteDialogComponent, LoginDialogComponent} from './dialog/dialog.component';
+import {TranslatePipe} from './pipes/translate.pipe';
+import {AppConfigProvider} from './config/app.config.provider';
 
 @NgModule({
     imports: [
@@ -47,13 +49,14 @@ import {DeleteDialogComponent, LoginDialogComponent} from './dialog/dialog.compo
         LoginComponent,
         DeleteDialogComponent,
         LoginDialogComponent,
-        FocusDirective
+        FocusDirective,
+        TranslatePipe
     ],
     entryComponents: [
         DeleteDialogComponent,
         LoginDialogComponent
     ],
-    providers: [SiteService, ClientService, AdminService, AccessService, LoginService, LoggedInGuard],
+    providers: [SiteService, ClientService, AdminService, AccessService, LoginService, LoggedInGuard, AppConfigProvider],
     bootstrap: [AppComponent]
 })
 export class AppModule {

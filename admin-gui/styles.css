@@ -64,6 +64,10 @@ thead {
     /*padding-bottom: 10px;*/
 }
 
+.changelang a {
+    color: white;
+}
+
 @media all and (max-width: 768px){
     #mobilenav {
         display: block;

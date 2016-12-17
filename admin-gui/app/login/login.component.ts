@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Cookie} from 'ng2-cookies/ng2-cookies';
 import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {LoginDialogComponent} from "../dialog/dialog.component";
+import {AppConfigProvider} from '../config/app.config.provider';
 
 
 
@@ -67,5 +68,7 @@ export class LoginComponent implements OnInit {
         // Cookie.delete('userSession');
         this.router.navigate(['login']);
     }
+
+
 }
 
