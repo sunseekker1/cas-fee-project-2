@@ -15,6 +15,12 @@ export const LANG_TRANSLATIONS_DE = {
     'button.viewAccesses': 'Zugriffe anzeigen',
     'button.viewAdmins': 'Administratoren anzeigen',
     'button.viewClients': 'Kunden anzeigen',
+    'button.changeLanguage': 'Switch to English',
+    'button.noGoBack': 'Nein, zurück',
+    'button.cancel': 'Abbrechen',
+    'button.deleteEntry': 'Eintrag löschen',
+    'button.tryAgain': 'Nochmals versuchen',
+    'button.close': 'Schliessen',
     'label.sites': 'Seiten',
     'label.client': 'Kunde',
     'label.login': 'Anmelden',
@@ -29,7 +35,9 @@ export const LANG_TRANSLATIONS_DE = {
     'label.url': 'URL',
     'label.used': 'Benutzt',
     'label.detail': 'Detail',
+    'label.edit': 'Edit',
     'label.hello': 'Hallo',
+    'label.changeLanguage': 'Switch to English',
     'title.addNewSite': 'Neue Seite erfassen',
     'title.addNewClient': 'Neuen Kuden erfassen',
     'title.addNewAdmin': 'Neuen Admin erfassen',
@@ -37,6 +45,10 @@ export const LANG_TRANSLATIONS_DE = {
     'title.clients': 'Kunden',
     'title.admins': 'Administratoren',
     'title.accesses': 'Zugriffe',
-    'message.test': 'Test'
+    'title.deleteEntry': 'Eintrag löschen',
+    'title.wrongPassword': 'Falsches Passwort/Benutzername',
+    'message.confirmDelete': 'Möchten Sie diesen Einrag definitiv löschen?',
+    'message.helloAdmin': 'Wir wünschen Ihnen einen wunderbaren Tag!',
+    'message.wrongPassword': 'Benutzer existiert nicht oder das eingegebene Passwort ist falsch.'
 
 };

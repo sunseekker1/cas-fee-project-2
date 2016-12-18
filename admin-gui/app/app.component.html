@@ -28,9 +28,9 @@
                 </button>
                 <md-menu #menu="mdMenu" id="mobilemenu">
                     <button md-menu-item (click)="onHelloMessage()">{{'label.hello' | translate }} {{loginService.admin.firstname}} {{loginService.admin.lastname}}</button>
-                    <button md-menu-item *ngIf="appConfig.appLang == 'en'" (click)="changeLang()">Auf Deutsch wechseln</button>
-                    <button md-menu-item *ngIf="appConfig.appLang == 'de'" (click)="changeLang()">Switch to English</button>
-                    <div id="mobilenav">    
+                    <button md-menu-item *ngIf="appConfig.appLang == 'en'" (click)="changeLang()">{{'button.changeLanguage' | translate }}</button>
+                    <button md-menu-item *ngIf="appConfig.appLang == 'de'" (click)="changeLang()">{{'button.changeLanguage' | translate }}</button>
+                    <div id="mobilenav">
                         <button routerLink="/dashboard" md-menu-item>{{'navigation.dashboard' | translate }}</button>
                         <button routerLink="/sites" md-menu-item>{{'navigation.sites' | translate }}</button>
                         <button routerLink="/accesses" md-menu-item>{{'navigation.accesses' | translate }}</button>
@@ -41,8 +41,8 @@
                 </md-menu>
             </nav>
             <div class="changelang" *ngIf="!loginService.isLoggedIn()">
-                <span *ngIf="appConfig.appLang == 'en'"><a (click)="changeLang()">Anzeigesprache auf Deutsch wechseln</a></span>
-                <span *ngIf="appConfig.appLang == 'de'"><a (click)="changeLang()">Switch to English</a></span>
+                <span *ngIf="appConfig.appLang == 'en'"><a (click)="changeLang()">{{'label.changeLanguage' | translate }}</a></span>
+                <span *ngIf="appConfig.appLang == 'de'"><a (click)="changeLang()">{{'label.changeLanguage' | translate }}</a></span>
             </div>
         </div>
     </header>
