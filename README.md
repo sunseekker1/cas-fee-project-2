@@ -47,8 +47,10 @@ This project has the purpose to give the users a simple way to login to their fa
 
 
 ## 3. Installation
+Mobile App
 ```
-
+cd mobile-app
+npm install
 ```
 
 ## 4. API
