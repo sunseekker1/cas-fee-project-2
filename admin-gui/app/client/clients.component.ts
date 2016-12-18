@@ -89,7 +89,6 @@ export class ClientsComponent implements OnInit {
     onEdit(): void {
         this.editedClient = this.commonProvider.cloneObject(this.selectedClient);
         this.detailEditMode = 'edit';
-        console.log(this.editedClient);
     }
 
     onNew(): void {

@@ -7,29 +7,29 @@
             <div class="mdl-card__supporting-text">
                 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                     <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric">{{'label.id' | translate }}</th>
-                        <th>{{'label.firstname' | translate }}</th>
-                        <th>{{'label.lastname' | translate }}</th>
-                        <th>{{'label.username' | translate }}</th>
-                        <th></th>
-                    </tr>
+                        <tr>
+                            <th class="mdl-data-table__cell--non-numeric">{{'label.id' | translate }}</th>
+                            <th>{{'label.firstname' | translate }}</th>
+                            <th>{{'label.lastname' | translate }}</th>
+                            <th>{{'label.username' | translate }}</th>
+                            <th></th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let client of clients" [class.selected]="client === selectedClient" (click)="onSelect(client)">
-                        <td class="mdl-data-table__cell--non-numeric">{{client.shortId}}</td>
-                        <td>{{client.firstname}}</td>
-                        <td>{{client.lastname}}</td>
-                        <td>{{client.username}}</td>
-                        <td>
-                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="test">
-                                <i class="material-icons" (click)="onDelete(client); $event.stopPropagation()">delete_forever</i>
-                            </button>
-                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                                <i class="material-icons" (click)="onSelect(client)">open_in_new</i>
-                            </button>
-                        </td>
-                    </tr>
+                        <tr *ngFor="let client of clients" [class.selected]="client === selectedClient" (click)="onSelect(client)">
+                            <td class="mdl-data-table__cell--non-numeric">{{client.shortId}}</td>
+                            <td>{{client.firstname}}</td>
+                            <td>{{client.lastname}}</td>
+                            <td>{{client.username}}</td>
+                            <td>
+                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="test">
+                                    <i class="material-icons" (click)="onDelete(client); $event.stopPropagation()">delete_forever</i>
+                                </button>
+                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                    <i class="material-icons" (click)="onSelect(client)">open_in_new</i>
+                                </button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -114,13 +114,10 @@
                         <label>{{'label.lastname' | translate }}</label>
                     </div>
                     <div class="group">
-                        <input type="text" required minlength="4" maxlength="24" [(ngModel)]="editedClient.username">
+                        <input type="text" required [(ngModel)]="editedClient.username">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>{{'label.username' | translate }}</label>
-                    </div>
-                    <div *ngIf="formErrors.username" class="alert alert-danger">
-                        {{ formErrors.username }}
                     </div>
                     <div class="group">
                         <input type="text" required [(ngModel)]="editedClient.email">
@@ -192,6 +189,7 @@
         </div>
     </div>
 </div>
+
 
 
 
