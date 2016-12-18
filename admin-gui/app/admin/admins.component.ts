@@ -4,7 +4,6 @@ import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {Admin} from './admin';
 import {AdminService} from './admin.service';
 import {DeleteDialogComponent} from "../dialog/dialog.component";
-import {AppConfigProvider} from '../config/app.config.provider';
 
 
 @Component({
@@ -19,7 +18,7 @@ export class AdminsComponent implements OnInit {
     selectedAdmin: Admin;
     detailEditMode: string;
 
-    constructor(private appConfig:AppConfigProvider, private adminService: AdminService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef, public formBuilder: FormBuilder) {
+    constructor(private adminService: AdminService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef, public formBuilder: FormBuilder) {
 
         this.resetDetailEditForms();
         this.formBuilder = formBuilder;

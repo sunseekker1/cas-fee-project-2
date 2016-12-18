@@ -33,6 +33,7 @@ import {LoginDialogComponent}   from './dialog/dialog.component';
 import {HelloDialogComponent}   from './dialog/dialog.component';
 import {TranslatePipe}          from './pipes/translate.pipe';
 import {AppConfigProvider}      from './config/app.config.provider';
+import {CommonProvider}      from './common/common.provider';
 
 
 
@@ -68,7 +69,7 @@ import {AppConfigProvider}      from './config/app.config.provider';
         LoginDialogComponent,
         HelloDialogComponent
     ],
-    providers: [SiteService, ClientService, AdminService, AccessService, LoginService, LoginStatus, AppConfigProvider],
+    providers: [SiteService, ClientService, AdminService, AccessService, LoginService, LoginStatus, AppConfigProvider, CommonProvider],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -8,7 +8,6 @@ import {Admin} from '../admin/admin';
 import {AdminService} from '../admin/admin.service';
 import {Site} from '../site/site';
 import {SiteService} from '../site/site.service';
-import {AppConfigProvider} from '../config/app.config.provider';
 // import {ChartModule}            from 'primeng/primeng';
 // import {LineChartDemo}            from '../chart/linechart.component';
 
@@ -33,7 +32,7 @@ export class DashboardComponent implements OnInit {
     clientsLength: number;
     sitesLength: number;
 
-    constructor(private appConfig:AppConfigProvider, private accessService: AccessService, private clientService: ClientService, private adminService: AdminService, private siteService: SiteService,
+    constructor(private accessService: AccessService, private clientService: ClientService, private adminService: AdminService, private siteService: SiteService,
                 private loginService: LoginService,
                 // private chart: ChartModule, private linechart: LineChartDemo
     ) {

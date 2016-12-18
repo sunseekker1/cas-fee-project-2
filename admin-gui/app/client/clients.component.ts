@@ -4,7 +4,7 @@ import {ClientService} from './client.service';
 import {Router} from '@angular/router';
 import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {DeleteDialogComponent} from "../dialog/dialog.component";
-import {AppConfigProvider} from '../config/app.config.provider';
+import {CommonProvider} from "../common/common.provider";
 
 
 @Component({
@@ -19,7 +19,7 @@ export class ClientsComponent implements OnInit {
     editedClient: Client;
     detailEditMode: string;
 
-    constructor(private appConfig:AppConfigProvider, private router: Router, private clientService: ClientService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
+    constructor(private router: Router, private clientService: ClientService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef, public commonProvider: CommonProvider) {
         this.resetDetailEditForms();
     }
 
@@ -88,7 +88,7 @@ export class ClientsComponent implements OnInit {
     }
 
     onEdit(): void {
-        this.editedClient = this.cloneObject(this.selectedClient);
+        this.editedClient = this.commonProvider.cloneObject(this.selectedClient);
         this.detailEditMode = 'edit';
     }
 
@@ -136,17 +136,5 @@ export class ClientsComponent implements OnInit {
         this.clients = mapped;
     }
 
-    cloneObject(obj: any) {
-        if (obj === null || typeof obj !== 'object') {
-            return obj;
-        }
-
-        var newObj = obj.constructor(); // give temp the original obj's constructor
-        for (var key in obj) {
-            newObj[key] = this.cloneObject(obj[key]);
-        }
-
-        return newObj;
-    }
 }
 

@@ -72,20 +72,14 @@ Prio 1
 
 - Admin UI Input Validation
 - Refactor CSS Admin UI
-
 - Comment source code > Thomas > Noel
 - Code formatting > Thomas > Noel
 - Update git readme.md
 
 
 Prio 2
-
-
-
 - Admin UI Searchfunction
 - Admin UI Grafical Display of Accesses > Timeline
-- Admin UI Make it Multilanguage Capable
-- Admin UI Move canActivate() Method to loginComponent
 - Gulp Task Build, Minify, compile scss, compress
 - package.json > dev / prod dependencies
 - Admin UI Error Handling
@@ -106,6 +100,7 @@ Done
 - Colorize App > Thomas > OK
 - Put all CSS declarations in one main CSS File > Noel > OK
 - Unit Tests REST API > Thomas > OK
+- Admin UI Make it Multilanguage Capable > OK
 
 
 ## 5. Resume

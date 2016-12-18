@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {MdDialogRef} from "@angular/material";
 import {LoginService} from '../login/login.service';
-import {AppConfigProvider} from '../config/app.config.provider';
 
 
 @Component({
@@ -10,7 +9,7 @@ import {AppConfigProvider} from '../config/app.config.provider';
 })
 export class DeleteDialogComponent {
     dialogType = 'delete';
-    constructor(private appConfig:AppConfigProvider, public dialogRef: MdDialogRef<any>) { }
+    constructor(public dialogRef: MdDialogRef<any>) { }
 }
 
 
@@ -20,7 +19,7 @@ export class DeleteDialogComponent {
 })
 export class LoginDialogComponent {
     dialogType = 'login';
-    constructor(private appConfig:AppConfigProvider, public dialogRef: MdDialogRef<any>) { }
+    constructor(public dialogRef: MdDialogRef<any>) { }
 }
 
 @Component({
@@ -29,5 +28,5 @@ export class LoginDialogComponent {
 })
 export class HelloDialogComponent {
     dialogType = 'hello';
-    constructor(private appConfig:AppConfigProvider, public dialogRef: MdDialogRef<any>, private loginService: LoginService) { }
+    constructor(public dialogRef: MdDialogRef<any>, private loginService: LoginService) { }
 }
