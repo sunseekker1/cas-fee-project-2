@@ -59,6 +59,8 @@ $ gulp lint
 ```
 To install the app on the mobile phone copy mobile-app/build/android-debug.apk to you android phone.
 
+
+
 **Login Showcase**
 ```
 $ cd login-showcase
@@ -67,9 +69,10 @@ $ npm start
 open Browser at localhost:3500
 ```
 
-**REST API**
+
+**REST API - With Installation of Local MongoDB**
 Make sure you have installed mongodb on your local machine
-On Windows you need to modify the installation location of the mongodb bin directory in the package.json install script to fetch your installation 
+Make sure you have uncommented the connection string for local mongodb in config.js
 ```
 $ cd rest-api
 $ npm install
@@ -80,6 +83,21 @@ REST API is listening at localhost:8080
 ```
 To test the REST API you can import the postman collection "/rest-api/_backup/postman-api/collection.json" into your postman app
 You have to choose "Basic Auth" and authenticate with user admin/admin
+
+
+
+**REST API - Without Installation Using Hosted MongoDB**
+Make sure you have uncommented the connection string for hosted mongodb in config.js
+```
+$ cd rest-api
+$ npm install
+$ npm start
+REST API is listening at localhost:8080
+```
+To test the REST API you can import the postman collection "/rest-api/_backup/postman-api/collection.json" into your postman app
+You have to choose "Basic Auth" and authenticate with user admin/admin
+
+
 
 **Admin UI**
 ```
