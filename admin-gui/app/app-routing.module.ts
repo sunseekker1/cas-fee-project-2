@@ -16,8 +16,7 @@ const routes: Routes = [
     {path: 'sites', component: SitesComponent, canActivate: [LoginStatus]},
     {path: 'accesses', component: AccessesComponent, canActivate: [LoginStatus]},
     {path: 'clients', component: ClientsComponent, canActivate: [LoginStatus]},
-    {path: 'admins', component: AdminsComponent, canActivate: [LoginStatus]},
-    {path: '**', component: LoginComponent}
+    {path: 'admins', component: AdminsComponent, canActivate: [LoginStatus]}
 
 ];
 @NgModule({

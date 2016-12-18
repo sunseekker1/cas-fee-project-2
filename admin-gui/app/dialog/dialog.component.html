@@ -10,3 +10,9 @@
     <p>Username not existent or Password did not match.</p>
     <button class="mdl-button mdl-js-button mdl-button--primary" (click)="dialogRef.close(true)">Try Again</button>
 </div>
+
+<div *ngIf="dialogType === 'hello'">
+    <h3>Hello {{loginService.admin.firstname}} {{loginService.admin.lastname}}</h3>
+    <p>Have a very nice day!</p>
+    <button class="mdl-button mdl-js-button mdl-button--primary" (click)="dialogRef.close(true)">Close</button>
+</div>

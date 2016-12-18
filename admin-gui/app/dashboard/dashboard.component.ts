@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {LoginService} from '../login/login.service';
 import {Access} from '../access/access';
 import {AccessService} from '../access/access.service';
 import {Client} from '../client/client';
@@ -30,7 +31,7 @@ export class DashboardComponent implements OnInit {
     clientsLength: number;
     sitesLength: number;
 
-    constructor(private accessService: AccessService, private clientService: ClientService, private adminService: AdminService, private siteService: SiteService) {
+    constructor(private accessService: AccessService, private clientService: ClientService, private adminService: AdminService, private siteService: SiteService, private loginService: LoginService) {
     }
 
     ngOnInit(): void {

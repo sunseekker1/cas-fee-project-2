@@ -3,7 +3,7 @@
         <img class="mdl-layout-icon" src="/assets/img/icon-60.png"/>
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title"><a routerLink="/dashboard">Fastlogin</a></span>
+            <span class="mdl-layout-title"><a routerLink="/dashboard">Fastlogin</a> </span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
@@ -27,6 +27,9 @@
                     <md-icon>more_vert</md-icon>
                 </button>
                 <md-menu #menu="mdMenu" id="mobilemenu">
+                    <button md-menu-item (click)="onHelloMessage()">Hello {{loginService.admin.firstname}} {{loginService.admin.lastname}}</button>
+                    <button md-menu-item *ngIf="appConfig.appLang == 'en'" (click)="changeLang()">Auf Deutsch wechseln</button>
+                    <button md-menu-item *ngIf="appConfig.appLang == 'de'" (click)="changeLang()">Switch to English</button>
                     <div id="mobilenav">
                         <button routerLink="/dashboard" md-menu-item>Dashboard</button>
                         <button routerLink="/sites" md-menu-item>Sites</button>
@@ -37,9 +40,9 @@
                     <button md-menu-item (click)="logout()">Log Out</button>
                 </md-menu>
             </nav>
-            <div class="changelang">
-                <span *ngIf="appConfig.appLang == 'en'"><a (click)="changeLang()">DE</a></span>
-                <span *ngIf="appConfig.appLang == 'de'"><a (click)="changeLang()">EN</a></span>
+            <div class="changelang" *ngIf="!loginService.isLoggedIn()">
+                <span *ngIf="appConfig.appLang == 'en'"><a (click)="changeLang()">Anzeigesprache auf Deutsch wechseln</a></span>
+                <span *ngIf="appConfig.appLang == 'de'"><a (click)="changeLang()">Switch to English</a></span>
             </div>
         </div>
     </header>

@@ -27,6 +27,7 @@ import {FocusDirective}         from './directives/focus.directive';
 import {ShortIdPipe}            from './pipes/short-id.pipe';
 import {DeleteDialogComponent}  from './dialog/dialog.component';
 import {LoginDialogComponent}   from './dialog/dialog.component';
+import {HelloDialogComponent}   from './dialog/dialog.component';
 import {TranslatePipe}          from './pipes/translate.pipe';
 import {AppConfigProvider}      from './config/app.config.provider';
 
@@ -51,12 +52,14 @@ import {AppConfigProvider}      from './config/app.config.provider';
         LoginComponent,
         DeleteDialogComponent,
         LoginDialogComponent,
+        HelloDialogComponent,
         FocusDirective,
         TranslatePipe
     ],
     entryComponents: [
         DeleteDialogComponent,
-        LoginDialogComponent
+        LoginDialogComponent,
+        HelloDialogComponent
     ],
     providers: [SiteService, ClientService, AdminService, AccessService, LoginService, LoginStatus, AppConfigProvider],
     bootstrap: [AppComponent]
