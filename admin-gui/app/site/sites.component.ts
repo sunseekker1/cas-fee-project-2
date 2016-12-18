@@ -35,6 +35,7 @@ export class SitesComponent implements OnInit {
 
     create(site: Site): void {
         site.title = site.title.trim();
+
         if (!site.title || !site.clientId) {
             return;
         }
@@ -53,7 +54,6 @@ export class SitesComponent implements OnInit {
     update(): void {
         this.editedSite.clientId = this.selectedClientId;
         this.selectedClientName = this.getClientName(this.editedSite.clientId);
-        console.log(this.editedSite);
 
         this.siteService.update(this.editedSite)
             .then(() => {
@@ -70,7 +70,6 @@ export class SitesComponent implements OnInit {
         this.dialogRef = this.dialog.open(DeleteDialogComponent, config);
 
         this.dialogRef.afterClosed().subscribe(confirm => {
-            console.log(confirm);
             this.dialogRef = null;
 
             if (confirm) {
@@ -110,6 +109,9 @@ export class SitesComponent implements OnInit {
     }
 
     onCreate(site: Site): void {
+        if (site.clientId == undefined){ // very very ugly, but very very late to fix it properly
+            site.clientId = this.clients[0]._id;
+        }
         this.create(site);
     }
 
@@ -132,13 +134,13 @@ export class SitesComponent implements OnInit {
 
     onSelectClient(clientId: string): void {
         this.selectedClientId = clientId;
-        console.log(this.selectedClientId);
     }
 
     onSelect(site: Site): void {
         this.editedSite = null;
         this.selectedSite = site;
         this.selectedClientName = this.getClientName(this.selectedSite.clientId);
+        this.selectedClientId = this.selectedSite.clientId;
         this.detailEditMode = 'detail';
     }
 

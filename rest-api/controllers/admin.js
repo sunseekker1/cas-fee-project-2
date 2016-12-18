@@ -92,7 +92,6 @@ exports.deleteAdmin = function (req, res) {
 exports.login = function (req, res) {
 
     Admin.findOne({username: req.body.username}, function (err, admin) {
-        console.log("login.service.ts findOne 1", admin);
         if (err) {
             return res.json({success: false, err: err});
         }
@@ -104,7 +103,6 @@ exports.login = function (req, res) {
 
         // Make sure the password is correct
         admin.verifyPassword(req.body.password, function (err, isMatch) {
-            console.log("login.service.ts verifyPassword 1", isMatch);
             if (err) {
                 return res.json({success: false, err: err});
             }

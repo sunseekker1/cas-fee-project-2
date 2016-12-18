@@ -27,12 +27,10 @@ export class LoginComponent implements OnInit {
 
     login(username: string, password: string): void {
         this.loginService.login(username, password).subscribe((result) => {
-            console.log('login.component.ts', result);
 
             this.router.navigate(['dashboard']);
 
             if (result) {
-                console.log("login passed");
                 this.router.navigate(['dashboard']);
             }
             else {
@@ -51,7 +49,6 @@ export class LoginComponent implements OnInit {
         this.dialogRef = this.dialog.open(LoginDialogComponent, config);
 
         this.dialogRef.afterClosed().subscribe(confirm => {
-            console.log(confirm);
             this.dialogRef = null;
 
             if(confirm){
