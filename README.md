@@ -70,19 +70,18 @@ open Browser at localhost:3500
 ```
 
 **REST API - Without Installation Using Hosted MongoDB - RECOMENDED**
-Make sure you have uncommented the connection string for hosted mongodb in config.js
 ```
 $ cd rest-api
 $ npm install
 $ npm start
 REST API is listening at localhost:8080
 ```
+Make sure you have uncommented the connection string for hosted mongodb in config.js
+
 To test the REST API you can import the postman collection "/rest-api/_backup/postman-api/collection.json" into your postman app
 You have to choose "Basic Auth" and authenticate with user admin/admin
 
 **REST API - With Installation of Local MongoDB**
-Make sure you have installed mongodb on your local machine
-Make sure you have uncommented the connection string for local mongodb in config.js
 ```
 $ cd rest-api
 $ npm install
@@ -91,6 +90,9 @@ $ npm run mongo-import-win (mongo-import-mac)
 $ npm start
 REST API is listening at localhost:8080
 ```
+Make sure you have installed mongodb on your local machine
+Make sure you have uncommented the connection string for local mongodb in config.js
+
 To test the REST API you can import the postman collection "/rest-api/_backup/postman-api/collection.json" into your postman app
 You have to choose "Basic Auth" and authenticate with user admin/admin
 
