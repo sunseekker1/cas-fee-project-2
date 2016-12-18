@@ -8,7 +8,9 @@ import {Admin} from '../admin/admin';
 import {AdminService} from '../admin/admin.service';
 import {Site} from '../site/site';
 import {SiteService} from '../site/site.service';
-import {Router} from '@angular/router';
+import {AppConfigProvider} from '../config/app.config.provider';
+// import {ChartModule}            from 'primeng/primeng';
+// import {LineChartDemo}            from '../chart/linechart.component';
 
 
 @Component({
@@ -31,7 +33,10 @@ export class DashboardComponent implements OnInit {
     clientsLength: number;
     sitesLength: number;
 
-    constructor(private accessService: AccessService, private clientService: ClientService, private adminService: AdminService, private siteService: SiteService, private loginService: LoginService) {
+    constructor(private appConfig:AppConfigProvider, private accessService: AccessService, private clientService: ClientService, private adminService: AdminService, private siteService: SiteService,
+                private loginService: LoginService,
+                // private chart: ChartModule, private linechart: LineChartDemo
+    ) {
     }
 
     ngOnInit(): void {
@@ -79,6 +84,29 @@ export class DashboardComponent implements OnInit {
         this.selectedAdmin = null;
         this.selectedClient = null;
         this.selectedSite = null;
+
+
+
+        // data: any;
+        //
+        // this.data = {
+        //     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        //     datasets: [
+        //         {
+        //             label: 'My First dataset',
+        //             backgroundColor: '#42A5F5',
+        //             borderColor: '#1E88E5',
+        //             data: [65, 59, 80, 81, 56, 55, 40]
+        //         },
+        //         {
+        //             label: 'My Second dataset',
+        //             backgroundColor: '#9CCC65',
+        //             borderColor: '#7CB342',
+        //             data: [28, 48, 40, 19, 86, 27, 90]
+        //         }
+        //     ]
+        // }
+
     }
 
     mapResult(result: any, sites: any): void {

@@ -7,6 +7,9 @@ import {ReactiveFormsModule}    from "@angular/forms";
 import {HttpModule}             from '@angular/http';
 import {MaterialModule}         from '@angular/material';
 import {AppRoutingModule}       from './app-routing.module';
+// import {ChartModule}          from 'angular2-highcharts';  // does not work, why?
+// import {ChartsModule} from 'ng2-charts/ng2-charts'; // does not work, why?
+import {ChartModule}            from 'primeng/primeng';
 
 import {AppComponent}           from './app.component';
 import {DashboardComponent}     from './dashboard/dashboard.component';
@@ -21,7 +24,7 @@ import {ClientService}          from './client/client.service';
 import {AdminService}           from './admin/admin.service';
 import {AccessService}          from './access/access.service';
 import {LoginService}           from './login/login.service';
-import {LoginStatus}          from './login/login-status.service';
+import {LoginStatus}            from './login/login-status.service';
 
 import {FocusDirective}         from './directives/focus.directive';
 import {ShortIdPipe}            from './pipes/short-id.pipe';
@@ -32,6 +35,7 @@ import {TranslatePipe}          from './pipes/translate.pipe';
 import {AppConfigProvider}      from './config/app.config.provider';
 
 
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -39,7 +43,10 @@ import {AppConfigProvider}      from './config/app.config.provider';
         ReactiveFormsModule,
         HttpModule,
         AppRoutingModule,
-        MaterialModule.forRoot()
+        MaterialModule.forRoot(),
+        ChartModule
+        // ChartModule  // does not work, why?
+        // ChartsModule // does not work, why?
     ],
     declarations: [
         AppComponent,

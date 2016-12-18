@@ -12,32 +12,32 @@
                 <!--*ngIf="userSession"-->
 
                 <a routerLink="/dashboard" class="mdl-navigation__link" [class.active-route]="viewState === 'dashboard'" (click)="setViewState('dashboard')">{{
-                    'dashboard' | translate }}</a>
+                    'navigation.dashboard' | translate }}</a>
                 <a routerLink="/sites" class="mdl-navigation__link" [class.active-route]="viewState === 'sites'" (click)="setViewState('sites')">{{
-                    'sites' | translate }}</a>
+                    'navigation.sites' | translate }}</a>
                 <a routerLink="/accesses" class="mdl-navigation__link" [class.active-route]="viewState === 'accesses'" (click)="setViewState('accesses')">{{
-                    'accesses' | translate }}</a>
+                    'navigation.accesses' | translate }}</a>
                 <a routerLink="/clients" class="mdl-navigation__link" [class.active-route]="viewState === 'clients'" (click)="setViewState('clients')">{{
-                    'clients' | translate }}</a>
+                    'navigation.clients' | translate }}</a>
                 <a routerLink="/admins" class="mdl-navigation__link" [class.active-route]="viewState === 'admins'" (click)="setViewState('admins')">{{
-                    'admins' | translate }}</a>
+                    'navigation.admins' | translate }}</a>
 
                 <!-- menu opens when trigger button is clicked -->
                 <button md-icon-button [md-menu-trigger-for]="menu">
                     <md-icon>more_vert</md-icon>
                 </button>
                 <md-menu #menu="mdMenu" id="mobilemenu">
-                    <button md-menu-item (click)="onHelloMessage()">Hello {{loginService.admin.firstname}} {{loginService.admin.lastname}}</button>
+                    <button md-menu-item (click)="onHelloMessage()">{{'label.hello' | translate }} {{loginService.admin.firstname}} {{loginService.admin.lastname}}</button>
                     <button md-menu-item *ngIf="appConfig.appLang == 'en'" (click)="changeLang()">Auf Deutsch wechseln</button>
                     <button md-menu-item *ngIf="appConfig.appLang == 'de'" (click)="changeLang()">Switch to English</button>
-                    <div id="mobilenav">
-                        <button routerLink="/dashboard" md-menu-item>Dashboard</button>
-                        <button routerLink="/sites" md-menu-item>Sites</button>
-                        <button routerLink="/accesses" md-menu-item>Accesses</button>
-                        <button routerLink="/clients" md-menu-item>Clients</button>
-                        <button routerLink="/admins" md-menu-item>Admins</button>
+                    <div id="mobilenav">    
+                        <button routerLink="/dashboard" md-menu-item>{{'navigation.dashboard' | translate }}</button>
+                        <button routerLink="/sites" md-menu-item>{{'navigation.sites' | translate }}</button>
+                        <button routerLink="/accesses" md-menu-item>{{'navigation.accesses' | translate }}</button>
+                        <button routerLink="/clients" md-menu-item>{{'navigation.clients' | translate }}</button>
+                        <button routerLink="/admins" md-menu-item>{{'navigation.admins' | translate }}</button>
                     </div>
-                    <button md-menu-item (click)="logout()">Log Out</button>
+                    <button md-menu-item (click)="logout()">{{'button.logout' | translate }}</button>
                 </md-menu>
             </nav>
             <div class="changelang" *ngIf="!loginService.isLoggedIn()">

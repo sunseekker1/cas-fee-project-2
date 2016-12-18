@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {DeleteDialogComponent} from "../dialog/dialog.component";
 import {Client} from "../client/client";
+import {AppConfigProvider} from '../config/app.config.provider';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class SitesComponent implements OnInit {
     private detailEditMode: string;
     public clients: Client[];
 
-    constructor(private router: Router, private siteService: SiteService, private clientService: ClientService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
+    constructor(private appConfig:AppConfigProvider, private router: Router, private siteService: SiteService, private clientService: ClientService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
         this.resetDetailEditForms();
     }
 

@@ -3,6 +3,8 @@ import {Access} from './access';
 import {AccessService} from './access.service';
 import {SiteService} from '../site/site.service';
 import {Router} from '@angular/router';
+import {AppConfigProvider} from '../config/app.config.provider';
+
 
 @Component({
     moduleId: module.id,
@@ -14,7 +16,7 @@ export class AccessesComponent implements OnInit {
     selectedAccess: Access;
     private detailEditMode: string;
 
-    constructor(private router: Router, private accessService: AccessService, private siteService: SiteService) {
+    constructor(private appConfig:AppConfigProvider, private router: Router, private accessService: AccessService, private siteService: SiteService) {
         this.resetDetailEditForms();
     }
 

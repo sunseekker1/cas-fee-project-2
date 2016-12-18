@@ -2,15 +2,15 @@
     <div class="mdl-cell mdl-cell--6-col">
         <div class="demo-card-square mdl-card mdl-shadow--2dp">
             <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Accesses</h2>
+                <h2 class="mdl-card__title-text">{{'title.accesses' | translate }}</h2>
             </div>
             <div class="mdl-card__supporting-text">
                 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                     <thead>
                         <tr>
-                            <th class="mdl-data-table__cell--non-numeric">ID</th>
-                            <th>Title</th>
-                            <th>Access Date</th>
+                            <th class="mdl-data-table__cell--non-numeric">{{'label.id' | translate }}</th>
+                            <th>{{'label.title' | translate }}</th>
+                            <th>{{'label.accessDate' | translate }}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -35,31 +35,31 @@
         <div *ngIf="detailEditMode == 'detail'">
             <div class="demo-card-square mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">Detail: {{selectedAccess.siteTitle}}</h2>
+                    <h2 class="mdl-card__title-text">{{'label.detail' | translate }}: {{selectedAccess.siteTitle}}</h2>
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div class="group readonly">
                         <input type="text" class="readonly detail-view" readonly value="{{selectedAccess._id}}">
                         <span class="bar"></span>
-                        <label>Id</label>
+                        <label>{{'label.id' | translate }}</label>
                     </div>
                     <div class="group readonly">
                         <input type="text" class="readonly detail-view" readonly value="{{selectedAccess.siteTitle}}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>Title</label>
+                        <label>{{'label.title' | translate }}</label>
                     </div>
                     <div class="group readonly">
                         <input type="text" class="readonly detail-view" readonly value="{{ selectedAccess.creationDate | date:'d.M.y HH:mm:ss' }}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>Access Date</label>
+                        <label>{{'label.accessDate' | translate }}</label>
                     </div>
                     <div class="group readonly">
                         <input type="text" class="readonly detail-view" readonly value="{{selectedAccess.used}}">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                        <label>Used</label>
+                        <label>{{'label.used' | translate }}</label>
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
