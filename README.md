@@ -47,11 +47,23 @@ This project has the purpose to give the users a simple way to login to their fa
 
 
 ## 3. Installation
-Mobile App
+**Mobile App**
 ```
-cd mobile-app
-npm install
+$ cd mobile-app
+$ npm install
+$ ionic serve
+$ gulp watch
 ```
+To install the app on the mobile phone copy mobile-app/build/android-debug.apk to you android phone.
+
+**Login Showcase**
+```
+$ cd login-showcase
+$ npm install
+$ npm start
+open Browser at localhost:3500
+```
+
 
 ## 4. API
 
