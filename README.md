@@ -52,7 +52,10 @@ This project has the purpose to give the users a simple way to login to their fa
 $ cd mobile-app
 $ npm install
 $ ionic serve
+
+*** Gulp Tasks ***
 $ gulp watch
+$ gulp lint
 ```
 To install the app on the mobile phone copy mobile-app/build/android-debug.apk to you android phone.
 
