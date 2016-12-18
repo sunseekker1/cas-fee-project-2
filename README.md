@@ -53,7 +53,7 @@ $ cd mobile-app
 $ npm install
 $ ionic serve
 
-**Gulp Tasks **
+*** Gulp Tasks ***
 $ gulp watch
 $ gulp lint
 ```
