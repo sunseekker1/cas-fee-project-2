@@ -51,7 +51,7 @@ export class AccountComponent {
 
 
     save(){
-
+        // obsolete method since accounts can only be created through scanning process
         if(!this.accountFrm.valid){
             console.log('not valid');
         }

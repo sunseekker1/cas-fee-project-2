@@ -11,6 +11,8 @@
 
 @import "../pages/accounts/accounts";
 
+/* GENERAL */
+/* ************** */
 
 .alert {
   padding: 15px;
@@ -23,12 +25,6 @@
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
-}
-
-.button-logout {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
 }
 
 .home-bg {
@@ -47,24 +43,7 @@
 }
 
 
-ion-input {
-  background-color: #3f3f3f;
-  color: white;
-  padding: 6px 12px;
-}
 
-.input-wrapper {
-  /*margin-top: 10px;
-  margin-bottom: 10px;*/
-}
-
-.item {
-  padding-right: 16px;
-}
-
-ion-item-sliding .item{
-  padding-left: 16px;
-}
 
 .item .item-inner {
   padding-right: 0;
@@ -75,13 +54,6 @@ ion-item-sliding .item{
   box-shadow: none;
 }
 
-ion-content {
-  color: #7f7f7f;
-}
-
-ion-content ion-card ion-card-content {
-  padding: 13px 16px 13px 16px;
-}
 
 .toolbar-background {
   background-color: map-get($colors, lila1);
@@ -90,6 +62,36 @@ ion-content ion-card ion-card-content {
 
 .toolbar-title, .bar-button-default {
   color: white;
+}
+
+
+
+/* IONIC ELEMENTS */
+/* ************** */
+ion-input {
+  background-color: #3f3f3f;
+  color: white;
+  padding: 6px 12px;
+}
+
+.input-has-focus ion-label[stacked],.input-has-focus ion-label[floating] {
+  color: map-get($colors, lila1);
+}
+
+.item {
+  padding-right: 16px;
+}
+
+ion-item-sliding .item{
+  padding-left: 16px;
+}
+
+ion-content {
+  color: #7f7f7f;
+}
+
+ion-content ion-card ion-card-content {
+  padding: 13px 16px 13px 16px;
 }
 
 scroll-content {
@@ -152,10 +154,6 @@ ion-card-content, .item {
 }
 
 
-.input-has-focus ion-label[stacked],.input-has-focus ion-label[floating] {
-  color: map-get($colors, lila1);
-}
-
 ion-label[stacked], ion-label[floating] {
   padding-left: 12px;
 }
@@ -165,8 +163,26 @@ ion-label[floating] {
   transform: translate3d(-11, 34px, 14);
 }
 
+ion-item-sliding .item {
+  padding: 0 0 0 16px;
+}
+
+ion-list ion-item-options {
+  border-bottom: 1px solid map-get($colors, lila2);
+  border-top: 1px solid map-get($colors, lila2);
+}
+
+/* BUTTONS */
+/* ******* */
+
 .button {
   background-color: map-get($colors, lila1);
+}
+
+.button-logout {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 .button.activated, .button:hover:not(.disable-hover) {
@@ -181,11 +197,3 @@ ion-label[floating] {
   background-color: #d0a30c;
 }
 
-ion-item-sliding .item {
-  padding: 0 0 0 16px;
-}
-
-ion-list ion-item-options {
-  border-bottom: 1px solid map-get($colors, lila2);
-  border-top: 1px solid map-get($colors, lila2);
-}
