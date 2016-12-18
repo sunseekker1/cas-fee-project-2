@@ -29,8 +29,6 @@
             'rxjs': 'npm:rxjs',
             'ng2-cookies': 'node_modules/ng2-cookies',
             'ng2-select': 'node_modules/ng2-select/ng2-select',
-            // 'angular2-highcharts': 'node_modules/angular2-highcharts' // does not work, why?
-            // 'ng2-charts': 'node_modules/ng2-charts/ng2-charts' // does not work, why?
             'primeng': 'npm:primeng'
         },
         // packages tells the System loader how to load when no filename and/or no extension
@@ -44,8 +42,6 @@
             },
             'ng2-cookies': {main: 'ng2-cookies.js', defaultExtension: 'js'},
             'ng2-select': {main: 'ng2-select.js', defaultExtension: 'js'},
-            // 'angular2-highcharts': {main: '/dist/index.js', defaultExtension: 'js'} // does not work, why?
-            // 'ng2-charts': {main: 'ng2-charts.js', defaultExtension: 'js'} // does not work, why?
             primeng: {
                 defaultExtension: 'js'
             }

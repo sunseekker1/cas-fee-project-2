@@ -9,7 +9,6 @@ import {AdminService} from '../admin/admin.service';
 import {Site} from '../site/site';
 import {SiteService} from '../site/site.service';
 // import {ChartModule}            from 'primeng/primeng';
-// import {LineChartDemo}            from '../chart/linechart.component';
 
 
 @Component({
@@ -33,8 +32,7 @@ export class DashboardComponent implements OnInit {
     sitesLength: number;
 
     constructor(private accessService: AccessService, private clientService: ClientService, private adminService: AdminService, private siteService: SiteService,
-                private loginService: LoginService,
-                // private chart: ChartModule, private linechart: LineChartDemo
+                private loginService: LoginService
     ) {
     }
 
