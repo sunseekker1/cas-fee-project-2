@@ -79,6 +79,11 @@ thead {
     cursor: pointer;
 }
 
+.alert-danger{
+    color: #a33534;
+    margin-left: 5px;
+}
+
 @media all and (max-width: 768px){
     #mobilenav {
         display: block;

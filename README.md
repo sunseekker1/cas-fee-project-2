@@ -69,6 +69,16 @@ $ npm start
 open Browser at localhost:3500
 ```
 
+**REST API - Without Installation Using Hosted MongoDB - RECOMENDED**
+Make sure you have uncommented the connection string for hosted mongodb in config.js
+```
+$ cd rest-api
+$ npm install
+$ npm start
+REST API is listening at localhost:8080
+```
+To test the REST API you can import the postman collection "/rest-api/_backup/postman-api/collection.json" into your postman app
+You have to choose "Basic Auth" and authenticate with user admin/admin
 
 **REST API - With Installation of Local MongoDB**
 Make sure you have installed mongodb on your local machine
@@ -86,18 +96,6 @@ You have to choose "Basic Auth" and authenticate with user admin/admin
 
 
 
-**REST API - Without Installation Using Hosted MongoDB**
-Make sure you have uncommented the connection string for hosted mongodb in config.js
-```
-$ cd rest-api
-$ npm install
-$ npm start
-REST API is listening at localhost:8080
-```
-To test the REST API you can import the postman collection "/rest-api/_backup/postman-api/collection.json" into your postman app
-You have to choose "Basic Auth" and authenticate with user admin/admin
-
-
 
 **Admin UI**
 ```
@@ -106,32 +104,27 @@ $ npm install
 $ npm start
 open Browser at localhost:3000
 ```
-Login with the prepared user admin/admin
+Login with the prepared user admin/admin (admin1/admin1, oder admin2/admin2)
 
 
 
 **ToDo's:**
 
 Prio 1
+- Admin UI Input Validation > Reactive Form Validation in Admin Component not working as expected > Sadly running out of time to implement this to try the template validation in the other components
+- Give the User Feedback after all the actions happening on the UI > Sadly running out of time to implement this
 
-- Admin UI Input Validation
-- Refactor CSS Admin UI
-- Comment source code > Thomas > Noel
-- Code formatting > Thomas > Noel
-- Update git readme.md
 
 
 Prio 2
 - Admin UI Searchfunction
-- Admin UI Grafical Display of Accesses > Timeline
-- Gulp Task Build, Minify, compile scss, compress
-- package.json > dev / prod dependencies
-- Admin UI Error Handling
-- REST API Error Handling
-- Unit Tests Admin UI
-- REST API > npm install > install mongodb if not installed -> fill with testdata
-- put configuration values to config file -> hostnames, ports
-- Git cleanup and check .gitignore
+- Refactor CSS Admin UI > Sadly running out of time to implement this
+- Admin UI Grafical Display of Accesses > Barchart > Sadly running out of time to implement this
+- Gulp Task Build, Minify, compile scss, compress > Sadly running out of time to implement this
+- Admin UI Error Handling > Sadly running out of time to implement this
+- REST API Error Handling > Sadly running out of time to implement this
+- Unit Tests Admin UI > Sadly running out of time to implement this
+- Git cleanup and check .gitignore 
 
 
 Done
@@ -145,14 +138,19 @@ Done
 - Put all CSS declarations in one main CSS File > Noel > OK
 - Unit Tests REST API > Thomas > OK
 - Admin UI Make it Multilanguage Capable > OK
-
+- Comment source code > Thomas > Noel > OK
+- Code formatting > Thomas > Noel > OK
+- Update git readme.md > OK
+- REST API > npm install > install mongodb if not installed -> fill with testdata > OK
+- put configuration values to config file -> hostnames, ports > OK
+- quite a lot other stuff....
 
 ## 5. Resume
 
 **Besonders gut**
 - Aufteilung Workpackages
 - Vielfältiger Technologieeinsatz
-- Gute Idee -> funktionierender POC
+- Nette Idee -> funktionierender POC
 
 
 **Würden wir anders machen**

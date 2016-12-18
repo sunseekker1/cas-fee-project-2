@@ -106,37 +106,49 @@
                             <label>{{'label.id' | translate }}</label>
                         </div>
                         <div class="group">
-                            <input type="text" required [formControl]="editForm.controls['firstname']">
+                            <input type="text" [formControl]="editForm.controls['firstname']">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>{{'label.firstname' | translate }}</label>
+                            <!--<div *ngIf="formErrors.firstname" class="alert alert-danger">-->
+                                <!--{{ formErrors.firstname }}-->
+                            <!--</div>-->
                         </div>
                         <div class="group">
-                            <input type="text" required [formControl]="editForm.controls['lastname']">
+                            <input type="text" [formControl]="editForm.controls['lastname']">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>{{'label.lastname' | translate }}</label>
+                            <!--<div *ngIf="formErrors.lastname" class="alert alert-danger">-->
+                                <!--{{ formErrors.lastname }}-->
+                            <!--</div>-->
                         </div>
                         <div class="group">
-                            <input type="text" required [formControl]="editForm.controls['username']">
+                            <input type="text" [formControl]="editForm.controls['username']">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>{{'label.username' | translate }}</label>
+                            <!--<div *ngIf="formErrors.username" class="alert alert-danger">-->
+                                <!--{{ formErrors.username }}-->
+                            <!--</div>-->
                         </div>
                         <div class="group">
-                            <input type="text" required [formControl]="editForm.controls['email']">
+                            <input type="text" [formControl]="editForm.controls['email']">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>{{'label.email' | translate }}</label>
+                            <!--<div *ngIf="formErrors.email" class="alert alert-danger">-->
+                                <!--{{ formErrors.email }}-->
+                            <!--</div>-->
                         </div>
                         <div class="group">
-                            <input type="password" [required]="detailEditMode == 'new'" formControlName="password" [formControl]="editForm.controls['password']">
+                            <input type="password" formControlName="password" [formControl]="editForm.controls['password']">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>{{'label.password' | translate }}</label>
-                            <div *ngIf="formErrors.name" class="alert alert-danger">
-                                {{ formErrors.name }}
-                            </div>
+                            <!--<div *ngIf="formErrors.password" class="alert alert-danger">-->
+                                <!--{{ formErrors.password }}-->
+                            <!--</div>-->
                         </div>
                     </div>
                     <div class="mdl-card__actions mdl-card--border" *ngIf="detailEditMode == 'edit'">

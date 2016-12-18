@@ -7,8 +7,6 @@ import {ReactiveFormsModule}    from "@angular/forms";
 import {HttpModule}             from '@angular/http';
 import {MaterialModule}         from '@angular/material';
 import {AppRoutingModule}       from './app-routing.module';
-// import {ChartModule}          from 'angular2-highcharts';  // does not work, why?
-// import {ChartsModule} from 'ng2-charts/ng2-charts'; // does not work, why?
 import {ChartModule}            from 'primeng/primeng';
 
 import {AppComponent}           from './app.component';
@@ -27,6 +25,7 @@ import {LoginService}           from './login/login.service';
 import {LoginStatus}            from './login/login-status.service';
 
 import {FocusDirective}         from './directives/focus.directive';
+import {EmailValidatorDirective}  from './directives/validator.directive';
 import {ShortIdPipe}            from './pipes/short-id.pipe';
 import {DeleteDialogComponent}  from './dialog/dialog.component';
 import {LoginDialogComponent}   from './dialog/dialog.component';
@@ -46,8 +45,6 @@ import {CommonProvider}      from './common/common.provider';
         AppRoutingModule,
         MaterialModule.forRoot(),
         ChartModule
-        // ChartModule  // does not work, why?
-        // ChartsModule // does not work, why?
     ],
     declarations: [
         AppComponent,
@@ -62,12 +59,16 @@ import {CommonProvider}      from './common/common.provider';
         LoginDialogComponent,
         HelloDialogComponent,
         FocusDirective,
-        TranslatePipe
+        TranslatePipe,
+        EmailValidatorDirective
     ],
     entryComponents: [
         DeleteDialogComponent,
         LoginDialogComponent,
         HelloDialogComponent
+    ],
+    exports: [
+        EmailValidatorDirective
     ],
     providers: [SiteService, ClientService, AdminService, AccessService, LoginService, LoginStatus, AppConfigProvider, CommonProvider],
     bootstrap: [AppComponent]
