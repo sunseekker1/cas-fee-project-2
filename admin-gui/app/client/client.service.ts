@@ -3,18 +3,42 @@ import {Headers, Http, Response} from '@angular/http';
 import {Client} from './client';
 import 'rxjs/add/operator/toPromise';
 import {LoginService} from "../login/login.service";
+import {AppConfigProvider} from '../config/app.config.provider';
 
 
 @Injectable()
 export class ClientService {
-    private clientsUrl = 'http://localhost:8080/api/clients';  // URL to web api
+    private clientsUrl = this.appConfig.restApiEndpoints.clients;  // URL to web api
     private headers = new Headers({
-        'Content-Type': 'application/json',
-        'Authorization': "Basic " + btoa(this.loginService.admin.username + ":" + this.loginService.admin.password)
+        'Content-Type': 'application/json', 'Authorization': "Basic " + btoa(this.loginService.admin.username + ":" + this.loginService.admin.password)
     });
 
+    constructor(private http: Http, private loginService: LoginService, private appConfig: AppConfigProvider) {
+    }
 
-    constructor(private http: Http, private loginService: LoginService) {
+    create(client: Client): Promise<Client> {
+        return this.http
+            .post(this.clientsUrl, JSON.stringify(client), {headers: this.headers})
+            .toPromise()
+            .then(res => res.json().data)
+            .catch(this.handleError);
+    }
+
+    update(client: Client): Promise<Client> {
+        const url = `${this.clientsUrl}/${client._id}`;
+        return this.http
+            .put(url, JSON.stringify(client), {headers: this.headers})
+            .toPromise()
+            .then(() => client)
+            .catch(this.handleError);
+    }
+
+    delete(id: string): Promise<void> {
+        const url = `${this.clientsUrl}/${id}`;
+        return this.http.delete(url, {headers: this.headers})
+            .toPromise()
+            .then(() => null)
+            .catch(this.handleError);
     }
 
     getClients(): Promise<Client[]> {
@@ -31,54 +55,8 @@ export class ClientService {
             .then(clients => clients.find(client => client._id == id));
     }
 
-    /*getClient(id: string): Promise<Client> {
-
-     return this.Client()
-     .then(
-     (clients) => {  //TODO wie kann an dieser Stelle ein Mapping der Daten vom Service auf das Objekt im Component gemacht werden? Service _id / Component id
-     console.log(clients);
-     console.log(id);
-     console.log(clients.find(
-     client => client._id === id
-     ));
-     clients.find(
-     client => client._id === id
-     ) //TODO das gefundene ClientObjekt wird nicht an den Controller zurückgegeben
-     }
-     );
-     }*/
-
-
-    update(client: Client): Promise<Client> {
-        const url = `${this.clientsUrl}/${client._id}`;
-        return this.http
-            .put(url, JSON.stringify(client), {headers: this.headers})
-            .toPromise()
-            .then(() => client)
-            .catch(this.handleError);
-    }
-
-
-    create(client: Client): Promise<Client> {
-        return this.http
-            .post(this.clientsUrl, JSON.stringify(client), {headers: this.headers})
-            .toPromise()
-            .then(res => res.json().data)
-            .catch(this.handleError);
-    }
-
-    delete(id: string): Promise<void> {
-        const url = `${this.clientsUrl}/${id}`;
-        return this.http.delete(url, {headers: this.headers})
-            .toPromise()
-            .then(() => null)
-            .catch(this.handleError);
-    }
-
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
-
-
 }

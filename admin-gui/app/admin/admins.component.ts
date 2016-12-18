@@ -1,15 +1,13 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {Admin} from './admin';
 import {AdminService} from './admin.service';
-import {Router} from '@angular/router';
-import {LoginService} from "../login/login.service";
 import {DeleteDialogComponent} from "../dialog/dialog.component";
+
 
 @Component({
     moduleId: module.id,
-    selector: 'my-heroes',
     templateUrl: 'admins.component.html',
     styleUrls: ['admins.component.css']
 })
@@ -18,53 +16,19 @@ export class AdminsComponent implements OnInit {
     editForm : FormGroup;
     admins: Admin[];
     selectedAdmin: Admin;
-    editedAdmin: Admin;
-    private detailEditMode: string;
+    detailEditMode: string;
 
-    constructor(private router: Router,
-                private adminService: AdminService,
-                private loginService: LoginService,
-                public dialog: MdDialog,
-                public viewContainerRef: ViewContainerRef,
-                public formBuilder: FormBuilder) {
+    constructor(private adminService: AdminService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef, public formBuilder: FormBuilder) {
 
         this.resetDetailEditForms();
         this.formBuilder = formBuilder;
-        this.editForm = formBuilder.group({
-            'id' : '',
-            'firstname': '',
-            'lastname' : '',
-            'username' : '',
-            'email' : '',
-            'password' : ''
-        })
-    }
-
-    submitForm(value: any):void{
-        console.log('Reactive Form Data: ')
-        console.log(value);
     }
 
     ngOnInit(): void {
         this.getAdmins();
     }
 
-    getAdmins(): void {
-        this.resetDetailEditForms();
-        this.adminService.getAdmins().then((admins) => this.mapResult(admins));
-    }
-
-    save(): void {
-        this.adminService.update(this.editedAdmin)
-            .then(() => {
-                let selectedAdmin = this.editedAdmin;
-                this.getAdmins();
-                this.selectedAdmin = selectedAdmin;
-                this.detailEditMode = 'detail';
-            });
-    }
-
-    add(admin: Admin): void {
+    create(admin: Admin): void {
         admin.username = admin.username.trim();
         if (!admin.username || !admin.password || !admin.email) {
             return;
@@ -77,10 +41,17 @@ export class AdminsComponent implements OnInit {
             });
     }
 
+    update(admin: Admin): void {
+        this.adminService.update(admin)
+            .then(() => {
+                let selectedAdmin = admin;
+                this.getAdmins();
+                this.selectedAdmin = selectedAdmin;
+                this.detailEditMode = 'detail';
+            });
+    }
+
     delete(admin: Admin): void {
-
-
-
         let config = new MdDialogConfig();
         config.viewContainerRef = this.viewContainerRef;
         this.dialogRef = this.dialog.open(DeleteDialogComponent, config);
@@ -103,39 +74,121 @@ export class AdminsComponent implements OnInit {
         });
     }
 
-    edit(): void {
-        this.editedAdmin = this.cloneObject(this.selectedAdmin);
-        this.detailEditMode = 'edit';
-
-        this.editForm = this.formBuilder.group({
-            'id' : this.editedAdmin._id,
-            'firstname': this.editedAdmin.firstname,
-            'lastname' : this.editedAdmin.lastname,
-            'username' : this.editedAdmin.username,
-            'email' : this.editedAdmin.email,
-            'password' : this.editedAdmin.password
-        })
+    getAdmins(): void {
+        this.resetDetailEditForms();
+        this.adminService.getAdmins().then((admins) => this.mapResult(admins));
     }
 
-    new(): void {
+    onNew(): void {
         this.detailEditMode = 'new';
+        this.resetDetailEditForms();
     }
 
-    goBack(): void {
-        this.editedAdmin = null;
+    onEdit(): void {
+        this.detailEditMode = 'edit';
+        this.buildForm(this.detailEditMode);
+    }
+
+    onDelete(admin: Admin): void {
+        this.delete(admin);
+    }
+
+    onSave(formValues: any, detailEditMode: string): void {
+        let editedAdmin = formValues;
+
+        if (detailEditMode == 'edit'){
+            this.update(editedAdmin);
+        }
+        else if (detailEditMode == 'new'){
+            this.create(editedAdmin);
+        }
+    }
+
+    onBack(): void {
         this.detailEditMode = 'detail';
     }
 
     onSelect(admin: Admin): void {
-        this.editedAdmin = null;
         this.selectedAdmin = admin;
         this.detailEditMode = 'detail';
     }
 
+    buildForm(detailEditMode: string): void {
+        if (detailEditMode == 'edit'){
+            this.editForm = this.formBuilder.group({
+                '_id' : this.selectedAdmin._id,
+                'firstname': this.selectedAdmin.firstname,
+                'lastname' : this.selectedAdmin.lastname,
+                'username' : [this.selectedAdmin.username, [
+                    Validators.minLength(4),
+                    Validators.maxLength(24)
+                ]],
+                'email' : this.selectedAdmin.email,
+                'password' : this.selectedAdmin.password
+            });
+        }
+        else{
+            this.editForm = this.formBuilder.group({
+                '_id' : '',
+                'firstname': '',
+                'lastname' : '',
+                'username' : ['', [
+                    Validators.minLength(4),
+                    Validators.maxLength(24)
+                ]],
+                'email' : '',
+                'password' : ['', [
+                    Validators.minLength(4),
+                    Validators.required
+                ]]
+            });
+        }
+
+        this.editForm.valueChanges.subscribe(data => this.valueChanged(data));
+        this.valueChanged(); // (re)set validation messages now
+    }
+
+    valueChanged(data?: any) {
+        if (!this.editForm) {
+            return;
+        }
+        const form = this.editForm;
+
+        for (const field in this.formErrors) {
+            // clear previous error message (if any)
+            this.formErrors[field] = '';
+            const control = form.get(field);
+
+            if (control && control.dirty && !control.valid) {
+                const messages = this.validationMessages[field];
+
+                for (const key in control.errors) {
+                    this.formErrors[field] += messages[key] + ' ';
+                }
+            }
+        }
+    }
+
+    formErrors = {
+        'username': '',
+        'password': ''
+    };
+
+    validationMessages = {
+        'username': {
+            'minlength':     'Username must be at least 4 characters long.',
+            'maxlength':     'Username cannot be more than 24 characters long.'
+        },
+        'password': {
+            'required': 'Password is required.'
+        }
+    };
+
     resetDetailEditForms(): void {
         this.selectedAdmin = null;
-        this.editedAdmin = null;
         this.detailEditMode = 'new';
+
+        this.buildForm(this.detailEditMode);
     }
 
     mapResult(result: any): void {
@@ -154,19 +207,5 @@ export class AdminsComponent implements OnInit {
         }
         this.admins = mapped;
     }
-
-    cloneObject(obj: any) {
-        if (obj === null || typeof obj !== 'object') {
-            return obj;
-        }
-
-        var newObj = obj.constructor(); // give temp the original obj's constructor
-        for (var key in obj) {
-            newObj[key] = this.cloneObject(obj[key]);
-        }
-
-        return newObj;
-    }
-
 }
 

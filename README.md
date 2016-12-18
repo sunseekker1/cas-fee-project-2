@@ -115,6 +115,7 @@ Done
 - Vielfältiger Technologieeinsatz
 - Gute Idee -> funktionierender POC
 
+
 **Würden wir anders machen**
 - Einsatz von Betaversionen Ionic/Angular für Produktion überdenken
 - Mehr Zeit für Testing (Unit und EndtoEnd)
@@ -132,3 +133,4 @@ Done
 - Testing
 - MongoDB
 - SCSS
+- Verschiedene Formvalidierungsansätze ausprobiert

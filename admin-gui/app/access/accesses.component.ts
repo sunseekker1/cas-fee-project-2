@@ -6,7 +6,6 @@ import {Router} from '@angular/router';
 
 @Component({
     moduleId: module.id,
-    selector: 'my-heroes',
     templateUrl: 'accesses.component.html',
     styleUrls: ['accesses.component.css']
 })
@@ -70,7 +69,5 @@ export class AccessesComponent implements OnInit {
         }
         this.accesses = mapped;
     }
-
-
 }
 

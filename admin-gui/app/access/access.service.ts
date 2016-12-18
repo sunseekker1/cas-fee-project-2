@@ -1,15 +1,16 @@
 import {Injectable}    from '@angular/core';
-import {Headers, Http, Response} from '@angular/http';
+import {Headers, Http} from '@angular/http';
 import {Access} from './access';
 import 'rxjs/add/operator/toPromise';
 import {LoginService} from "../login/login.service";
+import {AppConfigProvider} from '../config/app.config.provider';
 
 
 @Injectable()
 export class AccessService {
-    private accessesUrl = 'http://localhost:8080/api/accesses';  // URL to web api
+    private accessesUrl = this.appConfig.restApiEndpoints.accesses;  // URL to web api
 
-    constructor(private http: Http, private loginService: LoginService) {
+    constructor(private http: Http, private loginService: LoginService, private appConfig: AppConfigProvider) {
     }
 
     private headers = new Headers({
@@ -35,6 +36,4 @@ export class AccessService {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
-
-
 }

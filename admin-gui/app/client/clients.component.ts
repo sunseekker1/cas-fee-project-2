@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {DeleteDialogComponent} from "../dialog/dialog.component";
 
+
 @Component({
     moduleId: module.id,
     templateUrl: 'clients.component.html',
@@ -15,8 +16,7 @@ export class ClientsComponent implements OnInit {
     clients: Client[];
     selectedClient: Client;
     editedClient: Client;
-
-    private detailEditMode: string;
+    detailEditMode: string;
 
     constructor(private router: Router, private clientService: ClientService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
         this.resetDetailEditForms();
@@ -26,22 +26,7 @@ export class ClientsComponent implements OnInit {
         this.getClients();
     }
 
-    getClients(): void {
-        this.resetDetailEditForms();
-        this.clientService.getClients().then(clients => this.mapResult(clients));
-    }
-
-    save(): void {
-        this.clientService.update(this.editedClient)
-            .then(() => {
-                let selectedClient = this.editedClient;
-                this.getClients();
-                this.selectedClient = selectedClient;
-                this.detailEditMode = 'detail';
-            });
-    }
-
-    add(client: Client): void {
+    create(client: Client): void {
         client.username = client.username.trim();
         if (!client.username || !client.password || !client.email) {
             return;
@@ -51,6 +36,16 @@ export class ClientsComponent implements OnInit {
                 client.shortId = client._id.substring(21, 25);
                 this.clients.push(client);
                 this.selectedClient = null;
+            });
+    }
+
+    update(): void {
+        this.clientService.update(this.editedClient)
+            .then(() => {
+                let selectedClient = this.editedClient;
+                this.getClients();
+                this.selectedClient = selectedClient;
+                this.detailEditMode = 'detail';
             });
     }
 
@@ -76,20 +71,35 @@ export class ClientsComponent implements OnInit {
                     });
             }
         });
-
-
     }
 
-    edit(): void {
+    getClients(): void {
+        this.resetDetailEditForms();
+        this.clientService.getClients().then(clients => this.mapResult(clients));
+    }
+
+    onCreate(client: Client): void {
+        this.create(client);
+    }
+
+    onSave(){
+        this.update();
+    }
+
+    onEdit(): void {
         this.editedClient = this.cloneObject(this.selectedClient);
         this.detailEditMode = 'edit';
     }
 
-    new(): void {
+    onNew(): void {
         this.detailEditMode = 'new';
     }
 
-    goBack(): void {
+    onDelete(client: Client): void {
+        this.delete(client);
+    }
+
+    onBack(): void {
         this.editedClient = null;
         this.detailEditMode = 'detail';
     }
@@ -137,6 +147,5 @@ export class ClientsComponent implements OnInit {
 
         return newObj;
     }
-
 }
 

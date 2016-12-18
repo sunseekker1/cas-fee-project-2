@@ -10,8 +10,6 @@ var passport = require('passport');
 var authController = require('./controllers/auth');
 var routes = require('./routes');
 
-
-
 // Connect to local mongo db
 mongoose.connect(config.mongodbConnectionUrl);
 
@@ -25,21 +23,19 @@ if(process.env.NODE_ENV && process.env.NODE_ENV == "test") {
 var app = express();
 
 // Use the body-parser package in our application
-app.use(bodyParser.json({
-}));
-
+app.use(bodyParser.json({}));
 
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
     var allowedOrigins = config.allowedOrigins;
     var origin = req.headers.origin;
+
     if(allowedOrigins.indexOf(origin) > -1){
         res.setHeader('Access-Control-Allow-Origin', origin);
     }
     
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization');
 
     // Set to true if you need the website to include cookies in the requests sent
@@ -63,10 +59,8 @@ var routerHandlers = {
 
 var router = routes.setup(routerHandlers);
 
-
 // Register all our routes with /api
 app.use('/api', router);
-
 // Start the server
 app.listen(process.env.PORT);
 // export app for testing purposes

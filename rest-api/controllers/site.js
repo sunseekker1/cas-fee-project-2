@@ -44,6 +44,7 @@ exports.getSite = function (req, res) {
 exports.putSite = function (req, res) {
 
     var fieldsToUpdate = {};
+
     if (req.body.password !== undefined && req.body.password.length) {
         fieldsToUpdate.password = req.body.password;
     }

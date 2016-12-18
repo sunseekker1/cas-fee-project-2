@@ -7,9 +7,9 @@ import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {DeleteDialogComponent} from "../dialog/dialog.component";
 import {Client} from "../client/client";
 
+
 @Component({
     moduleId: module.id,
-    selector: 'my-heroes',
     templateUrl: 'sites.component.html',
     styleUrls: ['sites.component.css']
 })
@@ -32,22 +32,27 @@ export class SitesComponent implements OnInit {
         this.getClients();
     }
 
-    getSites(): void {
-        this.resetDetailEditForms();
+    create(site: Site): void {
+        site.title = site.title.trim();
+        if (!site.title || !site.clientId) {
+            return;
+        }
+        this.siteService.create(site)
+            .then((site) => {
+                site.shortId = site._id.substring(21, 25);
+                this.sites.push(site);
+            });
 
-        this.siteService.getSites().then(
-            sites => this.mapResult(sites)
-        );
+        this.selectedSite = null;
+        this.editedSite = null;
+        this.selectedClientName = null;
+        this.selectedClientId = null;
     }
 
-    save(): void {
-
-        console.log(this.selectedClientId);
-        console.log(this.editedSite);
+    update(): void {
         this.editedSite.clientId = this.selectedClientId;
         this.selectedClientName = this.getClientName(this.editedSite.clientId);
         console.log(this.editedSite);
-
 
         this.siteService.update(this.editedSite)
             .then(() => {
@@ -83,36 +88,50 @@ export class SitesComponent implements OnInit {
         });
     }
 
-    add(site: Site): void {
-        site.title = site.title.trim();
-        if (!site.title || !site.clientId) {
-            return;
-        }
-        this.siteService.create(site)
-            .then((site) => {
-                site.shortId = site._id.substring(21, 25);
-                this.sites.push(site);
-            });
+    getSites(): void {
+        this.resetDetailEditForms();
 
-        this.selectedSite = null;
-        this.editedSite = null;
-        this.selectedClientName = null;
-        this.selectedClientId = null;
+        this.siteService.getSites().then(
+            sites => this.mapResult(sites)
+        );
     }
 
-    edit(): void {
+    getClients(): void {
+        this.clientService.getClients().then(clients => {
+            this.clients = clients;
+        });
+    }
+
+    onEdit(): void {
         this.editedSite = this.cloneObject(this.selectedSite);
         this.selectedClientName = this.getClientName(this.editedSite.clientId);
         this.detailEditMode = 'edit';
     }
 
-    new(): void {
+    onCreate(site: Site): void {
+        this.create(site);
+    }
+
+    onSave(): void {
+        this.update();
+    }
+
+    onNew(): void {
         this.detailEditMode = 'new';
     }
 
-    goBack(): void {
+    onDelete(site: Site): void {
+        this.delete(site);
+    }
+
+    onBack(): void {
         this.editedSite = null;
         this.detailEditMode = 'detail';
+    }
+
+    onSelectClient(clientId: string): void {
+        this.selectedClientId = clientId;
+        console.log(this.selectedClientId);
     }
 
     onSelect(site: Site): void {
@@ -128,15 +147,16 @@ export class SitesComponent implements OnInit {
         this.detailEditMode = 'new';
     }
 
-    getClients(): void {
-        this.clientService.getClients().then(clients => {
-            this.clients = clients;
-        });
-    }
+    getClientName(clientId: string) {
+        let selectedClientName = clientId;
 
-    onSelectClient(clientId: string): void{
-        this.selectedClientId = clientId;
-        console.log(this.selectedClientId);
+        for (let client of this.clients) {
+            if (client._id == clientId) {
+                selectedClientName = client.firstname + ' ' + client.lastname;
+                break;
+            }
+        }
+        return selectedClientName;
     }
 
     mapResult(result: any): void {
@@ -166,18 +186,6 @@ export class SitesComponent implements OnInit {
         }
 
         return newObj;
-    }
-
-    getClientName(clientId: string){
-        let selectedClientName = clientId;
-
-        for (let client of this.clients){
-            if (client._id == clientId){
-                selectedClientName = client.firstname + ' ' + client.lastname;
-                break;
-            }
-        }
-        return selectedClientName;
     }
 }
 

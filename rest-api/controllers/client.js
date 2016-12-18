@@ -40,7 +40,6 @@ exports.getClient = function (req, res) {
     });
 };
 
-
 // Create endpoint /api/clients/:client_id for PUT
 exports.putClient = function (req, res) {
     if (!req.params.id.length) {
@@ -48,29 +47,35 @@ exports.putClient = function (req, res) {
         return null;
     }
 
-    var fieldsToUpdate = {};
-    if (req.body.password !== undefined && req.body.password.length) {
-        fieldsToUpdate.password = req.body.password;
-    }
-    if (req.body.username !== undefined && req.body.username.length) {
-        fieldsToUpdate.username = req.body.username;
-    }
-    if (req.body.email !== undefined) {
-        fieldsToUpdate.email = req.body.email;
-    }
-    if (req.body.firstname !== undefined) {
-        fieldsToUpdate.firstname = req.body.firstname;
-    }
-    if (req.body.lastname !== undefined) {
-        fieldsToUpdate.lastname = req.body.lastname;
-    }
-
-    Client.update({_id: req.params.id}, fieldsToUpdate, function (err, num, raw) {
+    Client.findById(req.params.id, function(err, client) {
         if (err)
             res.send(err);
 
-        res.json({message: num + ' client updated'});
+        if (req.body.password !== undefined && req.body.password !== null && req.body.password.length) {
+            client.password = req.body.password;
+        }
+        if (req.body.username !== undefined && req.body.username !== null && req.body.username.length) {
+            client.username = req.body.username;
+        }
+        if (req.body.email !== undefined && req.body.email !== null) {
+            client.email = req.body.email;
+        }
+        if (req.body.firstname !== undefined && req.body.firstname !== null) {
+            client.firstname = req.body.firstname;
+        }
+        if (req.body.lastname !== undefined && req.body.lastname !== null) {
+            client.lastname = req.body.lastname;
+        }
+
+        // Save the client and check for errors
+        client.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({message: client + ' client updated'});
+        });
     });
+
 };
 
 // Create endpoint /api/clients/:client_id for DELETE

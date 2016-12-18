@@ -2,8 +2,7 @@ var Access = require('../models/access');
 
 // Create endpoint /api/accesses for POST
 exports.postAccess = function (req, res) {
-    var access = new Access();
-
+    var access = new Access()
     access.id = req.body._id;
     access.siteId = req.body.siteId;
     access.socketId = req.body.socketId;
@@ -15,14 +14,13 @@ exports.postAccess = function (req, res) {
         if (err)
             res.send(err);
 
-
         res.json({message: 'Access record added!', data: access});
     });
 };
 
 // Create endpoint /api/accesses/ for GET
 exports.getAccesses = function (req, res) {
-    // Use the Access model to find a specific beer
+    // Use the Access model to find a specific access
     Access.find({clientId: req.client._id}, function (err, accesses) {
         if (err)
             res.send(err);

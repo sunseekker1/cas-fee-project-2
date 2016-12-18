@@ -35,6 +35,7 @@ ClientSchema.pre('save', function (callback) {
     });
 });
 
+// Verify if password matches
 ClientSchema.methods.verifyPassword = function (password, cb) {
     bcrypt.compare(password, this.password, function (err, isMatch) {
         if (err) return cb(err);

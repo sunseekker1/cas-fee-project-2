@@ -1,5 +1,4 @@
 var passport = require('passport');
-var BasicStrategy = require('passport-http').BasicStrategy;
 var Admin = require('../models/admin');
 
 // Create endpoint /api/admins for POST
@@ -49,28 +48,33 @@ exports.putAdmin = function (req, res) {
         return null;
     }
 
-    var fieldsToUpdate = {};
-    if (req.body.password !== undefined && req.body.password.length) {
-        fieldsToUpdate.password = req.body.password;
-    }
-    if (req.body.username !== undefined && req.body.username.length) {
-        fieldsToUpdate.username = req.body.username;
-    }
-    if (req.body.email !== undefined) {
-        fieldsToUpdate.email = req.body.email;
-    }
-    if (req.body.firstname !== undefined) {
-        fieldsToUpdate.firstname = req.body.firstname;
-    }
-    if (req.body.lastname !== undefined) {
-        fieldsToUpdate.lastname = req.body.lastname;
-    }
-
-    Admin.update({_id: req.params.id}, fieldsToUpdate, function (err, num, raw) {
+    Admin.findById(req.params.id, function(err, admin) {
         if (err)
             res.send(err);
 
-        res.json({message: num + ' admin updated'});
+        if (req.body.password !== undefined && req.body.password !== null && req.body.password.length) {
+            admin.password = req.body.password;
+        }
+        if (req.body.username !== undefined && req.body.username !== null && req.body.username.length) {
+            admin.username = req.body.username;
+        }
+        if (req.body.email !== undefined && req.body.email !== null) {
+            admin.email = req.body.email;
+        }
+        if (req.body.firstname !== undefined && req.body.firstname !== null) {
+            admin.firstname = req.body.firstname;
+        }
+        if (req.body.lastname !== undefined && req.body.lastname !== null) {
+            admin.lastname = req.body.lastname;
+        }
+
+        // Save the beer and check for errors
+        admin.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({message: admin + ' admin updated'});
+        });
     });
 };
 

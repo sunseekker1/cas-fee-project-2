@@ -1,7 +1,7 @@
 import {Directive, Input, ElementRef, SimpleChanges}      from '@angular/core';
 
-@Directive
-({
+
+@Directive({
     selector: '[hasFocus]'
 })
 export class FocusDirective

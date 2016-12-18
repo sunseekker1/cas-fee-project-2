@@ -15,7 +15,7 @@ export class LoginService {
         this.loggedIn = !!sessionStorage.getItem('userSession');
     }
 
-    public login(username: string, password: string) {
+    login(username: string, password: string) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
@@ -45,13 +45,12 @@ export class LoginService {
             });
     }
 
-    public logout() {
+    logout() {
         sessionStorage.removeItem('userSession');
         this.loggedIn = false;
     }
 
-    public isLoggedIn() {
+    isLoggedIn() {
         return this.loggedIn;
     }
-
 }

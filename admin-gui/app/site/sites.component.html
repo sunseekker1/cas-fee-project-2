@@ -21,7 +21,7 @@
                         <td>{{site.url}}</td>
                         <td>
                             <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                                <i class="material-icons" (click)="delete(site); $event.stopPropagation()">delete_forever</i>
+                                <i class="material-icons" (click)="onDelete(site); $event.stopPropagation()">delete_forever</i>
                             </button>
                             <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                                 <i class="material-icons" (click)="onSelect(site)">open_in_new</i>
@@ -33,7 +33,7 @@
             </div>
             <div class="mdl-card__menu">
                 <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                    <i class="material-icons" (click)="new()">add_circle_outline</i>
+                    <i class="material-icons" (click)="onNew()">add_circle_outline</i>
                 </button>
             </div>
         </div>
@@ -71,10 +71,10 @@
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a (click)="edit()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a (click)="onEdit()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Edit
                     </a>
-                    <a (click)="delete(selectedSite)" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a (click)="onDelete(selectedSite)" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Delete
                     </a>
                 </div>
@@ -115,10 +115,10 @@
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a (click)="goBack()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a (click)="onBack()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Back
                     </a>
-                    <a (click)="save()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a (click)="onSave()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Save
                     </a>
                 </div>
@@ -152,14 +152,13 @@
 
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a (click)="add({title: title.value, clientId: selectedClientId, url: url.value}); title.value=''; url.value='';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <a (click)="onCreate({title: title.value, clientId: selectedClientId, url: url.value}); title.value=''; url.value='';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                         Add
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 

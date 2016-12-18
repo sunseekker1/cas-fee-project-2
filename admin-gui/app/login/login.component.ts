@@ -1,11 +1,8 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {LoginService} from './login.service';
 import {Router} from '@angular/router';
-import {Cookie} from 'ng2-cookies/ng2-cookies';
 import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {LoginDialogComponent} from "../dialog/dialog.component";
-import {AppConfigProvider} from '../config/app.config.provider';
-
 
 
 @Component({
@@ -22,13 +19,13 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    public submitForm(event: any, username: string, password: string) {
+    submitForm(event: any, username: string, password: string) {
         if (event.keyCode == 13) {
             this.login(username, password);
         }
     }
 
-    public login(username: string, password: string): void {
+    login(username: string, password: string): void {
         this.loginService.login(username, password).subscribe((result) => {
             console.log('login.component.ts', result);
 
@@ -48,7 +45,7 @@ export class LoginComponent implements OnInit {
 
     }
 
-    public showDialog(){
+    showDialog(){
         let config = new MdDialogConfig();
         config.viewContainerRef = this.viewContainerRef;
         this.dialogRef = this.dialog.open(LoginDialogComponent, config);
@@ -63,12 +60,10 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    public logout(): void {
+    logout(): void {
         this.loginService.logout();
         // Cookie.delete('userSession');
         this.router.navigate(['login']);
     }
-
-
 }
 

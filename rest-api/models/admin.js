@@ -34,7 +34,7 @@ AdminSchema.pre('save', function (callback) {
     });
 });
 
-
+// Verify if password matches
 AdminSchema.methods.verifyPassword = function (password, cb) {
     bcrypt.compare(password, this.password, function (err, isMatch) {
         if (err) return cb(err);
