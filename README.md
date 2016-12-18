@@ -68,11 +68,13 @@ open Browser at localhost:3500
 ```
 
 **REST API**
+Make sure you have installed mongodb on your local machine
+On Windows you need to modify the installation location of the mongodb bin directory in the package.json install script to fetch your installation 
 ```
-make sure you have installed mongodb on your local machine
 $ cd rest-api
 $ npm install
-$ npm run init-mongodb
+$ npm run mongo-init-win (mongo-init-mac)
+$ npm run mongo-import-win (mongo-import-mac)
 $ npm start
 REST API is listening at localhost:8080
 ```
