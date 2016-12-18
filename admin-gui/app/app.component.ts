@@ -28,10 +28,8 @@ export class AppComponent {
     }
 
     logout() {
-        console.log(this.loginService.isLoggedIn());
         this.loginService.logout();
         this.router.navigate(['login']);
-        console.log(this.loginService.isLoggedIn());
     }
 
     onHelloMessage() {

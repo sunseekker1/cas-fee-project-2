@@ -28,10 +28,7 @@ export class LoginService {
             .map(res => res.json())
             .map((res) => {
 
-                console.log("login.service.ts", res);
-
                 if (res.success) {
-                    console.log("login.service.ts", 'loggedIn');
                     sessionStorage.setItem('userSession', JSON.stringify(res));
                     this.loggedIn = true;
                     this.admin = res.admin;
@@ -39,7 +36,6 @@ export class LoginService {
                     return true;
                 }
                 else {
-                    console.log(res.err);
                     return false;
                 }
             });

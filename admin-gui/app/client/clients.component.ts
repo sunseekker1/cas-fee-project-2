@@ -57,7 +57,6 @@ export class ClientsComponent implements OnInit {
         this.dialogRef = this.dialog.open(DeleteDialogComponent, config);
 
         this.dialogRef.afterClosed().subscribe(confirm => {
-            console.log(confirm);
             this.dialogRef = null;
 
             if(confirm){

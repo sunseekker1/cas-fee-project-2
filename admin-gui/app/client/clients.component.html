@@ -95,51 +95,56 @@
                 <div class="mdl-card__title mdl-card--expand">
                     <h2 class="mdl-card__title-text">{{'label.edit' | translate }}: {{editedClient.firstname}} {{editedClient.lastname}}</h2>
                 </div>
-                <div class="mdl-card__supporting-text">
-                    <div class="group readonly">
-                        <input type="text" class="readonly" readonly value="{{editedClient._id}}">
-                        <span class="bar"></span>
-                        <label>{{'label.id' | translate }}</label>
+                <form #heroForm="ngForm"  *ngIf="active">
+                    <div class="mdl-card__supporting-text">
+                        <div class="group readonly">
+                            <input type="text" class="readonly" readonly value="{{editedClient._id}}">
+                            <span class="bar"></span>
+                            <label>{{'label.id' | translate }}</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" required [(ngModel)]="editedClient.firstname">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>{{'label.firstname' | translate }}</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" required [(ngModel)]="editedClient.lastname">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>{{'label.lastname' | translate }}</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" required minlength="4" maxlength="24" [(ngModel)]="editedClient.username">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>{{'label.username' | translate }}</label>
+                        </div>
+                        <div *ngIf="formErrors.username" class="alert alert-danger">
+                            {{ formErrors.username }}
+                        </div>
+                        <div class="group">
+                            <input type="text" required [(ngModel)]="editedClient.email">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>{{'label.email' | translate }}</label>
+                        </div>
+                        <div class="group">
+                            <input type="password" required [(ngModel)]="editedClient.password">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>{{'label.password' | translate }}</label>
+                        </div>
                     </div>
-                    <div class="group">
-                        <input type="text" required [(ngModel)]="editedClient.firstname">
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>{{'label.firstname' | translate }}</label>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a (click)="onBack()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            {{'button.back' | translate }}
+                        </a>
+                        <a (click)="onSave()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            {{'button.save' | translate }}
+                        </a>
                     </div>
-                    <div class="group">
-                        <input type="text" required [(ngModel)]="editedClient.lastname">
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>{{'label.lastname' | translate }}</label>
-                    </div>
-                    <div class="group">
-                        <input type="text" required [(ngModel)]="editedClient.username">
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>{{'label.username' | translate }}</label>
-                    </div>
-                    <div class="group">
-                        <input type="text" required [(ngModel)]="editedClient.email">
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>{{'label.email' | translate }}</label>
-                    </div>
-                    <div class="group">
-                        <input type="password" required [(ngModel)]="editedClient.password">
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
-                        <label>{{'label.password' | translate }}</label>
-                    </div>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a (click)="onBack()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        {{'button.back' | translate }}
-                    </a>
-                    <a (click)="onSave()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        {{'button.save' | translate }}
-                    </a>
-                </div>
+                </form>
             </div>
         </div>
 

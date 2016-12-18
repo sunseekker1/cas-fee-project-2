@@ -4,6 +4,7 @@ import {MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {Admin} from './admin';
 import {AdminService} from './admin.service';
 import {DeleteDialogComponent} from "../dialog/dialog.component";
+import {emailValidator} from "../directives/validator.directive";
 
 
 @Component({
@@ -57,7 +58,6 @@ export class AdminsComponent implements OnInit {
         this.dialogRef = this.dialog.open(DeleteDialogComponent, config);
 
         this.dialogRef.afterClosed().subscribe(confirm => {
-            console.log(confirm);
             this.dialogRef = null;
 
             if(confirm){
@@ -96,11 +96,13 @@ export class AdminsComponent implements OnInit {
     onSave(formValues: any, detailEditMode: string): void {
         let editedAdmin = formValues;
 
-        if (detailEditMode == 'edit'){
-            this.update(editedAdmin);
-        }
-        else if (detailEditMode == 'new'){
-            this.create(editedAdmin);
+        if (this.editForm.valid){
+            if (detailEditMode == 'edit'){
+                this.update(editedAdmin);
+            }
+            else if (detailEditMode == 'new'){
+                this.create(editedAdmin);
+            }
         }
     }
 
@@ -116,27 +118,46 @@ export class AdminsComponent implements OnInit {
     buildForm(detailEditMode: string): void {
         if (detailEditMode == 'edit'){
             this.editForm = this.formBuilder.group({
-                '_id' : this.selectedAdmin._id,
-                'firstname': this.selectedAdmin.firstname,
-                'lastname' : this.selectedAdmin.lastname,
+                '_id' : [this.selectedAdmin._id],
+                'firstname': [this.selectedAdmin.firstname, [
+                    Validators.required
+                ]],
+                'lastname' : [this.selectedAdmin.lastname, [
+                    Validators.required
+                ]],
                 'username' : [this.selectedAdmin.username, [
                     Validators.minLength(4),
-                    Validators.maxLength(24)
+                    Validators.maxLength(24),
+                    Validators.required
                 ]],
-                'email' : this.selectedAdmin.email,
-                'password' : this.selectedAdmin.password
+                'email' : [this.selectedAdmin.email, [
+                    Validators.required,
+                    emailValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+                ]],
+                'password' : [this.selectedAdmin.password, [
+                    Validators.minLength(4),
+                    Validators.required
+                ]]
             });
         }
         else{
             this.editForm = this.formBuilder.group({
                 '_id' : '',
-                'firstname': '',
-                'lastname' : '',
+                'firstname': ['', [
+                    Validators.required
+                ]],
+                'lastname' : ['', [
+                    Validators.required
+                ]],
                 'username' : ['', [
                     Validators.minLength(4),
-                    Validators.maxLength(24)
+                    Validators.maxLength(24),
+                    Validators.required
                 ]],
-                'email' : '',
+                'email' : ['', [
+                    Validators.required,
+                    emailValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+                ]],
                 'password' : ['', [
                     Validators.minLength(4),
                     Validators.required
@@ -149,6 +170,7 @@ export class AdminsComponent implements OnInit {
     }
 
     valueChanged(data?: any) {
+
         if (!this.editForm) {
             return;
         }
@@ -170,17 +192,32 @@ export class AdminsComponent implements OnInit {
     }
 
     formErrors = {
+        'firstname': '',
+        'lastname': '',
         'username': '',
+        'email': '',
         'password': ''
     };
 
     validationMessages = {
         'username': {
             'minlength':     'Username must be at least 4 characters long.',
-            'maxlength':     'Username cannot be more than 24 characters long.'
+            'maxlength':     'Username cannot be more than 24 characters long.',
+            'required':     'Username is required.'
         },
         'password': {
             'required': 'Password is required.'
+        },
+        'firstname': {
+            'required': 'Firstname is required.'
+        },
+        'lastname': {
+            'required': 'Lastname is required.'
+        },
+        'email': {
+            'required': 'Email is required.',
+            'pattern': 'Please provide a valid email format',
+            'emailValidator': 'Please provide a valid email format'
         }
     };
 

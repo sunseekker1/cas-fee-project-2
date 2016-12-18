@@ -113,24 +113,18 @@ Login with the prepared user admin/admin
 **ToDo's:**
 
 Prio 1
-
-- Admin UI Input Validation
+- Admin UI Input Validation > Custom Validation Directive not working :-/
 - Refactor CSS Admin UI
-- Comment source code > Thomas > Noel
-- Code formatting > Thomas > Noel
-- Update git readme.md
+
 
 
 Prio 2
 - Admin UI Searchfunction
-- Admin UI Grafical Display of Accesses > Timeline
+- Admin UI Grafical Display of Accesses > Barchart
 - Gulp Task Build, Minify, compile scss, compress
-- package.json > dev / prod dependencies
 - Admin UI Error Handling
 - REST API Error Handling
 - Unit Tests Admin UI
-- REST API > npm install > install mongodb if not installed -> fill with testdata
-- put configuration values to config file -> hostnames, ports
 - Git cleanup and check .gitignore
 
 
@@ -145,6 +139,11 @@ Done
 - Put all CSS declarations in one main CSS File > Noel > OK
 - Unit Tests REST API > Thomas > OK
 - Admin UI Make it Multilanguage Capable > OK
+- Comment source code > Thomas > Noel > OK
+- Code formatting > Thomas > Noel > OK
+- Update git readme.md > OK
+- REST API > npm install > install mongodb if not installed -> fill with testdata > OK
+- put configuration values to config file -> hostnames, ports > OK
 
 
 ## 5. Resume

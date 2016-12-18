@@ -69,8 +69,6 @@
                 dataType: "json",
                 success: function (data, status, jqXHR)
                 {
-                    
-                    console.log("successfully logged data");
                 },
                 
                 error: function (jqXHR, status)

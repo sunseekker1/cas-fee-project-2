@@ -53,7 +53,6 @@ export class SitesComponent implements OnInit {
     update(): void {
         this.editedSite.clientId = this.selectedClientId;
         this.selectedClientName = this.getClientName(this.editedSite.clientId);
-        console.log(this.editedSite);
 
         this.siteService.update(this.editedSite)
             .then(() => {
@@ -70,7 +69,6 @@ export class SitesComponent implements OnInit {
         this.dialogRef = this.dialog.open(DeleteDialogComponent, config);
 
         this.dialogRef.afterClosed().subscribe(confirm => {
-            console.log(confirm);
             this.dialogRef = null;
 
             if (confirm) {
@@ -132,7 +130,6 @@ export class SitesComponent implements OnInit {
 
     onSelectClient(clientId: string): void {
         this.selectedClientId = clientId;
-        console.log(this.selectedClientId);
     }
 
     onSelect(site: Site): void {
