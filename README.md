@@ -64,20 +64,27 @@ $ npm start
 open Browser at localhost:3500
 ```
 
+**REST API**
+```
+make sure you have installed mongodb on your local machine
+$ cd rest-api
+$ npm install
+$ npm run init-mongodb
+$ npm start
+REST API is listening at localhost:8080
+```
+To test the REST API you can import the postman collection "/rest-api/_backup/postman-api/collection.json" into your postman app
+You have to choose "Basic Auth" and authenticate with user admin/admin
 
-## 4. API
+**Admin UI**
+```
+$ cd admin-ui
+$ npm install
+$ npm start
+open Browser at localhost:3000
+```
+Login with the prepared user admin/admin
 
-***Installation:***
-- install mongodb
-- cd rest-api
-- npm install
-- npm run init-mongodb
-- npm start
-
-
-**Testing the APi:**
-- import the API calls from ./export/postman-api-collection/postman.json collection to your postman application
-- start calling the rest services with basic authentication admin1/admin1 (make shure there is an admin admin1/admin1 stored in the database collection admins)
 
 
 **ToDo's:**
