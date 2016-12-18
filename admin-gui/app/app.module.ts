@@ -32,7 +32,8 @@ import {LoginDialogComponent}   from './dialog/dialog.component';
 import {HelloDialogComponent}   from './dialog/dialog.component';
 import {TranslatePipe}          from './pipes/translate.pipe';
 import {AppConfigProvider}      from './config/app.config.provider';
-import {CommonProvider}      from './common/common.provider';
+import {CommonProvider}         from './common/common.provider';
+import {EmailValidatorDirective}      from './directives/validator.directive';
 
 
 
